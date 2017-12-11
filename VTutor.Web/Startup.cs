@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using VTutor.Web.Server.Data;
 using Swashbuckle.AspNetCore.Swagger;
 
-namespace VTutor.Web
+namespace AspCoreServer
 {
   public class Startup
   {
@@ -54,7 +54,7 @@ namespace VTutor.Web
       // Register the Swagger generator, defining one or more Swagger documents
       services.AddSwaggerGen(c =>
       {
-        c.SwaggerDoc("v1", new Info { Title = "Angular 5.0 Universal & ASP.NET Core advanced starter-kit web API", Version = "v1" });
+        c.SwaggerDoc("v1", new Info { Title = "Angular 4.0 Universal & ASP.NET Core advanced starter-kit web API", Version = "v1" });
       });
     }
 
@@ -74,7 +74,7 @@ namespace VTutor.Web
         app.UseWebpackDevMiddleware(new WebpackDevMiddlewareOptions
         {
           HotModuleReplacement = true,
-          HotModuleReplacementEndpoint = "/dist/"
+          HotModuleReplacementEndpoint = "/dist/__webpack_hmr"
         });
         app.UseSwagger();
         app.UseSwaggerUI(c =>

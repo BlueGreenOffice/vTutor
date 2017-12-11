@@ -7,7 +7,7 @@ import { IUser } from '../../models/User';
 import { UserService } from '../../shared/user.service';
 
 @Component({
-    selector: 'app-users',
+    selector: 'users',
     templateUrl: './users.component.html',
     styleUrls: ['./users.component.css'],
     animations: [
@@ -31,16 +31,15 @@ export class UsersComponent implements OnInit {
     selectedUser: IUser;
 
     // Use "constructor"s only for dependency injection
-    constructor(
-      private userService: UserService
-    ) { }
+    constructor(private userService: UserService) { }
 
     // Here you want to handle anything with @Input()'s @Output()'s
     // Data retrieval / etc - this is when the Component is "ready" and wired up
     ngOnInit() {
         this.userService.getUsers().subscribe(result => {
-            console.log('HttpClient [GET] /api/users/allresult', result);
-            this.users = result;
+            console.log('Get user result: ', result);
+            console.log('TransferHttp [GET] /api/users/allresult', result);
+            this.users = result as IUser[];
         });
     }
 
@@ -51,8 +50,10 @@ export class UsersComponent implements OnInit {
     deleteUser(user) {
         this.userService.deleteUser(user).subscribe(result => {
             console.log('Delete user result: ', result);
-            let position = this.users.indexOf(user);
-            this.users.splice(position, 1);
+            if (result.ok) {
+                let position = this.users.indexOf(user);
+                this.users.splice(position, 1);
+            }
         }, error => {
             console.log(`There was an issue. ${error._body}.`);
         });
@@ -61,7 +62,9 @@ export class UsersComponent implements OnInit {
     addUser(newUserName) {
         this.userService.addUser(newUserName).subscribe(result => {
             console.log('Post user result: ', result);
-            this.users.push(result);
+            if (result.ok) {
+                this.users.push(result.json());
+            }
         }, error => {
             console.log(`There was an issue. ${error._body}.`);
         });
