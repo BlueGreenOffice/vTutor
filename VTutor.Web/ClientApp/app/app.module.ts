@@ -16,6 +16,10 @@ import { HomeComponent } from './containers/home/home.component';
 import { UsersComponent } from './containers/users/users.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
 import { CounterComponent } from './containers/counter/counter.component';
+import { WhyVtutorComponent } from './containers/why-vtutor/why-vtutor.component';
+import { BecomeVTutor } from './containers/become-vtutor/become-vtutor.component';
+import { LoginComponent } from './containers/login/login.component';
+
 // import { ChatComponent } from './containers/chat/chat.component';
 import { NotFoundComponent } from './containers/not-found/not-found.component';
 import { NgxBootstrapComponent } from './containers/ngx-bootstrap-demo/ngx-bootstrap.component';
@@ -43,6 +47,9 @@ export function createTranslateLoader(http: Http, baseHref) {
         UsersComponent,
         UserDetailComponent,
         HomeComponent,
+        WhyVtutorComponent,
+        BecomeVTutor,
+        LoginComponent,
         // ChatComponent,
         NotFoundComponent,
         NgxBootstrapComponent
@@ -88,6 +95,40 @@ export function createTranslateLoader(http: Http, baseHref) {
                     ]
                 }
             },
+
+            {
+                path: 'why-vtutor', component: WhyVtutorComponent,
+                data: {
+                    title: 'Why vTutor',
+                    meta: [{}],
+                    links: [
+
+                    ]
+                }
+            },
+
+
+            {
+                path: 'become-a-vTutor', component: BecomeVTutor,
+                data: {
+                    title: 'Become A vTutor',
+                    meta: [{}],
+                    links: [
+
+                    ]
+                }
+            },
+
+            {
+                path: 'login', component: LoginComponent,
+                data: {
+                    title: 'Login',
+                    meta: [{}],
+                    links: [
+                    ]
+                }
+            },
+
             {
                 path: 'counter', component: CounterComponent,
                 data: {
@@ -122,7 +163,7 @@ export function createTranslateLoader(http: Http, baseHref) {
                 }
             },
 
-            { path: 'lazy', loadChildren: './containers/lazy/lazy.module#LazyModule'},
+            { path: 'lazy', loadChildren: './containers/lazy/lazy.module#LazyModule' },
 
             {
                 path: '**', component: NotFoundComponent,
@@ -136,11 +177,11 @@ export function createTranslateLoader(http: Http, baseHref) {
                 }
             }
         ], {
-          // Router options
-          useHash: false,
-          preloadingStrategy: PreloadAllModules,
-          initialNavigation: 'enabled'
-        })
+                // Router options
+                useHash: false,
+                preloadingStrategy: PreloadAllModules,
+                initialNavigation: 'enabled'
+            })
     ],
     providers: [
         LinkService,

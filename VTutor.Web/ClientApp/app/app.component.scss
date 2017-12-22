@@ -1,6 +1,6 @@
-﻿$navbar-default-bg: #312312;
+/*$navbar-default-bg: #312312;
 $light-orange: #ff8c00;
-$navbar-default-color: $light-orange;
+$navbar-default-color: $light-orange;*/
 
 /* Import Bootstrap & Fonts */
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
@@ -14,6 +14,14 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
    Note: This Component has ViewEncapsulation.None so the styles will bleed out
 
 */
+.body-content {
+  margin-top:80px;
+}
+
+h5 {
+  font-family: latolight;
+}
+
 @media (max-width: 767px) {
   body {
     background: #f1f1f1;
@@ -22,7 +30,6 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
   }
 
   h1 {
-    border-bottom: 3px #4189C7 solid;
     font-size: 24px;
   }
 
@@ -43,7 +50,6 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
   }
 
   h1 {
-    border-bottom: 5px #4189C7 solid;
     font-size: 36px;
   }
 
