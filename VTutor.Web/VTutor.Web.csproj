@@ -37,10 +37,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\VTutor.Model\VTutor.Model.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app\containers\why-vtutor\why-vtutor.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\User.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\link.service.ts" />
@@ -49,6 +45,10 @@
 
   <ItemGroup>
     <Folder Include="ClientApp\app\containers\sessions\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VTutor.Model\VTutor.Model.csproj" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
