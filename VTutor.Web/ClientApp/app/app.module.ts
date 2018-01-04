@@ -15,7 +15,6 @@ import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './containers/home/home.component';
 import { StudentRegisterComponent } from './containers/student-register/student-register.component';
 import { ReferAFriendComponent } from './containers/refer-a-friend/refer-a-friend.component';
-import { UserDetailComponent } from './components/user-detail/user-detail.component';
 
 import { WhyVtutorComponent } from './containers/why-vtutor/why-vtutor.component';
 import { BecomeVTutor } from './containers/become-vtutor/become-vtutor.component';
@@ -47,7 +46,6 @@ export function createTranslateLoader(http: Http, baseHref) {
         SessionsComponent,
         ReferAFriendComponent,
         NavMenuComponent,
-        UserDetailComponent,
         HomeComponent,
         WhyVtutorComponent,
         BecomeVTutor,
