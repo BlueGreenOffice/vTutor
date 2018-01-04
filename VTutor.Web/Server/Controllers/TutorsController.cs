@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using VTutor.Model;
-using VTutor.Web.Server.Data;
 
 namespace VTutor.Web.Controllers
 {
@@ -14,16 +13,16 @@ namespace VTutor.Web.Controllers
   [Route("api/Tutors")]
   public class TutorsController : Controller
   {
-    private readonly VTutorWebContext _context;
+    private readonly VTutorContext _context;
 
-    public TutorsController(VTutorWebContext context)
+    public TutorsController(VTutorContext context)
     {
       _context = context;
     }
 
     // GET: api/Tutors
     [HttpGet]
-    public IEnumerable<Tutors> GetTutor()
+    public IEnumerable<Tutor> GetTutor()
     {
       return _context.Tutors;
     }
@@ -49,7 +48,7 @@ namespace VTutor.Web.Controllers
 
     // PUT: api/Tutors/5
     [HttpPut("{id}")]
-    public async Task<IActionResult> PutTutor([FromRoute] Guid id, [FromBody] Tutors tutor)
+    public async Task<IActionResult> PutTutor([FromRoute] Guid id, [FromBody] Tutor tutor)
     {
       if (!ModelState.IsValid)
       {
@@ -84,7 +83,7 @@ namespace VTutor.Web.Controllers
 
     // POST: api/Tutors
     [HttpPost]
-    public async Task<IActionResult> PostTutor([FromBody] Tutors tutor)
+    public async Task<IActionResult> PostTutor([FromBody] Tutor tutor)
     {
       if (!ModelState.IsValid)
       {

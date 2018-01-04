@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using VTutor.Web.Server.Data;
+
 using VTutor.Model;
 
 namespace VTutor.Web.Controllers
@@ -14,16 +14,16 @@ namespace VTutor.Web.Controllers
   [Route("api/Appointments")]
   public class AppointmentsController : Controller
   {
-    private readonly VTutorWebContext _context;
+    private readonly VTutorContext _context;
 
-    public AppointmentsController(VTutorWebContext context)
+    public AppointmentsController(VTutorContext context)
     {
       _context = context;
     }
 
     // GET: api/Appointments
     [HttpGet]
-    public IEnumerable<Appointments> GetAppointment()
+    public IEnumerable<Appointment> GetAppointment()
     {
       return _context.Appointments;
     }
@@ -49,7 +49,7 @@ namespace VTutor.Web.Controllers
 
     // PUT: api/Appointments/5
     [HttpPut("{id}")]
-    public async Task<IActionResult> PutAppointment([FromRoute] Guid id, [FromBody] Appointments appointment)
+    public async Task<IActionResult> PutAppointment([FromRoute] Guid id, [FromBody] Appointment appointment)
     {
       if (!ModelState.IsValid)
       {
@@ -84,7 +84,7 @@ namespace VTutor.Web.Controllers
 
     // POST: api/Appointments
     [HttpPost]
-    public async Task<IActionResult> PostAppointment([FromBody] Appointments appointment)
+    public async Task<IActionResult> PostAppointment([FromBody] Appointment appointment)
     {
       if (!ModelState.IsValid)
       {

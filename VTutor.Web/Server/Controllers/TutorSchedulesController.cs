@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using VTutor.Model;
-using VTutor.Web.Server.Data;
+
 
 namespace VTutor.Web.Controllers
 {
@@ -14,16 +14,16 @@ namespace VTutor.Web.Controllers
   [Route("api/TutorSchedules")]
   public class TutorSchedulesController : Controller
   {
-    private readonly VTutorWebContext _context;
+    private readonly VTutorContext _context;
 
-    public TutorSchedulesController(VTutorWebContext context)
+    public TutorSchedulesController(VTutorContext context)
     {
       _context = context;
     }
 
     // GET: api/TutorSchedules
     [HttpGet]
-    public IEnumerable<TutorSchedules> GetTutorSchedule()
+    public IEnumerable<TutorSchedule> GetTutorSchedule()
     {
       return _context.TutorSchedules;
     }
@@ -49,7 +49,7 @@ namespace VTutor.Web.Controllers
 
     // PUT: api/TutorSchedules/5
     [HttpPut("{id}")]
-    public async Task<IActionResult> PutTutorSchedule([FromRoute] Guid id, [FromBody] TutorSchedules tutorSchedule)
+    public async Task<IActionResult> PutTutorSchedule([FromRoute] Guid id, [FromBody] TutorSchedule tutorSchedule)
     {
       if (!ModelState.IsValid)
       {
@@ -84,7 +84,7 @@ namespace VTutor.Web.Controllers
 
     // POST: api/TutorSchedules
     [HttpPost]
-    public async Task<IActionResult> PostTutorSchedule([FromBody] TutorSchedules tutorSchedule)
+    public async Task<IActionResult> PostTutorSchedule([FromBody] TutorSchedule tutorSchedule)
     {
       if (!ModelState.IsValid)
       {

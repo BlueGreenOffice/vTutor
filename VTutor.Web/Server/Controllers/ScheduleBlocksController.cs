@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using VTutor.Model;
-using VTutor.Web.Server.Data;
+
 
 namespace VTutor.Web.Controllers
 {
@@ -14,16 +14,16 @@ namespace VTutor.Web.Controllers
   [Route("api/ScheduleBlocks")]
   public class ScheduleBlocksController : Controller
   {
-    private readonly VTutorWebContext _context;
+    private readonly VTutorContext _context;
 
-    public ScheduleBlocksController(VTutorWebContext context)
+    public ScheduleBlocksController(VTutorContext context)
     {
       _context = context;
     }
 
     // GET: api/ScheduleBlocks
     [HttpGet]
-    public IEnumerable<ScheduleBlocks> GetScheduleBlock()
+    public IEnumerable<ScheduleBlock> GetScheduleBlock()
     {
       return _context.ScheduleBlocks;
     }
@@ -49,7 +49,7 @@ namespace VTutor.Web.Controllers
 
     // PUT: api/ScheduleBlocks/5
     [HttpPut("{id}")]
-    public async Task<IActionResult> PutScheduleBlock([FromRoute] Guid id, [FromBody] ScheduleBlocks scheduleBlock)
+    public async Task<IActionResult> PutScheduleBlock([FromRoute] Guid id, [FromBody] ScheduleBlock scheduleBlock)
     {
       if (!ModelState.IsValid)
       {
@@ -84,7 +84,7 @@ namespace VTutor.Web.Controllers
 
     // POST: api/ScheduleBlocks
     [HttpPost]
-    public async Task<IActionResult> PostScheduleBlock([FromBody] ScheduleBlocks scheduleBlock)
+    public async Task<IActionResult> PostScheduleBlock([FromBody] ScheduleBlock scheduleBlock)
     {
       if (!ModelState.IsValid)
       {

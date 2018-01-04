@@ -6,3 +6,4 @@ D:\Code\vTutor\VTutor.Model\obj\Debug\netstandard2.0\VTutor.Model.AssemblyInfoIn
 D:\Code\vTutor\VTutor.Model\obj\Debug\netstandard2.0\VTutor.Model.AssemblyInfo.cs
 D:\Code\vTutor\VTutor.Model\obj\Debug\netstandard2.0\VTutor.Model.dll
 D:\Code\vTutor\VTutor.Model\obj\Debug\netstandard2.0\VTutor.Model.pdb
+D:\Code\vTutor\VTutor.Model\obj\Debug\netstandard2.0\VTutor.Model.csprojResolveAssemblyReference.cache

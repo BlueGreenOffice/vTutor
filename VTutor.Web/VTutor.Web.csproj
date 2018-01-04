@@ -9,6 +9,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.0" />
     <PackageReference Include="Swashbuckle" Version="5.6.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="1.1.0" />
@@ -24,6 +25,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\app\containers\refer-a-friend\refer-a-friend.component.ts" />
+    <None Remove="ClientApp\app\containers\sessions\sessions.component.ts" />
+    <None Remove="ClientApp\app\containers\student-register\student-register.component.ts" />
     <None Remove="ClientApp\app\containers\why-vtutor\why-vtutor.component.ts" />
     <None Remove="ClientApp\app\models\User.ts" />
     <None Remove="ClientApp\app\shared\link.service.ts" />
@@ -37,18 +41,13 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Include="ClientApp\app\containers\refer-a-friend\refer-a-friend.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\containers\sessions\sessions.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\containers\student-register\student-register.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\containers\why-vtutor\why-vtutor.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\User.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\link.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\user.service.ts" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="ClientApp\app\containers\sessions\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\VTutor.Model\VTutor.Model.csproj" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">

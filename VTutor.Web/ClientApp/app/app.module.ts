@@ -13,16 +13,17 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { HomeComponent } from './containers/home/home.component';
-import { UsersComponent } from './containers/users/users.component';
+import { StudentRegisterComponent } from './containers/student-register/student-register.component';
+import { ReferAFriendComponent } from './containers/refer-a-friend/refer-a-friend.component';
 import { UserDetailComponent } from './components/user-detail/user-detail.component';
-import { CounterComponent } from './containers/counter/counter.component';
+
 import { WhyVtutorComponent } from './containers/why-vtutor/why-vtutor.component';
 import { BecomeVTutor } from './containers/become-vtutor/become-vtutor.component';
 import { LoginComponent } from './containers/login/login.component';
+import { SessionsComponent } from './containers/sessions/sessions.component';
 
 // import { ChatComponent } from './containers/chat/chat.component';
 import { NotFoundComponent } from './containers/not-found/not-found.component';
-import { NgxBootstrapComponent } from './containers/ngx-bootstrap-demo/ngx-bootstrap.component';
 
 import { LinkService } from './shared/link.service';
 import { UserService } from './shared/user.service';
@@ -42,17 +43,16 @@ export function createTranslateLoader(http: Http, baseHref) {
 @NgModule({
     declarations: [
         AppComponent,
+        StudentRegisterComponent,
+        SessionsComponent,
+        ReferAFriendComponent,
         NavMenuComponent,
-        CounterComponent,
-        UsersComponent,
         UserDetailComponent,
         HomeComponent,
         WhyVtutorComponent,
         BecomeVTutor,
         LoginComponent,
-        // ChatComponent,
         NotFoundComponent,
-        NgxBootstrapComponent
     ],
     imports: [
         CommonModule,
@@ -109,7 +109,7 @@ export function createTranslateLoader(http: Http, baseHref) {
 
 
             {
-                path: 'become-a-vTutor', component: BecomeVTutor,
+                path: 'tutor-register', component: BecomeVTutor,
                 data: {
                     title: 'Become A vTutor',
                     meta: [{}],
@@ -118,7 +118,15 @@ export function createTranslateLoader(http: Http, baseHref) {
                     ]
                 }
             },
-
+            {
+                path: 'student-register', component: StudentRegisterComponent,
+                data: {
+                    title: 'Sessions',
+                    meta: [{}],
+                    links: [
+                    ]
+                }
+            },
             {
                 path: 'login', component: LoginComponent,
                 data: {
@@ -130,40 +138,24 @@ export function createTranslateLoader(http: Http, baseHref) {
             },
 
             {
-                path: 'counter', component: CounterComponent,
+                path: 'sessions', component: SessionsComponent,
                 data: {
-                    title: 'Counter',
-                    meta: [{ name: 'description', content: 'This is an Counter page Description!' }],
+                    title: 'Sessions',
+                    meta: [{}],
                     links: [
-                        { rel: 'canonical', href: 'http://blogs.example.com/counter/something' },
-                        { rel: 'alternate', hreflang: 'es', href: 'http://es.example.com/counter' }
-                    ]
-                }
-            },
-            {
-                path: 'users', component: UsersComponent,
-                data: {
-                    title: 'Users REST example',
-                    meta: [{ name: 'description', content: 'This is User REST API example page Description!' }],
-                    links: [
-                        { rel: 'canonical', href: 'http://blogs.example.com/chat/something' },
-                        { rel: 'alternate', hreflang: 'es', href: 'http://es.example.com/users' }
-                    ]
-                }
-            },
-            {
-                path: 'ngx-bootstrap', component: NgxBootstrapComponent,
-                data: {
-                    title: 'Ngx-bootstrap demo!!',
-                    meta: [{ name: 'description', content: 'This is an Demo Bootstrap page Description!' }],
-                    links: [
-                        { rel: 'canonical', href: 'http://blogs.example.com/bootstrap/something' },
-                        { rel: 'alternate', hreflang: 'es', href: 'http://es.example.com/bootstrap-demo' }
                     ]
                 }
             },
 
-            { path: 'lazy', loadChildren: './containers/lazy/lazy.module#LazyModule' },
+            {
+                path: 'refer-a-friend', component: ReferAFriendComponent,
+                data: {
+                    title: 'Sessions',
+                    meta: [{}],
+                    links: [
+                    ]
+                }
+            },
 
             {
                 path: '**', component: NotFoundComponent,

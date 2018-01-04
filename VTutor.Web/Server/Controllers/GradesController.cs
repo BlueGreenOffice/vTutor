@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using VTutor.Model;
-using VTutor.Web.Server.Data;
+
 
 namespace VTutor.Web.Controllers
 {
@@ -14,16 +14,16 @@ namespace VTutor.Web.Controllers
   [Route("api/Grades")]
   public class GradesController : Controller
   {
-    private readonly VTutorWebContext _context;
+    private readonly VTutorContext _context;
 
-    public GradesController(VTutorWebContext context)
+    public GradesController(VTutorContext context)
     {
       _context = context;
     }
 
     // GET: api/Grades
     [HttpGet]
-    public IEnumerable<Grades> GetGrade()
+    public IEnumerable<Grade> GetGrade()
     {
       return _context.Grades;
     }
@@ -49,7 +49,7 @@ namespace VTutor.Web.Controllers
 
     // PUT: api/Grades/5
     [HttpPut("{id}")]
-    public async Task<IActionResult> PutGrade([FromRoute] Guid id, [FromBody] Grades grade)
+    public async Task<IActionResult> PutGrade([FromRoute] Guid id, [FromBody] Grade grade)
     {
       if (!ModelState.IsValid)
       {
@@ -84,7 +84,7 @@ namespace VTutor.Web.Controllers
 
     // POST: api/Grades
     [HttpPost]
-    public async Task<IActionResult> PostGrade([FromBody] Grades grade)
+    public async Task<IActionResult> PostGrade([FromBody] Grade grade)
     {
       if (!ModelState.IsValid)
       {
