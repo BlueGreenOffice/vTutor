@@ -4,29 +4,35 @@ import { CommonModule, APP_BASE_HREF } from '@angular/common';
 import { HttpModule, Http } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
+//External Components
 import { Ng2BootstrapModule } from 'ngx-bootstrap';
+//import { CalendarModule } from 'primeng/primeng';
+
 
 // i18n support
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 import { AppComponent } from './app.component';
+
+//Components
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
+
+//Pages
 import { HomeComponent } from './containers/home/home.component';
 import { StudentRegisterComponent } from './containers/student-register/student-register.component';
 import { ReferAFriendComponent } from './containers/refer-a-friend/refer-a-friend.component';
-
 import { WhyVtutorComponent } from './containers/why-vtutor/why-vtutor.component';
 import { BecomeVTutor } from './containers/become-vtutor/become-vtutor.component';
 import { LoginComponent } from './containers/login/login.component';
 import { SessionsComponent } from './containers/sessions/sessions.component';
+import { DashboardComponent } from './containers/dashboard/dashboard.component';
 
-// import { ChatComponent } from './containers/chat/chat.component';
 import { NotFoundComponent } from './containers/not-found/not-found.component';
 
 import { LinkService } from './shared/link.service';
 import { UserService } from './shared/user.service';
-// import { ConnectionResolver } from './shared/route.resolver';
 import { ORIGIN_URL } from './shared/constants/baseurl.constants';
 import { TransferHttpModule } from '../modules/transfer-http/transfer-http.module';
 
@@ -42,12 +48,18 @@ export function createTranslateLoader(http: Http, baseHref) {
 @NgModule({
     declarations: [
         AppComponent,
+
+        //Components
+        NavMenuComponent,
+        CalendarComponent,
+
+        //Pages
         StudentRegisterComponent,
         SessionsComponent,
         ReferAFriendComponent,
-        NavMenuComponent,
         HomeComponent,
         WhyVtutorComponent,
+        DashboardComponent,
         BecomeVTutor,
         LoginComponent,
         NotFoundComponent,
@@ -56,6 +68,8 @@ export function createTranslateLoader(http: Http, baseHref) {
         CommonModule,
         HttpModule,
         FormsModule,
+
+        //CalendarModule,
         Ng2BootstrapModule.forRoot(), // You could also split this up if you don't want the Entire Module imported
 
         TransferHttpModule, // Our Http TransferData method
@@ -105,6 +119,15 @@ export function createTranslateLoader(http: Http, baseHref) {
                 }
             },
 
+            {
+                path: 'dashboard', component: DashboardComponent,
+                data: {
+                    title: 'Dashboard',
+                    meta: [{}],
+                    links: [
+                    ]
+                }
+            },
 
             {
                 path: 'tutor-register', component: BecomeVTutor,

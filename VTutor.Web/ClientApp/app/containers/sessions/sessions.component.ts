@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'sessions',
+    selector: 'vt-sessions',
     templateUrl: './sessions.component.html',
     styleUrls: ['sessions.component.scss']
 })

@@ -2,7 +2,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'become-vtutor',
+    selector: 'vt-become-vtutor',
     templateUrl: './become-vtutor.component.html',
     styleUrls: ['become-vtutor.component.scss']
 })

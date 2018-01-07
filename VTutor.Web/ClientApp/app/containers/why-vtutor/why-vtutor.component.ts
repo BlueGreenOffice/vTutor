@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-    selector: 'why-vtutor',
+    selector: 'vt-why-vtutor',
     templateUrl: './why-vtutor.component.html',
     styleUrls: ['why-vtutor.component.scss']
 })

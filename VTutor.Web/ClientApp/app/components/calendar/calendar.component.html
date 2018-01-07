@@ -1,0 +1,54 @@
+<div class="calendar container-fluid">
+
+
+  <div class="month row">
+
+    <div class="col-md-1 prev">&#10094;</div>
+    <div class="month-title col-md-10">
+      <div>{{currentMonth}}</div>
+      <div style="font-size:18px">{{currentYear}}</div>
+    </div>
+    <div class="col-md-1 next">&#10095;</div>
+  </div>
+
+  <div class="weekdays row">
+
+    <div class="day-column">
+      <div class="day-title">Monday</div>
+        <div [class.active]="day.ActiveDay" class="day-cell" *ngFor="let day of mondays()">{{day.DayOfMonth}}</div>
+    </div>
+    <div class="day-column">
+      <div class="day-title">Tuesday</div>
+      <div [class.active]="day.ActiveDay" class="day-cell" *ngFor ="let day of tuesdays()">{{day.DayOfMonth}}</div>
+    </div>
+
+    <div class="day-column">
+      <div class="day-title">Wednesday</div>
+      <div [class.active]="day.ActiveDay" class="day-cell" *ngFor="let day of wednesdays()">{{day.DayOfMonth}}</div>
+    </div>
+
+    <div class="day-column">
+      <div class="day-title">Thursday</div>
+      <div [class.active]="day.ActiveDay" class="day-cell" *ngFor="let day of thursdays()">{{day.DayOfMonth}}</div>
+    </div>
+
+    <div class="day-column">
+      <div class="day-title">Friday</div>
+      <div [class.active]="day.ActiveDay" class="day-cell" *ngFor="let day of fridays()">{{day.DayOfMonth}}</div>
+    </div>
+
+
+    <div class="day-column">
+      <div class="day-title">Saturday</div>
+      <div [class.active]="day.ActiveDay" class="day-cell" *ngFor="let day of saturdays()">{{day.DayOfMonth}}</div>
+    </div>
+
+    <div class="day-column">
+      <div class="day-title">Sunday</div>
+      <div [class.active]="day.ActiveDay" class="day-cell" *ngFor="let day of sundays()">{{day.DayOfMonth}}</div>
+    </div>
+  </div>
+
+
+
+</div>

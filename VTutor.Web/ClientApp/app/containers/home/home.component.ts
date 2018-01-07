@@ -3,7 +3,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-    selector: 'app-home',
+    selector: 'vt-app-home',
     templateUrl: './home.component.html',
     styleUrls:['./home.component.scss']
 })
