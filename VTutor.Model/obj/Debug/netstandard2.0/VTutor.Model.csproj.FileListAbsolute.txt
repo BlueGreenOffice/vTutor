@@ -7,3 +7,12 @@ D:\Code\vTutor\VTutor.Model\obj\Debug\netstandard2.0\VTutor.Model.AssemblyInfo.c
 D:\Code\vTutor\VTutor.Model\obj\Debug\netstandard2.0\VTutor.Model.dll
 D:\Code\vTutor\VTutor.Model\obj\Debug\netstandard2.0\VTutor.Model.pdb
 D:\Code\vTutor\VTutor.Model\obj\Debug\netstandard2.0\VTutor.Model.csprojResolveAssemblyReference.cache
+D:\work\BlueGreen Office\vTutor 2.0\Source\vTutor\VTutor.Model\bin\Debug\netstandard2.0\VTutor.Model.deps.json
+D:\work\BlueGreen Office\vTutor 2.0\Source\vTutor\VTutor.Model\bin\Debug\netstandard2.0\VTutor.Model.dll
+D:\work\BlueGreen Office\vTutor 2.0\Source\vTutor\VTutor.Model\bin\Debug\netstandard2.0\VTutor.Model.pdb
+D:\work\BlueGreen Office\vTutor 2.0\Source\vTutor\VTutor.Model\obj\Debug\netstandard2.0\VTutor.Model.csprojResolveAssemblyReference.cache
+D:\work\BlueGreen Office\vTutor 2.0\Source\vTutor\VTutor.Model\obj\Debug\netstandard2.0\VTutor.Model.csproj.CoreCompileInputs.cache
+D:\work\BlueGreen Office\vTutor 2.0\Source\vTutor\VTutor.Model\obj\Debug\netstandard2.0\VTutor.Model.AssemblyInfoInputs.cache
+D:\work\BlueGreen Office\vTutor 2.0\Source\vTutor\VTutor.Model\obj\Debug\netstandard2.0\VTutor.Model.AssemblyInfo.cs
+D:\work\BlueGreen Office\vTutor 2.0\Source\vTutor\VTutor.Model\obj\Debug\netstandard2.0\VTutor.Model.dll
+D:\work\BlueGreen Office\vTutor 2.0\Source\vTutor\VTutor.Model\obj\Debug\netstandard2.0\VTutor.Model.pdb
