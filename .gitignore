@@ -48,3 +48,6 @@ $RECYCLE.BIN/
 Network Trash Folder
 Temporary Items
 .apdisk
+VTutor.Model/obj/Debug/netstandard2.0/VTutor.Model.csproj.FileListAbsolute.txt
+*.cache
+*.props

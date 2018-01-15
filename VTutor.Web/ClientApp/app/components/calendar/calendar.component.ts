@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+
+
+import { Event } from '../../models/Event';
 
 class Day {
     DayOfWeek: number;
@@ -13,7 +16,8 @@ class Day {
 })
 export class CalendarComponent {
 
-    events: any[];
+    @Input()
+    events: Event[];
 
     days: Day[];
 
