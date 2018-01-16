@@ -26,6 +26,7 @@
 
   <ItemGroup>
     <None Remove="ClientApp\app\components\calendar\calendar.component.ts" />
+    <None Remove="ClientApp\app\components\footer\footer.component.ts" />
     <None Remove="ClientApp\app\containers\admin-dashboard\admin-dashboard.component.ts" />
     <None Remove="ClientApp\app\containers\dashboard\dashboard.component.ts" />
     <None Remove="ClientApp\app\containers\refer-a-friend\refer-a-friend.component.ts" />
@@ -49,6 +50,7 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app\components\calendar\calendar.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\components\footer\footer.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\containers\admin-dashboard\admin-dashboard.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\containers\dashboard\dashboard.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\containers\refer-a-friend\refer-a-friend.component.ts" />

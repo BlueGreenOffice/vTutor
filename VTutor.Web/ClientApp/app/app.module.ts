@@ -19,6 +19,7 @@ import { AppComponent } from './app.component';
 //Components
 import { NavMenuComponent } from './components/navmenu/navmenu.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 //Pages
 import { HomeComponent } from './containers/home/home.component';
@@ -57,6 +58,7 @@ export function createTranslateLoader(http: Http, baseHref) {
 		//Components
 		NavMenuComponent,
 		CalendarComponent,
+		FooterComponent,
 
 		//Pages
 		StudentRegisterComponent,
