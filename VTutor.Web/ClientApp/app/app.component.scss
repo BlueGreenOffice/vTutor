@@ -22,6 +22,7 @@ $main-font: 'Lato', sans-serif;
   -o-transition: $in;
   -ms-transition: $in;
 }
+
 @mixin transform($in) {
   transform: $in;
   -webkit-transform: $in;
@@ -29,6 +30,7 @@ $main-font: 'Lato', sans-serif;
   -o-transform: $in;
   -ms-transform: $in;
 }
+
 @mixin animation($in) {
   animation: $in;
   -webkit-animation: $in;
@@ -43,6 +45,17 @@ $main-font: 'Lato', sans-serif;
 
 */
 .body-content {
-  margin-top:47px;
+  margin-top: 60px;
 }
 
+.form-control {
+  @include transition(all 0.3s ease);
+  border-radius: 0;
+
+
+  &:focus {
+    -webkit-appearance: none!important;
+    outline:0px!important;
+    border-left: 2px solid $accent-color;
+  }
+}

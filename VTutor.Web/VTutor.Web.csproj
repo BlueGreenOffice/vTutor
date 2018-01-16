@@ -26,14 +26,18 @@
 
   <ItemGroup>
     <None Remove="ClientApp\app\components\calendar\calendar.component.ts" />
+    <None Remove="ClientApp\app\containers\admin-dashboard\admin-dashboard.component.ts" />
     <None Remove="ClientApp\app\containers\dashboard\dashboard.component.ts" />
     <None Remove="ClientApp\app\containers\refer-a-friend\refer-a-friend.component.ts" />
     <None Remove="ClientApp\app\containers\sessions\sessions.component.ts" />
     <None Remove="ClientApp\app\containers\student-register\student-register.component.ts" />
     <None Remove="ClientApp\app\containers\why-vtutor\why-vtutor.component.ts" />
     <None Remove="ClientApp\app\models\Event.ts" />
+    <None Remove="ClientApp\app\models\Tutor.ts" />
     <None Remove="ClientApp\app\models\User.ts" />
     <None Remove="ClientApp\app\shared\link.service.ts" />
+    <None Remove="ClientApp\app\shared\subjects.service.ts" />
+    <None Remove="ClientApp\app\shared\tutors.service.ts" />
     <None Remove="ClientApp\app\shared\user.service.ts" />
   </ItemGroup>
 
@@ -45,14 +49,18 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\app\components\calendar\calendar.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\containers\admin-dashboard\admin-dashboard.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\containers\dashboard\dashboard.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\containers\refer-a-friend\refer-a-friend.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\containers\sessions\sessions.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\containers\student-register\student-register.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\containers\why-vtutor\why-vtutor.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\Event.ts" />
+    <TypeScriptCompile Include="ClientApp\app\models\Tutor.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\User.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\link.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\subjects.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\tutors.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\user.service.ts" />
   </ItemGroup>
 

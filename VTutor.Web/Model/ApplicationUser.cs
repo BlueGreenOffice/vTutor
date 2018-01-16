@@ -8,5 +8,7 @@ namespace VTutor.Model
 {
     public class ApplicationUser : IdentityUser
     {
+
+      
     }
 }
