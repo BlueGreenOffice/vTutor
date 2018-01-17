@@ -37,6 +37,7 @@
     <None Remove="ClientApp\app\models\Tutor.ts" />
     <None Remove="ClientApp\app\models\User.ts" />
     <None Remove="ClientApp\app\shared\link.service.ts" />
+    <None Remove="ClientApp\app\shared\login.service.ts" />
     <None Remove="ClientApp\app\shared\subjects.service.ts" />
     <None Remove="ClientApp\app\shared\tutors.service.ts" />
     <None Remove="ClientApp\app\shared\user.service.ts" />
@@ -61,6 +62,7 @@
     <TypeScriptCompile Include="ClientApp\app\models\Tutor.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\User.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\link.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\login.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\subjects.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\tutors.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\user.service.ts" />

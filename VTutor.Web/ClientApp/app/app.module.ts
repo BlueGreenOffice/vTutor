@@ -38,6 +38,7 @@ import { UserService } from './shared/user.service';
 import { TutorsService } from './shared/tutors.service';
 import { SubjectsService } from './shared/subjects.service';
 import { EventsService } from './shared/events.service';
+import { LoginService } from './shared/login.service';
 
 import { ORIGIN_URL } from './shared/constants/baseurl.constants';
 import { TransferHttpModule } from '../modules/transfer-http/transfer-http.module';
@@ -210,6 +211,7 @@ export function createTranslateLoader(http: Http, baseHref) {
 		TutorsService,
 		SubjectsService,
 		EventsService,
+		LoginService,
 		// ConnectionResolver,
 		TranslateModule
 	]
