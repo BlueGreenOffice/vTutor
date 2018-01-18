@@ -51,4 +51,32 @@
 }
 .page_item li:last-child {
 	border-bottom: none;
+	border: thin solid pink;
+}
+.footercopy {
+	border-top: 1px solid #2F374C;
+	height: 24px;
+	line-height: 24px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	font-size: 10px;
+	color: #4F5B6B;
+	text-transform: uppercase;
+}
+
+
+.footercopy li {
+	display: inline-block;
+	padding-right: 5px;
+	padding-left: 5px;
+}
+
+.footercopy li a:visited, a:active, a:link {
+	color: #4F5B6B;
+}
+
+
+.footercopy li a:hover {
+	color: #86bc42;
+	text-decoration: none;
 }
