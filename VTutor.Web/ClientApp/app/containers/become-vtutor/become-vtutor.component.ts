@@ -28,7 +28,7 @@ export class BecomeVTutor {
 
 	public submit() {
 		this.tutors.SaveTutor(this.tutor);
-		this.loginSerivce.RegisterTutor(this.tutor.Email, this.password);
+		this.loginSerivce.RegisterTutor(this.tutor.email, this.password);
 	}
 
 

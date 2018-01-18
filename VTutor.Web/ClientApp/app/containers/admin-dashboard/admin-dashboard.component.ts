@@ -24,5 +24,14 @@ export class AdminDashboardComponent{
 		});
 	}
 
+	accept(tutor:Tutor) {
+
+	}
+
+	reject(tutor: Tutor) {
+		this.tutors = this.tutors.filter(x => x != tutor);
+		this.admin.deleteTutor(tutor);
+	}
+
 
 }

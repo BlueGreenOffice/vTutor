@@ -1,8 +1,8 @@
 export class Tutor {
-	
-	Name: string;
-	Email: string;
-	Subjects: TutorSubject[];
+	id: string;
+	name: string;
+	email: string;
+	subjects: TutorSubject[];
 }
 
 export class TutorSubject {

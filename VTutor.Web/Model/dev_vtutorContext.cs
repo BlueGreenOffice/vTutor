@@ -27,7 +27,7 @@ namespace VTutor.Model
     public VTutorContext CreateDbContext(string[] args)
     {
       var builder = new DbContextOptionsBuilder<VTutorContext>();
-      builder.UseSqlServer("Server=ISAACSPC;Database=vtutor;Trusted_connection=true;");
+      builder.UseSqlServer("Server=tcp:dev-vtutor.database.windows.net,1433;Initial Catalog=dev_vtutor;Persist Security Info=False;User ID=isaac;Password=testdatabase1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
       return new VTutorContext(builder.Options);
     }
   }

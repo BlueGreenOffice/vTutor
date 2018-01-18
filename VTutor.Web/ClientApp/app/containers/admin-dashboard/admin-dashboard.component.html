@@ -17,12 +17,12 @@
 			<tr *ngFor="let tutor of tutors; let i = index">
 				<th scope="row">{{i}}</th>
 				<td>{{tutor.name}}</td>
-				<td>{{tutor.Email}}</td>
+				<td>{{tutor.email}}</td>
 				<td>[blank]</td>
 				<td>[blank]</td>
 				<td>[blank]</td>
-				<td><button class="btn btn-success">Accept</button></td>
-				<td><button class="btn btn-error">Reject</button></td>
+				<td><button class="btn btn-success" (click)="accept(tutor)">Accept</button></td>
+				<td><button class="btn btn-error" (click)="reject(tutor)">Reject</button></td>
 			</tr>
 		</tbody>
 	</table>
