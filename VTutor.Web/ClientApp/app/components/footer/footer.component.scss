@@ -1,5 +1,54 @@
 
 @import '../../app.component.scss';
 
+.footer-container {
+	background-color: #000;
+	color: #fff;
+}
+
+.footer-top {
+	background-color: rgba(115,54,137,1);
+}
 
 
+.footer-content {
+
+	padding-top: 100px;
+	padding-bottom: 40px;
+}
+
+
+.footer-title {
+	color: #86bc42;
+	padding-bottom: 40px;
+	font-size: 16px;
+	text-align: left;
+}
+
+
+.contact-item {
+	display: table;
+	border-top: 1px solid #2F374C;
+	width: 100%;
+	padding-bottom: 15px;
+	padding-top: 15px;
+}
+
+
+.list-unstyled {
+	padding-left: 0;
+	list-style: none;
+	list-style-type: none;
+	list-style-image: none;
+	list-style-position: outside;
+}
+
+
+.page_item {
+	border-bottom: 1px solid #2F374C;
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+.page_item li:last-child {
+	border-bottom: none;
+}
