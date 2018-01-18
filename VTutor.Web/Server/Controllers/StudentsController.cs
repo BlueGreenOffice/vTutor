@@ -12,7 +12,8 @@ namespace VTutor.Web.Controllers
 {
   [Produces("application/json")]
   [Route("api/Students")]
-  public class StudentsController : Controller
+	[System.Web.Http.Authorize(Roles = "Admin")]
+	public class StudentsController : Controller
   {
     private readonly VTutorContext _context;
 

@@ -6,11 +6,13 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using VTutor.Model;
+using Microsoft.AspNetCore.Authorization;
 
 namespace VTutor.Web.Controllers
 {
   [Produces("application/json")]
   [Route("api/Tutors")]
+  [System.Web.Http.Authorize(Roles = "Admin")]
   public class TutorsController : Controller
   {
     private readonly VTutorContext _context;
@@ -83,6 +85,7 @@ namespace VTutor.Web.Controllers
 
     // POST: api/Tutors
     [HttpPost]
+	[AllowAnonymous]
     public async Task<IActionResult> PostTutor([FromBody] Tutor tutor)
     {
       if (!ModelState.IsValid)
