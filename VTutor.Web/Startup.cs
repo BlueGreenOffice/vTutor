@@ -47,7 +47,7 @@ namespace AspCoreServer
 			services.AddMvc();
 			services.AddNodeServices();
 
-			var connectionString = "Server=ISAACSPC;Database=vtutor;Trusted_connection=true;";
+			var connectionString = "Server=tcp:dev-vtutor.database.windows.net,1433;Initial Catalog=dev_vtutor;Persist Security Info=False;User ID=isaac;Password=testdatabase1!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 			services.AddDbContext<VTutorContext>(options =>
 				options.UseSqlServer(connectionString));
 
