@@ -37,18 +37,16 @@ namespace VTutor.Web.Server.Controllers
 			_logger = logger;
 		}
 
-		[TempData]
-		public string ErrorMessage { get; set; }
-
+		/// <summary>
+		/// Allows the user to ask for what roles they have.
+		/// </summary>
+		/// <returns></returns>
 		[HttpGet]
-		[AllowAnonymous]
-		public async Task<IActionResult> Login(string returnUrl = null)
+		public async Task<IActionResult> Roles()
 		{
-			// Clear the existing external cookie to ensure a clean login process
-			await HttpContext.SignOutAsync(IdentityConstants.ExternalScheme);
-
-			ViewData["ReturnUrl"] = returnUrl;
-			return View();
+			var user = await _userManager.GetUserAsync(this.User);
+			var roles = await _userManager.GetRolesAsync(user);
+			return Ok(roles);
 		}
 
 		[HttpPost]
@@ -56,7 +54,6 @@ namespace VTutor.Web.Server.Controllers
 		//[ValidateAntiForgeryToken]
 		public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
 		{
-			ViewData["ReturnUrl"] = returnUrl;
 			if (ModelState.IsValid)
 			{
 				// This doesn't count login failures towards account lockout
@@ -65,7 +62,12 @@ namespace VTutor.Web.Server.Controllers
 				if (result.Succeeded)
 				{
 					_logger.LogInformation("User logged in.");
-					return Ok(); //RedirectToLocal(returnUrl);
+
+					//Check roles...
+					var user = await _userManager.FindByEmailAsync(model.Email);
+					var roles = await _userManager.GetRolesAsync(user);
+
+					return Ok(roles); //RedirectToLocal(returnUrl);
 				}
 				if (result.RequiresTwoFactor)
 				{
@@ -280,7 +282,7 @@ namespace VTutor.Web.Server.Controllers
 		{
 			if (remoteError != null)
 			{
-				ErrorMessage = $"Error from external provider: {remoteError}";
+				//todo:error
 				return RedirectToAction(nameof(Login));
 			}
 			var info = await _signInManager.GetExternalLoginInfoAsync();

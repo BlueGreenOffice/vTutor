@@ -30,7 +30,7 @@ import { BecomeVTutor } from './containers/become-vtutor/become-vtutor.component
 import { LoginComponent } from './containers/login/login.component';
 import { SessionsComponent } from './containers/sessions/sessions.component';
 import { DashboardComponent } from './containers/dashboard/dashboard.component';
-
+import { AdminDashboardComponent } from './containers/admin-dashboard/admin-dashboard.component';
 import { NotFoundComponent } from './containers/not-found/not-found.component';
 
 import { LinkService } from './shared/link.service';
@@ -39,6 +39,7 @@ import { TutorsService } from './shared/tutors.service';
 import { SubjectsService } from './shared/subjects.service';
 import { EventsService } from './shared/events.service';
 import { LoginService } from './shared/login.service';
+import { AdminService } from './shared/admin.service';
 
 import { ORIGIN_URL } from './shared/constants/baseurl.constants';
 import { TransferHttpModule } from '../modules/transfer-http/transfer-http.module';
@@ -68,6 +69,7 @@ export function createTranslateLoader(http: Http, baseHref) {
 		HomeComponent,
 		WhyVtutorComponent,
 		DashboardComponent,
+		AdminDashboardComponent,
 		BecomeVTutor,
 		LoginComponent,
 		NotFoundComponent,
@@ -132,6 +134,16 @@ export function createTranslateLoader(http: Http, baseHref) {
 				path: 'dashboard', component: DashboardComponent,
 				data: {
 					title: 'Dashboard',
+					meta: [{}],
+					links: [
+					]
+				}
+			},
+
+			{
+				path: 'admin-dashboard', component: AdminDashboardComponent,
+				data: {
+					title: 'Administrator Dashboard',
 					meta: [{}],
 					links: [
 					]
@@ -212,6 +224,7 @@ export function createTranslateLoader(http: Http, baseHref) {
 		SubjectsService,
 		EventsService,
 		LoginService,
+		AdminService,
 		// ConnectionResolver,
 		TranslateModule
 	]

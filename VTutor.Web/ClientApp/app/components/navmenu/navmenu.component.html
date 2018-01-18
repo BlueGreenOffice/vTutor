@@ -11,10 +11,10 @@
           <li class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['home']">Home</a></li>
           <li class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['why-vtutor']">Why vTutor</a></li>
           <li class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['sessions']">Sessions</a></li>
-          <li class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['tutor-register']">Become A vTutor</a></li>
+          <li *ngIf="!loggedIn" class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['tutor-register']">Become A vTutor</a></li>
           <li class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['refer-a-friend']">Refer A Friend</a></li>
-          <li class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['student-register']">Student Registration</a></li>
-          <li class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['login']">Login</a></li>
+          <li *ngIf="!loggedIn" class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['student-register']">Student Registration</a></li>
+          <li *ngIf="!loggedIn" class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['login']">Login</a></li>
         </ul>
       </div>
     </div>

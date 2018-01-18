@@ -1,5 +1,5 @@
 export class Tutor {
-
+	
 	Name: string;
 	Email: string;
 	Subjects: TutorSubject[];

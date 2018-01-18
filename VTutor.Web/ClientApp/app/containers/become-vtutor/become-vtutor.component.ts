@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 
 import { Tutor } from '../../models/Tutor';
 import { TutorsService } from '../../shared/tutors.service';
+import { LoginService } from '../../shared/login.service';
+
 
 @Component({
     selector: 'vt-become-vtutor',
@@ -12,7 +14,11 @@ export class BecomeVTutor {
 
 	tutor: Tutor;
 
-	constructor(private tutors: TutorsService) {
+	//these are not on the tutor object for security.
+	password: string;
+	confirmPassword: string;
+
+	constructor(private tutors: TutorsService, private loginSerivce: LoginService) {
 	
 	}
 
@@ -22,6 +28,7 @@ export class BecomeVTutor {
 
 	public submit() {
 		this.tutors.SaveTutor(this.tutor);
+		this.loginSerivce.RegisterTutor(this.tutor.Email, this.password);
 	}
 
 
