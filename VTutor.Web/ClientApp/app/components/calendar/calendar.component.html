@@ -1,3 +1,41 @@
+<!-- Modal Template -->
+<ng-template #selectTimeBlocks>
+	<div class="modal-header">
+		<h4 class="modal-title pull-left">Tutor Schedule</h4>
+		<button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body container-fluid">
+
+		<p>Which blocks are you available this day?</p>
+
+		<div class="col-md-4">
+			<div class="md-checkbox"
+				 *ngFor="let slot of getAvailableSlots(editingDate)"
+				 (click)="addOrRemoveSlot(slot)">
+				<input [checked]="slotSelected(slot)"
+					   [id]="slot.getHours()" type="checkbox">
+				<label [for]="slot.getHours()">{{formatTime(slot)}}</label>
+			</div>
+		</div>
+
+		<div class="col-md-3">
+			
+		</div>
+
+		<div class="col-md-3">
+			
+		</div>
+
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-success">Save</button>
+	</div>
+
+</ng-template>
+
+
 <div class="calendar container-fluid">
 
 
@@ -15,37 +53,93 @@
 
     <div class="day-column">
       <div class="day-title">Monday</div>
-        <div [class.active]="day.ActiveDay" class="day-cell" *ngFor="let day of mondays()">{{day.DayOfMonth}}</div>
+        <div [class.active]="day.ActiveDay"
+			 class="day-cell"
+			 *ngFor="let day of mondays()"
+			 (click)="editDay(selectTimeBlocks, day.Date)">
+			{{day.DayOfMonth}}
+			<div *ngFor="let event of getEventsOnDay(day.DayOfMonth)">
+				<span class="label label-info">{{getEventText(event)}}</span>
+			</div>
+		</div>
     </div>
     <div class="day-column">
       <div class="day-title">Tuesday</div>
-      <div [class.active]="day.ActiveDay" class="day-cell" *ngFor ="let day of tuesdays()">{{day.DayOfMonth}}</div>
+      <div [class.active]="day.ActiveDay"
+		   class="day-cell"
+		   *ngFor ="let day of tuesdays()"
+		   (click)="editDay(selectTimeBlocks, day.Date)">
+		{{day.DayOfMonth}}
+	  	<div *ngFor="let event of getEventsOnDay(day.DayOfMonth)">
+	  		<span class="label label-info">{{getEventText(event)}}</span>
+	  	</div>
+	  </div>
     </div>
 
     <div class="day-column">
       <div class="day-title">Wednesday</div>
-      <div [class.active]="day.ActiveDay" class="day-cell" *ngFor="let day of wednesdays()">{{day.DayOfMonth}}</div>
+      <div [class.active]="day.ActiveDay"
+		   class="day-cell"
+		   *ngFor="let day of wednesdays()"
+		   (click)="editDay(selectTimeBlocks, day.Date)">
+		{{day.DayOfMonth}}
+	  	<div *ngFor="let event of getEventsOnDay(day.DayOfMonth)">
+	  		<span class="label label-info">{{getEventText(event)}}</span>
+	  	</div>
+	  </div>
     </div>
 
     <div class="day-column">
       <div class="day-title">Thursday</div>
-      <div [class.active]="day.ActiveDay" class="day-cell" *ngFor="let day of thursdays()">{{day.DayOfMonth}}</div>
+      <div [class.active]="day.ActiveDay"
+		   class="day-cell"
+		   *ngFor="let day of thursdays()"
+		   (click)="editDay(selectTimeBlocks, day.Date)">
+		{{day.DayOfMonth}}
+	  	<div *ngFor="let event of getEventsOnDay(day.DayOfMonth)">
+	  		<span class="label label-info">{{getEventText(event)}}</span>
+	  	</div>
+	  </div>
     </div>
 
     <div class="day-column">
       <div class="day-title">Friday</div>
-      <div [class.active]="day.ActiveDay" class="day-cell" *ngFor="let day of fridays()">{{day.DayOfMonth}}</div>
+      <div [class.active]="day.ActiveDay"
+		   class="day-cell"
+		   *ngFor="let day of fridays()"
+		   (click)="editDay(selectTimeBlocks, day.Date)">
+		{{day.DayOfMonth}}
+	  	<div *ngFor="let event of getEventsOnDay(day.DayOfMonth)">
+	  		<span class="label label-info">{{getEventText(event)}}</span>
+	  	</div>
+	  </div>
     </div>
 
 
     <div class="day-column">
       <div class="day-title">Saturday</div>
-      <div [class.active]="day.ActiveDay" class="day-cell" *ngFor="let day of saturdays()">{{day.DayOfMonth}}</div>
+      <div [class.active]="day.ActiveDay"
+		   class="day-cell"
+		   *ngFor="let day of saturdays()"
+		   (click)="editDay(selectTimeBlocks, day.Date)">
+		{{day.DayOfMonth}}
+	  	<div *ngFor="let event of getEventsOnDay(day.DayOfMonth)">
+	  		<span class="label label-info">{{getEventText(event)}}</span>
+	  	</div>
+	  </div>
     </div>
 
     <div class="day-column">
       <div class="day-title">Sunday</div>
-      <div [class.active]="day.ActiveDay" class="day-cell" *ngFor="let day of sundays()">{{day.DayOfMonth}}</div>
+      <div [class.active]="day.ActiveDay"
+		   class="day-cell"
+		   *ngFor="let day of sundays()"
+		   (click)="editDay(selectTimeBlocks, day.Date)">
+		{{day.DayOfMonth}}
+	  	<div *ngFor="let event of getEventsOnDay(day.DayOfMonth)">
+	  		<span class="label label-info">{{getEventText(event)}}</span>
+	  	</div>
+	  </div>
     </div>
   </div>
 

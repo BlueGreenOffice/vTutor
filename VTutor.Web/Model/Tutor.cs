@@ -14,6 +14,7 @@ namespace VTutor.Model
 
         public ApplicationUser User { get; set; }
 
+		public List<ScheduleBlock> AvailabilitySchedule { get; set; }
         public List<Appointment> Appointments { get; set; }
         public List<Subject> Subjects { get; set; }
     }

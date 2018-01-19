@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace VTutor.Model
@@ -7,5 +7,9 @@ namespace VTutor.Model
     {
         public Guid Id { get; set; }
 
+		public DateTime StartTime { get; set; }
+		public DateTime EndTime { get; set; }
+
+		public Tutor Tutor { get; set; }
     }
 }

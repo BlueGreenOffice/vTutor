@@ -1,14 +1,10 @@
 
 export class Event {
 
-    EventDate: Date;
-    Booked: boolean;
-
-
-
+	id?: string;
+    startTime: Date;
+	endTime: Date;
 }
 
-export class RecurringEvent {
 
-}
 
