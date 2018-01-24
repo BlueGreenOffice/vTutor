@@ -1,58 +1,65 @@
 <div class="container-fluid">
-  <h4>The <strong>vTutor</strong> Educator</h4>
-  <p>Out vTutor instructors are experienced certified educators who provide the highest quality of effective instruction for all students. they are welll versed in the delivery of common core standards and effective instructional practices. Our instructors are compassionate, enthusiastic and caring and understand how to build a positive rapport with students and parents.</p>
 
-  <p>The vTutor educator is trained to set and created an environment of high expectations to ensure the highest quality of teaching and learning while engaging and empowering the students to reach the highest level of achievement. The enrichment opportunities provided by vTutor educators is unlimited by focusing on the individual needs of each student.</p>
+	<div class="page-headline">
+		<h2 class="page-headline-title">Placeholder Title</h2>
+	</div>
+</div>
 
-  <h3>"The vTutor educator is passionate about helping students succeed."</h3>
+<div class="container-fluid">
+	<h2>The <strong>vTutor</strong> Educator</h2>
+	<p>Out vTutor instructors are experienced certified educators who provide the highest quality of effective instruction for all students. they are welll versed in the delivery of common core standards and effective instructional practices. Our instructors are compassionate, enthusiastic and caring and understand how to build a positive rapport with students and parents.</p>
 
-  <form class="col-md-12 contact-us">
-    <h4>Contact us if you would like to become a <strong>vTutor</strong></h4>
+	<p>The vTutor educator is trained to set and created an environment of high expectations to ensure the highest quality of teaching and learning while engaging and empowering the students to reach the highest level of achievement. The enrichment opportunities provided by vTutor educators is unlimited by focusing on the individual needs of each student.</p>
 
-    <!-- column 1 -->
-    <div class="col-md-6">
-      <div class="form-group">
-        <label>Your Name</label>
-        <input [(ngModel)]="tutor.Name" name="name" class="form-control" />
-      </div>
+	<h3>"The vTutor educator is passionate about helping students succeed."</h3>
 
-      <div class="form-group">
-        <label>Grade(s) you teach</label>
-        <input class="form-control" />
-      </div>
+	<form class="col-md-12 contact-us">
+		<h4>Contact us if you would like to become a <strong>vTutor</strong></h4>
 
-    </div>
+		<!-- column 1 -->
+		<div class="col-md-6">
+			<div class="form-group">
+				<label>Your Name</label>
+				<input [(ngModel)]="tutor.Name" name="name" class="form-control" />
+			</div>
 
-    <!-- column 2 -->
-    <div class="col-md-6">
-      <div class="form-group">
-        <label>Your Email Address</label>
-        <input [(ngModel)]="tutor.email" name="email" class="form-control" />
-      </div>
-      
-      <div class="form-group">
-        <label>Subjects you teach</label>
-        <input class="form-control" />
-      </div>
-    </div>
+			<div class="form-group">
+				<label>Grade(s) you teach</label>
+				<input class="form-control" />
+			</div>
 
-    <div class="form-group">
-      <label>Tell us why you would like to become a vTutor</label>
-      <textarea class="form-control"></textarea>
-    </div>
+		</div>
 
-  	<div class="form-group">
-  		<label>Password</label>
-	  	<input type="password" [(ngModel)]="password" name="Password" class="form-control" />
-  	</div>
+		<!-- column 2 -->
+		<div class="col-md-6">
+			<div class="form-group">
+				<label>Your Email Address</label>
+				<input [(ngModel)]="tutor.email" name="email" class="form-control" />
+			</div>
 
-  	<div class="form-group">
-  		<label>Confirm Password</label>
-	  	<input [(ngModel)]="confirmPassword" name="ConfirmPassword" class="form-control" />
-  	</div>
+			<div class="form-group">
+				<label>Subjects you teach</label>
+				<input class="form-control" />
+			</div>
+		</div>
 
-    <button (click)="submit()" class="btn btn-default">Submit</button>
+		<div class="form-group">
+			<label>Tell us why you would like to become a vTutor</label>
+			<textarea class="form-control"></textarea>
+		</div>
 
-  </form>
+		<div class="form-group">
+			<label>Password</label>
+			<input type="password" [(ngModel)]="password" name="Password" class="form-control" />
+		</div>
+
+		<div class="form-group">
+			<label>Confirm Password</label>
+			<input [(ngModel)]="confirmPassword" name="ConfirmPassword" class="form-control" />
+		</div>
+
+		<button (click)="submit()" class="btn btn-default">Submit</button>
+
+	</form>
 
 </div>
