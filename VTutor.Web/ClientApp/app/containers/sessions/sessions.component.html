@@ -48,14 +48,18 @@
 
 							<div class="col-sm-6 text-center">
 
-								<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-									Choose Your Subject
-								</button>
-								<div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-									<a class="dropdown-item" href="#">MATH</a>
-									<a class="dropdown-item" href="#">GEOMETRY</a>
-									<a class="dropdown-item" href="#">FRENCH</a>
+								<div class="dropdown" dropdown>
+									<button dropdownToggle class="btn btn-primary dropdown-toggle" type="button">
+										Choose Your Subject
+										<span class="caret"></span>
+									</button>
+									<ul *dropdownMenu class="dropdown-menu" role="menu">
+										<li><a role="menuitem" class="dropdown-item" href="#">Math</a></li>
+										<li><a role="menuitem" class="dropdown-item" href="#">Geometry</a></li>
+										<li><a role="menuitem" class="dropdown-item" href="#">French</a></li>
+									</ul>
 								</div>
+								
 								<!---- Bootstrap dropdown that is not working BUT WILL!! - END-->
 
 
