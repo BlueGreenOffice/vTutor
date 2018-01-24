@@ -8,7 +8,7 @@
 	</div>
 
 
-	<div class="container why-vtutor">
+	<div class="container sessions-vtutor">
 
 		<div class="row">
 			<div class="col-sm-12">
@@ -33,12 +33,19 @@
 						<label>Grade:</label>
 </div>
 					<div class="col-sm-6 text-center">
-						<select>
-							<option value="5">5th</option>
-							<option value="6">6th</option>
-							<option value="7">7th</option>
-							<option value="8">8th</option>
-						</select>
+
+						<div class="dropdown" dropdown>
+							<button dropdownToggle class="btn btn-primary dropdown-toggle" type="button">
+								Choose Your Subject
+								<span class="caret"></span>
+							</button>
+							<ul *dropdownMenu class="dropdown-menu" role="menu">
+								<li><a role="menuitem" class="dropdown-item" href="#">Math</a></li>
+								<li><a role="menuitem" class="dropdown-item" href="#">Geometry</a></li>
+								<li><a role="menuitem" class="dropdown-item" href="#">French</a></li>
+							</ul>
+						</div>
+
 					</div>
 						</div>
 						<div class="row">
@@ -60,7 +67,7 @@
 									</ul>
 								</div>
 								
-								<!---- Bootstrap dropdown that is not working BUT WILL!! - END-->
+							
 
 
 
@@ -68,7 +75,7 @@
 						</div>
 						<div class="row">
 							<div class="col-sm-12 text-center session-submitbutton">
-								<a class="btn btn-primary" href="#" role="button">Submit</a>
+								<a class="btn btn-primary submit-btn" href="#" role="button">Submit</a>
 							</div>
 							</div>
 

@@ -16,6 +16,11 @@
 }
 
 .sessionswrapper {
+	background-image: url("../../img/schoolGraphics.png");
+	background-size: 600px;
+	background-attachment: fixed;
+	background-position: bottom right;
+
 	background-color: #e6e6e6;
 	margin-top: 26px;
 	width: 100%;
@@ -25,17 +30,43 @@
 	margin-bottom: 34px;
 	min-height: 150px;
 	height: 100%;
-
-
-	border: thin solid pink;
 }
 
-.bob{
 
-	height: 100%;
-	border: thin solid green;
-
-}
 .session-submitbutton {
 	margin: 32px 0px 16px 0px;
+
+}
+
+.sessionswrapper .row{
+	margin-bottom: 16px;
+}
+
+
+.sessionswrapper .dropdown-toggle {
+	color: #fff;
+	background-color: #622b76;
+	border: none !important;
+	border-radius: 0px;
+}
+
+.sessionswrapper .dropdown-toggle:hover {
+	color: #fff;
+	background-color: #666;
+}
+
+.dropdown-menu li {
+	border-bottom: thin solid #622b76;
+}
+.dropdown-menu li a:hover {
+	background-color: #c2c2c2 !important;
+}
+
+.dropdown-menu li:last-child {
+	border-bottom: none;
+}
+
+.sessionswrapper label {
+	font-weight: bold;
+	font-size: 18px;
 }
