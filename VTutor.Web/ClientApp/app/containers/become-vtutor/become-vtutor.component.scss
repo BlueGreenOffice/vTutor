@@ -7,3 +7,30 @@
 	
 	background-color: lighten(#666666, 50%)
 }
+
+
+.page-headline {
+	background: transparent url("../../img/banner-1.jpg") no-repeat scroll center center;
+	height: 300px;
+	background-size: 100%;
+	background-size: cover;
+	padding-top: 115px;
+	text-align: center;
+}
+
+
+
+textarea:focus {
+	border: 1px solid none !important;
+}
+.form-group {
+	border: 1px solid none !important;
+}
+.form-group:focus {
+	border: 1px solid none !important;
+}
+
+
+h4 {
+
+}
