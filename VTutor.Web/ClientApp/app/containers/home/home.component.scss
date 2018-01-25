@@ -22,12 +22,12 @@ p {
 }
 
 .bg-carousel {
-  min-height: 600px;
-  background-color: black;
-  //position: relative;
-  background: url('../../img/homeCarousel-1.png') no-repeat center center;
-  background-size: cover;
-  /*&:before {
+	min-height: 600px;
+	background-color: black;
+	//position: relative;
+	background: url('../../img/carousel1.jpg') no-repeat center center;
+	background-size: cover;
+	/*&:before {
     content:"";
     opacity:0.5;
     top:0;
@@ -40,6 +40,27 @@ p {
     background-size: cover;
   }*/
 }
+
+
+.bg-carousel2 {
+	min-height: 600px;
+	background-color: black;
+	background: url('../../img/carousel2.png') no-repeat center center;
+}
+
+.bg-carousel3 {
+	min-height: 600px;
+	background-color: black;
+	background: url('../../img/carousel3.png') no-repeat center center;
+}
+
+
+
+
+
+
+
+
 
 .bg-stupid-counter {
   background-image:url('../../img/stupidCounterBG.png');
