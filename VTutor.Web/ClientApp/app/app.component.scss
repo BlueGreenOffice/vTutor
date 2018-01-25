@@ -5,6 +5,7 @@ $navbar-default-color: $light-orange;*/
 /* Import Bootstrap & Fonts */
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import "~bootstrap-sass/assets/stylesheets/bootstrap";
+@import "~font-awesome-5-css/scss/fontawesome.scss";
 @import url('https://fonts.googleapis.com/css?family=Lato:300,400,900');
 
 /* *** Global variables and mixins can go here ***
