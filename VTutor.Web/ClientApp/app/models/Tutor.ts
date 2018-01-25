@@ -6,8 +6,12 @@ export class Tutor {
 }
 
 export class TutorSubject {
-	Subject: Subject;
-	Grade: Grade;
+	Name: Subject;
+	SubjectGrade: SubjectGrade;
+}
+
+export class SubjectGrade {
+	Name: Grade;
 }
 
 export enum Grade {
@@ -22,14 +26,14 @@ export enum Grade {
 
 
 export enum Subject {
-	Math,
-	English,
-	Spanish,
-	French,
-	Statistics,
-	Calculus,
-	Trigonometry,
-	Geometry,
-	Algebra,
-	Algebra2
+	Math = "Math",
+	English = "English",
+	Spanish = "Spanish",
+	French = "French",
+	Statistics = "Statistics",
+	Calculus = "Calculus",
+	Trigonometry = "Trigonometry",
+	Geometry = "Geometry",
+	Algebra = "Algebra",
+	Algebra2 = "Algebra 2"
 }

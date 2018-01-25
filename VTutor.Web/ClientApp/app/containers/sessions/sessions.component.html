@@ -36,13 +36,17 @@
 
 						<div class="dropdown" dropdown>
 							<button dropdownToggle class="btn btn-primary dropdown-toggle" type="button">
-								Choose Your Subject
+								{{gradeDisplay}}
 								<span class="caret"></span>
 							</button>
 							<ul *dropdownMenu class="dropdown-menu" role="menu">
-								<li><a role="menuitem" class="dropdown-item" href="#">Math</a></li>
-								<li><a role="menuitem" class="dropdown-item" href="#">Geometry</a></li>
-								<li><a role="menuitem" class="dropdown-item" href="#">French</a></li>
+								<li><a role="menuitem" class="dropdown-item" (click)="selectGrade(6)">6th</a></li>
+								<li><a role="menuitem" class="dropdown-item" (click)="selectGrade(7)">7th</a></li>
+								<li><a role="menuitem" class="dropdown-item" (click)="selectGrade(8)">8th</a></li>
+								<li><a role="menuitem" class="dropdown-item" (click)="selectGrade(9)">9th</a></li>
+								<li><a role="menuitem" class="dropdown-item" (click)="selectGrade(10)">10th</a></li>
+								<li><a role="menuitem" class="dropdown-item" (click)="selectGrade(11)">11th</a></li>
+								<li><a role="menuitem" class="dropdown-item" (click)="selectGrade(12)">12th</a></li>
 							</ul>
 						</div>
 
@@ -57,13 +61,13 @@
 
 								<div class="dropdown" dropdown>
 									<button dropdownToggle class="btn btn-primary dropdown-toggle" type="button">
-										Choose Your Subject
+										{{subjectDisplay}}
 										<span class="caret"></span>
 									</button>
 									<ul *dropdownMenu class="dropdown-menu" role="menu">
-										<li><a role="menuitem" class="dropdown-item" href="#">Math</a></li>
-										<li><a role="menuitem" class="dropdown-item" href="#">Geometry</a></li>
-										<li><a role="menuitem" class="dropdown-item" href="#">French</a></li>
+										<li><a role="menuitem" class="dropdown-item" (click)="selectSubject('Math')">Math</a></li>
+										<li><a role="menuitem" class="dropdown-item" (click)="selectSubject('Geometry')">Geometry</a></li>
+										<li><a role="menuitem" class="dropdown-item" (click)="selectSubject('French')">French</a></li>
 									</ul>
 								</div>
 								
@@ -75,7 +79,7 @@
 						</div>
 						<div class="row">
 							<div class="col-sm-12 text-center session-submitbutton">
-								<a class="btn btn-primary submit-btn" href="#" role="button">Submit</a>
+								<a class="btn btn-primary submit-btn" (click)="submit()" role="button">Submit</a>
 							</div>
 							</div>
 

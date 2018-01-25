@@ -14,17 +14,17 @@
 
 
 		</div>
-			<div class="col-md-5 align-middle">
+		<div class="col-md-5 align-middle">
 
 
-				<h2>The <strong>vTutor</strong> Educator</h2>
-				<p>Out vTutor instructors are experienced certified educators who provide the highest quality of effective instruction for all students. they are welll versed in the delivery of common core standards and effective instructional practices. Our instructors are compassionate, enthusiastic and caring and understand how to build a positive rapport with students and parents.</p>
+			<h2>The <strong>vTutor</strong> Educator</h2>
+			<p>Out vTutor instructors are experienced certified educators who provide the highest quality of effective instruction for all students. they are welll versed in the delivery of common core standards and effective instructional practices. Our instructors are compassionate, enthusiastic and caring and understand how to build a positive rapport with students and parents.</p>
 
-				<p>The vTutor educator is trained to set and created an environment of high expectations to ensure the highest quality of teaching and learning while engaging and empowering the students to reach the highest level of achievement. The enrichment opportunities provided by vTutor educators is unlimited by focusing on the individual needs of each student.</p>
+			<p>The vTutor educator is trained to set and created an environment of high expectations to ensure the highest quality of teaching and learning while engaging and empowering the students to reach the highest level of achievement. The enrichment opportunities provided by vTutor educators is unlimited by focusing on the individual needs of each student.</p>
 
-				<h3>"The vTutor educator is passionate about helping students succeed."</h3>
-			</div>
+			<h3>"The vTutor educator is passionate about helping students succeed."</h3>
 		</div>
+	</div>
 	<div class="row">
 
 		<form class="col-md-10 col-md-offset-1 contact-us">
@@ -37,11 +37,28 @@
 					<input [(ngModel)]="tutor.name" name="name" class="form-control" />
 				</div>
 
-				<div class="form-group">
-					<label>Grade(s) you teach:</label>
-					<input class="form-control" />
-				</div>
 
+				<label>Subjects &amp; Grades</label>
+				<div class="row" *ngFor="let subject of tutor.subjects">
+					<div class="col-md-2 dropdown" dropdown>
+						<button dropdownToggle class="btn btn-primary dropdown-toggle" type="button">
+							{{gradeDisplay(subject)}}
+							<span class="caret"></span>
+						</button>
+						<ul *dropdownMenu class="dropdown-menu" role="menu">
+							<li *ngFor="let grade of allGrades"><a role="menuitem" class="dropdown-item" (click)="selectGrade(subject, grade)">{{grade.toString()}}</a></li>
+						</ul>
+					</div>
+					<div class="col-md-10 dropdown" dropdown>
+						<button dropdownToggle class="btn btn-primary dropdown-toggle" type="button">
+							{{subjectDisplay(subject)}}
+							<span class="caret"></span>
+						</button>
+						<ul *dropdownMenu class="dropdown-menu" role="menu">
+							<li *ngFor="let s of allSubjects"><a role="menuitem" class="dropdown-item" (click)="selectSubject(subject, s)">{{s.toString()}}</a></li>
+						</ul>
+					</div>
+				</div>
 			</div>
 
 			<!-- column 2 -->
@@ -51,10 +68,7 @@
 					<input [(ngModel)]="tutor.email" name="email" class="form-control" />
 				</div>
 
-				<div class="form-group">
-					<label>Subjects you teach:</label>
-					<input class="form-control" />
-				</div>
+
 			</div>
 
 			<div class="form-group">
@@ -72,8 +86,8 @@
 				<input [(ngModel)]="confirmPassword" name="ConfirmPassword" class="form-control" />
 			</div>
 			<div class="text-center">
-			<button (click)="submit()" class="btn btn-default submit-btn text-center">Submit</button>
-				</div>
+				<button (click)="submit()" class="btn btn-default submit-btn text-center">Submit</button>
+			</div>
 		</form>
 
 	</div>

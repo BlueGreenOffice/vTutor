@@ -10,4 +10,7 @@ export class ReferAFriendComponent {
 	yourName: string;
 	yourEmail: string;
 
+	public submit() {
+
+	}
 }

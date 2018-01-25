@@ -13,8 +13,8 @@ export class LoginComponent {
 
 	}
 
-	private email: string;
-	private password: string;
+	public email: string;
+	public password: string;
 
 	login() {
 		this.loginService.Login(this.email, this.password);
