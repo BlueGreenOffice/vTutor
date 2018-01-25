@@ -18,8 +18,15 @@ ul {
 
 .calendar {
 	font-family: Verdana, sans-serif;
-	border: thin solid pink;
+
 }
+
+.calendar .prev, .next{
+
+	color: #fff;
+	font-size: 64px;
+}
+
 
 .day-title {
 	padding-bottom: 7px;
@@ -116,4 +123,6 @@ ul {
 
 
 
+.calender .instrctutions {
 
+}
