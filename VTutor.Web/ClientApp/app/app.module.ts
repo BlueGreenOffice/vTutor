@@ -5,7 +5,7 @@ import { HttpModule, Http } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
 //External Components
-import { Ng2BootstrapModule } from 'ngx-bootstrap';
+import { BsDropdownModule, CarouselModule } from 'ngx-bootstrap';
 import { TagInputModule } from 'ngx-chips';
 //import { CalendarModule } from 'primeng/primeng';
 
@@ -81,7 +81,8 @@ export function createTranslateLoader(http: Http, baseHref) {
 
 		//CalendarModule,
 		TagInputModule,
-		Ng2BootstrapModule.forRoot(), // You could also split this up if you don't want the Entire Module imported
+		BsDropdownModule.forRoot(),
+		CarouselModule.forRoot(),
 
 		TransferHttpModule, // Our Http TransferData method
 
