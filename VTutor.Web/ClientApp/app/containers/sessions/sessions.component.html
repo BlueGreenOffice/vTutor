@@ -1,37 +1,73 @@
+<!-- select session modal -->
+<ng-template #selectSession>
+	<div class="modal-header">
+		<h4 class="modal-title pull-left">Tutor Schedule</h4>
+		<button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body container-fluid">
 
+		<p>Which blocks are you available this day?</p>
 
-	<div class="container-fluid">
-
-		<div class="page-headline">
-			<h2 class="page-headline-title">Placeholder Title</h2>
+		<div class="col-md-4">
+			<div class="md-checkbox"
+				 *ngFor="let slot of getAvailableSlots(editingDate)"
+				 (click)="addOrRemoveSlot(slot)">
+				<input [checked]="slotSelected(slot)"
+					   [id]="slot.getHours()" type="checkbox">
+				<label [for]="slot.getHours()">{{formatTime(slot)}}</label>
+			</div>
 		</div>
+
+		<div class="col-md-3">
+
+		</div>
+
+		<div class="col-md-3">
+
+		</div>
+
+	</div>
+	<div class="modal-footer">
+		<button class="btn btn-success">Save</button>
 	</div>
 
+</ng-template>
 
-	<div class="container sessions-vtutor">
+<div class="container-fluid">
 
-		<div class="row">
-			<div class="col-sm-12">
-				<h1>
-					<p class="text-center">
-						How to Instructions
-					</p>
-				</h1>
+	<div class="page-headline">
+		<h2 class="page-headline-title">Placeholder Title</h2>
+	</div>
+</div>
 
-			</div>
+
+<div class="container sessions-vtutor">
+
+	<div class="row">
+		<div class="col-sm-12">
+			<h1>
+				<p class="text-center">
+					How to Instructions
+				</p>
+			</h1>
+
 		</div>
-		<div class="row">
-			<div class="col-sm-12">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent non nisl sollicitudin, egestas elit et, posuere urna. Morbi venenatis magna ipsum, a accumsan nulla maximus et. Donec feugiat dui justo, sit amet suscipit lacus faucibus eget. Vestibulum vehicula, neque in rutrum semper, urna mauris egestas risus, euismod sagittis justo elit at tortor. Ut tempus neque odio, id egestas ipsum pharetra vel. Duis ut accumsan orci. Nam quis magna a odio cursus elementum eget nec magna. </div>
-			</div>
-		<div class="row ">
-			<div class="col-sm-6 text-right"><img src="../../img/AdobeStock_53104681.jpg" /></div>
-			<div class="col-sm-6 ">
-				<div class="sessionswrapper">
+	</div>
+	<div class="row">
+		<div class="col-sm-12">
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent non nisl sollicitudin, egestas elit et, posuere urna. Morbi venenatis magna ipsum, a accumsan nulla maximus et. Donec feugiat dui justo, sit amet suscipit lacus faucibus eget. Vestibulum vehicula, neque in rutrum semper, urna mauris egestas risus, euismod sagittis justo elit at tortor. Ut tempus neque odio, id egestas ipsum pharetra vel. Duis ut accumsan orci. Nam quis magna a odio cursus elementum eget nec magna.
+		</div>
+	</div>
+	<div class="row ">
+		<div class="col-sm-6 text-right"><img src="../../img/AdobeStock_53104681.jpg" /></div>
+		<div class="col-sm-6 ">
+			<div class="sessionswrapper">
 				<div class="row">
 					<div class="col-sm-6 text-center">
 						<label>Grade:</label>
-</div>
+					</div>
 					<div class="col-sm-6 text-center">
 
 						<div class="dropdown" dropdown>
@@ -51,46 +87,46 @@
 						</div>
 
 					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6 text-center">
+						<label>Subject:</label>
+					</div>
+
+					<div class="col-sm-6 text-center">
+
+						<div class="dropdown" dropdown>
+							<button dropdownToggle class="btn btn-primary dropdown-toggle" type="button">
+								{{subjectDisplay}}
+								<span class="caret"></span>
+							</button>
+							<ul *dropdownMenu class="dropdown-menu" role="menu">
+								<li><a role="menuitem" class="dropdown-item" (click)="selectSubject('Math')">Math</a></li>
+								<li><a role="menuitem" class="dropdown-item" (click)="selectSubject('Geometry')">Geometry</a></li>
+								<li><a role="menuitem" class="dropdown-item" (click)="selectSubject('French')">French</a></li>
+							</ul>
 						</div>
-						<div class="row">
-							<div class="col-sm-6 text-center">
-								<label>Subject:</label>
-							</div>
-
-							<div class="col-sm-6 text-center">
-
-								<div class="dropdown" dropdown>
-									<button dropdownToggle class="btn btn-primary dropdown-toggle" type="button">
-										{{subjectDisplay}}
-										<span class="caret"></span>
-									</button>
-									<ul *dropdownMenu class="dropdown-menu" role="menu">
-										<li><a role="menuitem" class="dropdown-item" (click)="selectSubject('Math')">Math</a></li>
-										<li><a role="menuitem" class="dropdown-item" (click)="selectSubject('Geometry')">Geometry</a></li>
-										<li><a role="menuitem" class="dropdown-item" (click)="selectSubject('French')">French</a></li>
-									</ul>
-								</div>
-								
-							
-
-
-
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-sm-12 text-center session-submitbutton">
-								<a class="btn btn-primary submit-btn" (click)="submit()" role="button">Submit</a>
-							</div>
-							</div>
-
-
-							</div>
-						</div>
-</div>
 
 
 
 
 
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12 text-center session-submitbutton">
+						<a class="btn btn-primary submit-btn" (click)="submit()" role="button">Submit</a>
+					</div>
+				</div>
+
+
+			</div>
+		</div>
 	</div>
+
+
+
+
+
+</div>
 
