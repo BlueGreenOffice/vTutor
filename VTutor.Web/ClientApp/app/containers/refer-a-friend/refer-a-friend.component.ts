@@ -7,4 +7,7 @@ import { Component } from '@angular/core';
 })
 export class ReferAFriendComponent {
 
+	yourName: string;
+	yourEmail: string;
+
 }
