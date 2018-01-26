@@ -1,3 +1,18 @@
+@import "../../app.component.scss";
+
+//Modal
+
+.modal-header {
+	background-color: $accent-color;
+	color: white;
+
+	span {
+		color: white;
+	}
+}
+
+//End Modal
+
 .page-headline {
 	background: transparent url("../../img/banner-1.jpg") no-repeat scroll center center;
 	height: 300px;

@@ -8,17 +8,7 @@
 	</div>
 	<div class="modal-body container-fluid">
 
-		<p>Which blocks are you available this day?</p>
-
-		<div class="col-md-4">
-			<div class="md-checkbox"
-				 *ngFor="let slot of getAvailableSlots(editingDate)"
-				 (click)="addOrRemoveSlot(slot)">
-				<input [checked]="slotSelected(slot)"
-					   [id]="slot.getHours()" type="checkbox">
-				<label [for]="slot.getHours()">{{formatTime(slot)}}</label>
-			</div>
-		</div>
+		
 
 		<div class="col-md-3">
 
@@ -72,17 +62,11 @@
 
 						<div class="dropdown" dropdown>
 							<button dropdownToggle class="btn btn-primary dropdown-toggle" type="button">
-								{{gradeDisplay}}
+								{{gradeDisplay()}}
 								<span class="caret"></span>
 							</button>
 							<ul *dropdownMenu class="dropdown-menu" role="menu">
-								<li><a role="menuitem" class="dropdown-item" (click)="selectGrade(6)">6th</a></li>
-								<li><a role="menuitem" class="dropdown-item" (click)="selectGrade(7)">7th</a></li>
-								<li><a role="menuitem" class="dropdown-item" (click)="selectGrade(8)">8th</a></li>
-								<li><a role="menuitem" class="dropdown-item" (click)="selectGrade(9)">9th</a></li>
-								<li><a role="menuitem" class="dropdown-item" (click)="selectGrade(10)">10th</a></li>
-								<li><a role="menuitem" class="dropdown-item" (click)="selectGrade(11)">11th</a></li>
-								<li><a role="menuitem" class="dropdown-item" (click)="selectGrade(12)">12th</a></li>
+								<li *ngFor="let grade of allGrades"><a role="menuitem" class="dropdown-item" (click)="selectGrade(grade)">{{grade.toString()}}</a></li>
 							</ul>
 						</div>
 
@@ -94,39 +78,24 @@
 					</div>
 
 					<div class="col-sm-6 text-center">
-
 						<div class="dropdown" dropdown>
 							<button dropdownToggle class="btn btn-primary dropdown-toggle" type="button">
-								{{subjectDisplay}}
+								{{subjectDisplay()}}
 								<span class="caret"></span>
 							</button>
 							<ul *dropdownMenu class="dropdown-menu" role="menu">
-								<li><a role="menuitem" class="dropdown-item" (click)="selectSubject('Math')">Math</a></li>
-								<li><a role="menuitem" class="dropdown-item" (click)="selectSubject('Geometry')">Geometry</a></li>
-								<li><a role="menuitem" class="dropdown-item" (click)="selectSubject('French')">French</a></li>
+								<li *ngFor="let s of allSubjects"><a role="menuitem" class="dropdown-item" (click)="selectSubject(s)">{{s.toString()}}</a></li>
 							</ul>
 						</div>
-
-
-
-
-
 					</div>
 				</div>
 				<div class="row">
 					<div class="col-sm-12 text-center session-submitbutton">
-						<a class="btn btn-primary submit-btn" (click)="submit()" role="button">Submit</a>
+						<a class="btn btn-primary submit-btn" (click)="submit(selectSession)" role="button">Submit</a>
 					</div>
 				</div>
-
-
 			</div>
 		</div>
 	</div>
-
-
-
-
-
 </div>
 

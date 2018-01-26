@@ -5,7 +5,7 @@ import { HttpModule, Http } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
 //External Components
-import { BsDropdownModule, CarouselModule } from 'ngx-bootstrap';
+import { BsDropdownModule, CarouselModule, ModalModule } from 'ngx-bootstrap';
 import { TagInputModule } from 'ngx-chips';
 //import { CalendarModule } from 'primeng/primeng';
 
@@ -83,7 +83,7 @@ export function createTranslateLoader(http: Http, baseHref) {
 		TagInputModule,
 		BsDropdownModule.forRoot(),
 		CarouselModule.forRoot(),
-
+		ModalModule.forRoot(),
 		TransferHttpModule, // Our Http TransferData method
 
 		// i18n support
