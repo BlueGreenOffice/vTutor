@@ -1,4 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, TemplateRef } from '@angular/core';
+import { SubjectsService } from '../../shared/subjects.service';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+
+import { Grade, Subject, TutorSubject } from '../../models/Tutor';
 
 @Component({
     selector: 'vt-sessions',
@@ -6,34 +10,47 @@ import { Component } from '@angular/core';
     styleUrls: ['sessions.component.scss']
 })
 export class SessionsComponent {
-
-	public gradeDisplay: string;
+	modalRef: BsModalRef;
 	public grade: number;
-
-	public subjectDisplay: string;
 	public subject: string;
 
-	constructor() {
+	allGrades: Grade[];
+	allSubjects: Subject[];
+	subjects: TutorSubject[];
+
+	tutorSubject: TutorSubject;
+
+	constructor(private subjectsService: SubjectsService, private modalService: BsModalService) {
 
 	}
 
 	ngOnInit() {
-		this.gradeDisplay = 'Select Your Grade';
-		this.subjectDisplay = 'Choose Your Subject';
+		this.tutorSubject = new TutorSubject();
+
+		this.subjects = this.subjectsService.GetAllAvailableSubjects();
+
+		this.allGrades = this.subjects.map(x => x.SubjectGrade.Name).filter((e, i, s) => i == s.indexOf(e));
+		this.allSubjects = this.subjects.map(x => x.Name).filter((e, i, s) => i == s.indexOf(e));
 	}
 
-	selectGrade(grade: number) {
-		this.gradeDisplay = grade.toString();
-		this.grade = grade;
+	selectGrade(grade: Grade) {
+		this.tutorSubject.SubjectGrade = { Name: grade };
 	}
 
-	selectSubject(subject: string) {
-		this.subjectDisplay = subject;
-		this.subject = subject;
+	selectSubject(subject: Subject) {
+		this.tutorSubject.Name = subject;
 	}
 
-	submit() {
+	public gradeDisplay() {
+		return this.tutorSubject.SubjectGrade == null ? 'Select Your Grade' : this.tutorSubject.SubjectGrade.Name.toString();
+	}
 
+	public subjectDisplay() {
+		return this.tutorSubject.Name == null ? 'Select Your Subject' : this.tutorSubject.Name.toString();
+	}
+
+	submit(template: TemplateRef<any>) {
+		this.modalRef = this.modalService.show(template);
 	}
 
 
