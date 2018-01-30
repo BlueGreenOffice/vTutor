@@ -104,11 +104,66 @@ label:hover {
 	border-radius: 6px;
 }
 
-
+/* font awesome BEGIN =========*/
 .fas{
 	padding-right: 5px;
 
 }
+
+.fab{
+	padding-right: 5px;
+}
+/* font awesome END */
+
+
+/* Nav Logo BEGIN =========*/
+
+.navbar-brand {
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
+.navbar-brand img {
+	width: 174px;
+	height: 50px;
+	top: -60px;
+}
+/* Nav Logo END */
+
+
+/*front page carousel BEGIN =========*/
+
+/*???? Can't find location of icon ????*/
+
+.icon-prev img{
+
+}
+.carousel-control-prev-icon img{
+
+}
+
+.glyphicon-chevron-left {
+
+}
+.carousel-control {
+
+}
+.glyphicon {
+
+}
+/*front page carousel END*/
+
+
+
+
+
+
+
+
+
+
+
+
 
 ///Material Design Checkbox
 $md-checkbox-margin: 16px 0;

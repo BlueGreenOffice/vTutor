@@ -59,8 +59,63 @@ p {
 
 
 
-.bg-stupid-counter {
+.bg-counter {
   background-image:url('../../img/stupidCounterBG.png');
   height:300px;
 }
 
+.tutsection{
+	margin-top:64px;
+	margin-bottom:80px;
+	
+
+}
+.tutsection h1{
+	font-size:42px;
+}
+.tutsection h2 {
+	font-size: 20px;
+	font-weight:bold;
+}
+.tutsection h3 {
+	font-size: 32px;
+	margin-top: 48px;
+	font-weight: bold;
+}
+
+
+.tutsection .submit-btn {
+	margin-top: 48px;
+}
+.bg-counter {
+	color: #fff;
+
+
+
+}
+
+
+.bg-counter h1 {
+	color: #fff;
+
+	margin-bottom: 0px;
+}
+
+.numbers h1{
+	border-bottom: thin solid purple;
+}
+
+.bg-counter h3 {
+	margin-top: 2px;
+}
+
+
+.bg-counter .fas {
+	margin-left: 12px;
+	margin-right: 0px;
+	font-size: 36px;
+	vertical-align: middle;
+}
+.bg-counter .bob{
+	font-size: 30px;
+}

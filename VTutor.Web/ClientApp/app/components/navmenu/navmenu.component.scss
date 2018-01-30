@@ -2,24 +2,27 @@
 
 //Navigation link animation...
 .vtutor-nav-link {
-  &:after {
-    content: " ";
-    width: 0;
-    height: 3px;
-    background-color: $accent-color;
-    position: absolute;
-    top: 100%;
-    left: 50%;
+	&:after {
+		content: " ";
+		width: 0;
+		height: 3px;
+		background-color: $accent-color;
+		position: absolute;
+		top: 100%;
+		left: 50%;
 
-    @include transition(all 0.3s ease);
-  }
+		@include transition(all 0.3s ease);
 
-  &:hover {
-    &:after {
-      width: 100%;
-      left: 0;
-    }
-  }
+		
+
+	}
+
+	&:hover {
+		&:after {
+			width: 100%;
+			left: 0;
+		}
+	}
 }
 
 
@@ -49,3 +52,9 @@ ul {
 img {
   height: 20px;
 }
+
+
+.vtutor-nav-link {
+	text-transform: uppercase;
+
+		}
