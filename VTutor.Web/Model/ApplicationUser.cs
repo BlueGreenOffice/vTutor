@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace VTutor.Model
 {
-    public class ApplicationUser : IdentityUser
-    {
+	public class ApplicationUser : IdentityUser
+	{
 
-      
-    }
+		public Tutor Tutor { get; set; }
+
+	}
 }

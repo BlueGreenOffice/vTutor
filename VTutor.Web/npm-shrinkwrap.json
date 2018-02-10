@@ -4115,6 +4115,11 @@
         "readable-stream": "2.3.3"
       }
     },
+    "font-awesome-5-css": {
+      "version": "1.0.0",
+      "resolved": "https://registry.npmjs.org/font-awesome-5-css/-/font-awesome-5-css-1.0.0.tgz",
+      "integrity": "sha1-lIamW2jIvUpalmq+QlA3usWToqU="
+    },
     "for-in": {
       "version": "1.0.2",
       "resolved": "https://registry.npmjs.org/for-in/-/for-in-1.0.2.tgz",
@@ -6822,10 +6827,23 @@
       "integrity": "sha1-KzJxhOiZIQEXeyhWP7XnECrNDKk=",
       "dev": true
     },
+    "ng2-material-dropdown": {
+      "version": "0.8.2",
+      "resolved": "https://registry.npmjs.org/ng2-material-dropdown/-/ng2-material-dropdown-0.8.2.tgz",
+      "integrity": "sha1-Ks0/eBAw75K/MfBVQ9kRSOaFKO8="
+    },
     "ngx-bootstrap": {
-      "version": "2.0.0-beta.3",
-      "resolved": "https://registry.npmjs.org/ngx-bootstrap/-/ngx-bootstrap-2.0.0-beta.3.tgz",
-      "integrity": "sha512-CE+FTs2Gp+L/yu23C443ABmMQqT9VD3epS3xLzOLkflDP39SKNeNwn84OpGONWEaSQNwvXzcnwPovYSvDk+V6Q=="
+      "version": "2.0.2",
+      "resolved": "https://registry.npmjs.org/ngx-bootstrap/-/ngx-bootstrap-2.0.2.tgz",
+      "integrity": "sha512-4ZTltcStUED2JzI9Hd1+FDaMQmukzbeBSS02hdTvuUJ+9hNtGLMSPGdPNRIniIyItzv3v3emJrAAtKkvOMxyCA=="
+    },
+    "ngx-chips": {
+      "version": "1.6.3",
+      "resolved": "https://registry.npmjs.org/ngx-chips/-/ngx-chips-1.6.3.tgz",
+      "integrity": "sha1-n4nF88CVI/9KCy6B6CfJPUKoHNs=",
+      "requires": {
+        "ng2-material-dropdown": "0.8.2"
+      }
     },
     "no-case": {
       "version": "2.3.2",
@@ -8538,6 +8556,11 @@
         "renderkid": "2.0.1",
         "utila": "0.4.0"
       }
+    },
+    "primeng": {
+      "version": "5.0.2",
+      "resolved": "https://registry.npmjs.org/primeng/-/primeng-5.0.2.tgz",
+      "integrity": "sha1-BcSkUC79TDvF1QaqAa6Osw+XZNs="
     },
     "private": {
       "version": "0.1.8",

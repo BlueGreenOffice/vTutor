@@ -11,9 +11,10 @@ using VTutor.Model;
 namespace VTutor.Web.Migrations
 {
     [DbContext(typeof(VTutorContext))]
-    partial class VTutorContextModelSnapshot : ModelSnapshot
+    [Migration("20180210040309_link-tutor")]
+    partial class linktutor
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

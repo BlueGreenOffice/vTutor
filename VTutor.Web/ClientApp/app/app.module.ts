@@ -2,10 +2,15 @@ import { NgModule, Inject } from '@angular/core';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { CommonModule, APP_BASE_HREF } from '@angular/common';
 import { HttpModule, Http } from '@angular/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 //External Components
-import { BsDropdownModule, CarouselModule, ModalModule } from 'ngx-bootstrap';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+
+
 import { TagInputModule } from 'ngx-chips';
 //import { CalendarModule } from 'primeng/primeng';
 
@@ -78,11 +83,13 @@ export function createTranslateLoader(http: Http, baseHref) {
 		CommonModule,
 		HttpModule,
 		FormsModule,
+		ReactiveFormsModule,
 
 		//CalendarModule,
 		TagInputModule,
 		BsDropdownModule.forRoot(),
 		CarouselModule.forRoot(),
+		BsDatepickerModule.forRoot(),
 		ModalModule.forRoot(),
 		TransferHttpModule, // Our Http TransferData method
 

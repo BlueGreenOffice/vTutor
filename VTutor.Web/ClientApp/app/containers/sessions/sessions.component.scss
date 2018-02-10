@@ -1,7 +1,8 @@
 @import "../../app.component.scss";
+//pull in special style for the datepicker.
+@import "../../../../node_modules/ngx-bootstrap/datepicker/bs-datepicker.scss";
 
 //Modal
-
 .modal-header {
 	background-color: $accent-color;
 	color: white;

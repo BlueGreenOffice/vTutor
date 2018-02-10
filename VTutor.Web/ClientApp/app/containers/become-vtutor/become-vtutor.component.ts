@@ -22,10 +22,11 @@ export class BecomeVTutor {
 	password: string;
 	confirmPassword: string;
 
+
 	allGrades: Grade[];
 	allSubjects: Subject[];
 
-	constructor(private tutors: TutorsService, private loginSerivce: LoginService, private subjectsService:SubjectsService) {
+	constructor(private tutors: TutorsService, private loginService: LoginService, private subjectsService:SubjectsService) {
 	
 	}
 
@@ -56,8 +57,10 @@ export class BecomeVTutor {
 	}
 
 	public submit() {
-		this.tutors.SaveTutor(this.tutor);
-		this.loginSerivce.RegisterTutor(this.tutor.email, this.password);
+		this.tutors.SaveTutor(this.tutor).subscribe(r => {
+			this.loginService.RegisterTutor(this.tutor.email, this.password);
+		});
+		
 	}
 
 	public gradeDisplay(subject: TutorSubject) {
@@ -67,5 +70,6 @@ export class BecomeVTutor {
 	public subjectDisplay(subject: TutorSubject) {
 		return subject.Name == null ? 'Subject' : subject.Name.toString();
 	}
+
 }
 

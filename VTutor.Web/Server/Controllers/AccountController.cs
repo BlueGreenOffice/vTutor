@@ -20,17 +20,20 @@ namespace VTutor.Web.Server.Controllers
 	[Route("[controller]/[action]")]
 	public class AccountController : Controller
 	{
+		private readonly VTutorContext _context;
 		private readonly UserManager<ApplicationUser> _userManager;
 		private readonly SignInManager<ApplicationUser> _signInManager;
 		private readonly IEmailSender _emailSender;
 		private readonly ILogger _logger;
 
 		public AccountController(
+			VTutorContext context,
 			UserManager<ApplicationUser> userManager,
 			SignInManager<ApplicationUser> signInManager,
 			IEmailSender emailSender,
 			ILogger<AccountController> logger)
 		{
+			_context = context;
 			_userManager = userManager;
 			_signInManager = signInManager;
 			_emailSender = emailSender;
@@ -228,6 +231,10 @@ namespace VTutor.Web.Server.Controllers
 			if (ModelState.IsValid)
 			{
 				var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+
+				Tutor tutor = _context.Tutors.Where(t => t.Email == model.Email).FirstOrDefault();
+				user.Tutor = tutor; //could be null...
+
 				var result = await _userManager.CreateAsync(user, model.Password);
 				if (result.Succeeded)
 				{

@@ -1,7 +1,7 @@
 <!-- select session modal -->
 <ng-template #selectSession>
 	<div class="modal-header">
-		<h4 class="modal-title pull-left">Session Schedules</h4>
+		<h4 class="modal-title pull-left">Available Sessions</h4>
 		<button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
 			<span aria-hidden="true">&times;</span>
 		</button>
@@ -10,8 +10,10 @@
 
 		<div>
 			<div class="col-md-3">
-
+				
 			</div>
+
+
 
 			<div class="col-md-3">
 
@@ -60,6 +62,8 @@
 		<div class="col-sm-6 ">
 			<div class="sessionswrapper">
 				<div class="row">
+
+
 					<div class="col-sm-6 text-center">
 						<label>Grade:</label>
 					</div>
@@ -94,11 +98,35 @@
 						</div>
 					</div>
 				</div>
+
+				<div class="text-center row">
+					<div class="col-xs-12 col-12 col-md-4 form-group">
+						<form [formGroup]="myForm">
+							<input class="form-control"
+								   [minDate]="minDate"
+								   [maxDate]="maxDate"
+								   #dp="bsDatepicker"
+								   bsDatepicker
+								   formControlName="date"
+								   [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }">
+						</form>
+					</div>
+					<div class="col-xs-12 col-12 col-md-3 form-group">
+						<button class="btn btn-success" (click)="dp.toggle()">Date Picker</button>
+					</div>
+				</div>
+
 				<div class="row">
+					<div class="list-group">
+						<a class="list-group-item list-group-item-action" (click)="selectBlock(block)" *ngFor="let block of blocks">{{formatTime(block.startTime)}} - {{formatTime(block.endTime)}}</a>
+					</div>
+				</div>
+
+				<!--<div class="row">
 					<div class="col-sm-12 text-center session-submitbutton">
 						<a class="btn btn-primary submit-btn" (click)="submit(selectSession)" role="button">Submit</a>
 					</div>
-				</div>
+				</div>-->
 			</div>
 		</div>
 	</div>
