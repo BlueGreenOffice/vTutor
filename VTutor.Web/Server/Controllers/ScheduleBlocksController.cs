@@ -32,9 +32,11 @@ namespace VTutor.Web.Controllers
 		[HttpGet]
 		public IEnumerable<ScheduleBlock> GetScheduleBlock(DateTime? date = null)
 		{
-			return _context.ScheduleBlocks
+			var blocks = _context.ScheduleBlocks
 				.Include(s => s.Tutor.Subjects)
 				.Where(b => date == null || b.StartTime.Date == date.Value.Date);
+
+			return blocks;
 		}
 
 		// GET: api/ScheduleBlocks/5
@@ -108,6 +110,9 @@ namespace VTutor.Web.Controllers
 			{
 				return BadRequest("non-tutor users arent allowed to create schedule blocks.");
 			}
+
+			scheduleBlock.StartTime = scheduleBlock.StartTime.ToUniversalTime();
+			scheduleBlock.EndTime = scheduleBlock.EndTime.ToUniversalTime();
 
 			scheduleBlock.Tutor = tutor;
 

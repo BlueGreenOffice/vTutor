@@ -34,11 +34,13 @@
     <None Remove="ClientApp\app\containers\student-register\student-register.component.ts" />
     <None Remove="ClientApp\app\containers\why-vtutor\why-vtutor.component.ts" />
     <None Remove="ClientApp\app\models\Event.ts" />
+    <None Remove="ClientApp\app\models\Student.ts" />
     <None Remove="ClientApp\app\models\Tutor.ts" />
     <None Remove="ClientApp\app\models\User.ts" />
     <None Remove="ClientApp\app\shared\admin.service.ts" />
     <None Remove="ClientApp\app\shared\link.service.ts" />
     <None Remove="ClientApp\app\shared\login.service.ts" />
+    <None Remove="ClientApp\app\shared\students.service.ts" />
     <None Remove="ClientApp\app\shared\subjects.service.ts" />
     <None Remove="ClientApp\app\shared\tutors.service.ts" />
     <None Remove="ClientApp\app\shared\user.service.ts" />
@@ -60,11 +62,13 @@
     <TypeScriptCompile Include="ClientApp\app\containers\student-register\student-register.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\containers\why-vtutor\why-vtutor.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\Event.ts" />
+    <TypeScriptCompile Include="ClientApp\app\models\Student.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\Tutor.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\User.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\admin.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\link.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\login.service.ts" />
+    <TypeScriptCompile Include="ClientApp\app\shared\students.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\subjects.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\tutors.service.ts" />
     <TypeScriptCompile Include="ClientApp\app\shared\user.service.ts" />

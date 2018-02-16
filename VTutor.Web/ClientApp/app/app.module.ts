@@ -41,6 +41,7 @@ import { NotFoundComponent } from './containers/not-found/not-found.component';
 import { LinkService } from './shared/link.service';
 import { UserService } from './shared/user.service';
 import { TutorsService } from './shared/tutors.service';
+import { StudentsService } from './shared/students.service';
 import { SubjectsService } from './shared/subjects.service';
 import { EventsService } from './shared/events.service';
 import { LoginService } from './shared/login.service';
@@ -229,6 +230,7 @@ export function createTranslateLoader(http: Http, baseHref) {
 		LinkService,
 		UserService,
 		TutorsService,
+		StudentsService,
 		SubjectsService,
 		EventsService,
 		LoginService,

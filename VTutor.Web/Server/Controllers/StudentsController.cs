@@ -92,6 +92,8 @@ namespace VTutor.Web.Controllers
         return BadRequest(ModelState);
       }
 
+			student.CreatedDate = DateTime.Now;
+
       _context.Students.Add(student);
       await _context.SaveChangesAsync();
 
