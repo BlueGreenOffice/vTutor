@@ -53,6 +53,12 @@ ul {
 		}
 	}
 
+	.disabled-day-cell {
+		height: 100px;
+		padding-left: 3px;
+		color: darkgray;
+	}
+
 	float: left;
 	width: 14.2%;
 	//border-left:1px solid $accent-color;

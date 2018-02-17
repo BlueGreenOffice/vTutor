@@ -55,22 +55,27 @@
 
 		<div class="month row">
 
-			<div class="col-md-1 prev">&#10094;</div>
+			<a class="col-md-1 prev" (click)="prevMonth()">&#10094;</a>
 			<div class="month-title col-md-10">
 				<div>{{currentMonth}}</div>
 				<div style="font-size:18px">{{currentYear}}</div>
 			</div>
-			<div class="col-md-1 next">&#10095;</div>
+			<a class="col-md-1 next" (click)="nextMonth()">&#10095;</a>
 		</div>
 
 		<div class="weekdays row">
 
 			<div class="day-column">
 				<div class="day-title">Monday</div>
+				<div class="disabled-day-cell" *ngIf="firstMondayIsInSecondWeek()">
+
+				</div>
+
 				<div [class.active]="day.ActiveDay"
 					 class="day-cell"
-					 *ngFor="let day of mondays()"
+					 *ngFor="let day of mondays(); let i = index"
 					 (click)="editDay(selectTimeBlocks, day.Date)">
+
 					{{day.DayOfMonth}}
 					<div *ngFor="let event of getEventsOnDay(day.DayOfMonth)">
 						<span class="label label-info">{{getEventText(event)}}</span>
@@ -79,6 +84,9 @@
 			</div>
 			<div class="day-column">
 				<div class="day-title">Tuesday</div>
+				<div class="disabled-day-cell" *ngIf="firstTuesdayIsInSecondWeek()">
+
+				</div>
 				<div [class.active]="day.ActiveDay"
 					 class="day-cell"
 					 *ngFor="let day of tuesdays()"
@@ -92,6 +100,9 @@
 
 			<div class="day-column">
 				<div class="day-title">Wednesday</div>
+				<div class="disabled-day-cell" *ngIf="firstWednesdayIsInSecondWeek()">
+
+				</div>
 				<div [class.active]="day.ActiveDay"
 					 class="day-cell"
 					 *ngFor="let day of wednesdays()"
@@ -105,6 +116,9 @@
 
 			<div class="day-column">
 				<div class="day-title">Thursday</div>
+				<div class="disabled-day-cell" *ngIf="firstThursdayIsInSecondWeek()">
+
+				</div>
 				<div [class.active]="day.ActiveDay"
 					 class="day-cell"
 					 *ngFor="let day of thursdays()"
@@ -118,6 +132,9 @@
 
 			<div class="day-column">
 				<div class="day-title">Friday</div>
+				<div class="disabled-day-cell" *ngIf="firstFridayIsInSecondWeek()">
+
+				</div>
 				<div [class.active]="day.ActiveDay"
 					 class="day-cell"
 					 *ngFor="let day of fridays()"
@@ -132,6 +149,9 @@
 
 			<div class="day-column">
 				<div class="day-title">Saturday</div>
+				<div class="disabled-day-cell" *ngIf="firstSaturdayIsInSecondWeek()">
+
+				</div>
 				<div [class.active]="day.ActiveDay"
 					 class="day-cell"
 					 *ngFor="let day of saturdays()"

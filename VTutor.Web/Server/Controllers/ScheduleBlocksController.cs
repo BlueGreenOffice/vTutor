@@ -30,11 +30,37 @@ namespace VTutor.Web.Controllers
 
 		// GET: api/ScheduleBlocks
 		[HttpGet]
-		public IEnumerable<ScheduleBlock> GetScheduleBlock(DateTime? date = null)
+		public async Task<IEnumerable<ScheduleBlock>> GetScheduleBlock(DateTime? date = null, bool for_tutor = false)
 		{
+			var user = await this.UserManager.GetUserAsync(this.User);
+			Tutor tutor = null;
+			if (user == null)
+			{
+				for_tutor = false;
+			}
+			else
+			{
+				tutor = _context.Tutors.Where(t => t.Email == user.Email).FirstOrDefault();
+			}
+
 			var blocks = _context.ScheduleBlocks
 				.Include(s => s.Tutor.Subjects)
-				.Where(b => date == null || b.StartTime.Date == date.Value.Date);
+				.Where(b => date == null || b.StartTime.Date == date.Value.Date)
+				.Where(b => for_tutor == false || b.Tutor.Id == tutor.Id);
+			
+			//nulling out the availability schedule because of self referential issues.
+			foreach(ScheduleBlock block in blocks)
+			{
+				if (block.Tutor != null)
+				{
+					//For some reason sql isnt storing the timezone... all dates are stored in UTC
+					block.StartTime = block.StartTime.ToLocalTime();
+					block.EndTime = block.EndTime.ToLocalTime();
+
+					block.Tutor.AvailabilitySchedule = null;
+					block.Tutor.User = null;
+				}
+			}
 
 			return blocks;
 		}
@@ -49,7 +75,7 @@ namespace VTutor.Web.Controllers
 			}
 
 			var scheduleBlock = await _context.ScheduleBlocks.SingleOrDefaultAsync(m => m.Id == id);
-
+			//scheduleBlock.StartTime.Kind = DateTimeKind.Utc;
 			if (scheduleBlock == null)
 			{
 				return NotFound();

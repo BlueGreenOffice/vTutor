@@ -24,6 +24,8 @@ export class CalendarComponent {
 
     days: Day[];
 
+	calendarDate: Date;
+
     currentYear: number;
     currentMonth: string;
 	currentDayOfMonth: number;
@@ -37,34 +39,43 @@ export class CalendarComponent {
 	ngOnInit() {
 
 		this.events = [];
+		this.calendarDate = new Date();
 
 		this.eventsService.GetAvailableBlocks().subscribe(events => {
 			events.forEach(e => this.events.push(e));
 		});
 
-        let today = new Date();
-        this.currentMonth = this.months[today.getMonth()];
-        this.currentYear = today.getFullYear();
-        this.currentDayOfMonth = today.getDate();
-
-		for (var i = 1; i <= this.daysInMonth(today.getMonth(), today.getFullYear()); i++) {
-			let date = new Date(today.getFullYear(), today.getMonth(), i);
-            let dayOfMonth = date.getDate();
-            let dayOfWeek = date.getDay();
-
-            let isToday = dayOfMonth == today.getDate();
-            this.days.push({ Date:date, DayOfWeek : dayOfWeek, DayOfMonth : dayOfMonth, ActiveDay : isToday });
-        }
+		this.setupCalendar();
 	}
 
 
+	setupCalendar() {
+		this.days.length = 0;
 
-    moveToPreviousMonth() {
+		//let today = new Date();
+		this.currentMonth = this.months[this.calendarDate.getMonth()];
+		this.currentYear = this.calendarDate.getFullYear();
+		this.currentDayOfMonth = this.calendarDate.getDate();
 
+		for (var i = 1; i <= this.daysInMonth(this.calendarDate.getMonth(), this.calendarDate.getFullYear()); i++) {
+			let date = new Date(this.calendarDate.getFullYear(), this.calendarDate.getMonth(), i);
+			let dayOfMonth = date.getDate();
+			let dayOfWeek = date.getDay();
+
+			let isToday = dayOfMonth == this.calendarDate.getDate();
+			this.days.push({ Date: date, DayOfWeek: dayOfWeek, DayOfMonth: dayOfMonth, ActiveDay: isToday });
+		}
+	}
+
+
+    prevMonth() {
+		this.calendarDate.setMonth(this.calendarDate.getMonth() - 1);
+		this.setupCalendar();
     }
 
-    moveToNextMont() {
-
+    nextMonth() {
+		this.calendarDate.setMonth(this.calendarDate.getMonth() + 1);
+		this.setupCalendar();
     }
 
 	slotSelected(slot: Date) {
@@ -75,10 +86,13 @@ export class CalendarComponent {
 		return this.events.filter(x => x.startTime.valueOf() == slot.valueOf())[0];
 	}
 
+
 	addOrRemoveSlot(slot: Date) {
 		if (this.slotSelected(slot)) {
-			this.eventsService.DeleteAvailableBlock(this.getEventForDate(slot));
-			this.events = this.events.filter(x => x.startTime.valueOf() != slot.valueOf());
+			this.eventsService.DeleteAvailableBlock(this.getEventForDate(slot)).subscribe(response => {
+				this.events = this.events.filter(x => x.startTime.valueOf() != slot.valueOf());
+			});
+			
 		}
 		else {
 			let endTime = new Date(slot);
@@ -128,39 +142,69 @@ export class CalendarComponent {
 	}
 
 	getEventsOnDay(dayOfMonth: number) {
-		return this.events.filter(x => x.startTime.getDate() == dayOfMonth);
+		return this.events.filter(x => x.startTime.getDate() == dayOfMonth && x.startTime.getMonth() == this.calendarDate.getMonth());
 	}
 
     mondays() {
         return this.days.filter((x) => x.DayOfWeek == 1);
 	}
 
+	firstMondayIsInSecondWeek() {
+		var firstDay = this.mondays().sort((x, y) => x.DayOfMonth - y.DayOfMonth)[0];
+		return firstDay.DayOfMonth > firstDay.DayOfWeek;
+	}
+
     tuesdays() {
         return this.days.filter((x) => x.DayOfWeek == 2);
-    }
+	}
+
+	firstTuesdayIsInSecondWeek() {
+		var firstDay = this.tuesdays().sort((x, y) => x.DayOfMonth - y.DayOfMonth)[0];
+		return firstDay.DayOfMonth > firstDay.DayOfWeek;
+	}
 
     wednesdays() {
         return this.days.filter((x) => x.DayOfWeek == 3);
-    }
+	}
+
+	firstWednesdayIsInSecondWeek() {
+		var firstDay = this.wednesdays().sort((x, y) => x.DayOfMonth - y.DayOfMonth)[0];
+		return firstDay.DayOfMonth > firstDay.DayOfWeek;
+	}
 
     thursdays() {
         return this.days.filter((x) => x.DayOfWeek == 4);
-    }
+	}
+
+	firstThursdayIsInSecondWeek() {
+		var firstDay = this.thursdays().sort((x, y) => x.DayOfMonth - y.DayOfMonth)[0];
+		return firstDay.DayOfMonth > firstDay.DayOfWeek;
+	}
 
     fridays() {
         return this.days.filter((x) => x.DayOfWeek == 5);
-    }
+	}
+
+	firstFridayIsInSecondWeek() {
+		var firstDay = this.fridays().sort((x, y) => x.DayOfMonth - y.DayOfMonth)[0];
+		return firstDay.DayOfMonth > firstDay.DayOfWeek;
+	}
 
     saturdays() {
         return this.days.filter((x) => x.DayOfWeek == 6);
     }
+
+	firstSaturdayIsInSecondWeek() {
+		var firstDay = this.saturdays().sort((x, y) => x.DayOfMonth - y.DayOfMonth)[0];
+		return firstDay.DayOfMonth > firstDay.DayOfWeek;
+	}
 
     sundays() {
         return this.days.filter((x) => x.DayOfWeek == 0);
     }
 
     daysInMonth(month, year) {
-      return new Date(year, month, 0).getDate();
+      return new Date(year, month + 1, 0).getDate();
     }
 
     months: string[] = [
