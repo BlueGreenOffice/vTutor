@@ -35,24 +35,24 @@ export class BecomeVTutor {
 		this.tutor.subjects = [];
 		this.subjects = this.subjectsService.GetAllAvailableSubjects();
 
-		this.tutor.subjects.push({ SubjectGrade: null, Name: null });
-		this.allGrades = this.subjects.map(x => x.SubjectGrade.Name).filter((e, i, s) => i == s.indexOf(e));
-		this.allSubjects = this.subjects.map(x => x.Name).filter((e, i, s) => i == s.indexOf(e));
+		this.tutor.subjects.push({ subjectGrade: null, name: null });
+		this.allGrades = this.subjects.map(x => x.subjectGrade.name).filter((e, i, s) => i == s.indexOf(e));
+		this.allSubjects = this.subjects.map(x => x.name).filter((e, i, s) => i == s.indexOf(e));
 	}
 
 	private addSubjectIfNecessary() {
-		if (this.tutor.subjects.every(x => x.Name != null && x.SubjectGrade != null)) {
-			this.tutor.subjects.push({ SubjectGrade: null, Name: null });
+		if (this.tutor.subjects.every(x => x.name != null && x.subjectGrade != null)) {
+			this.tutor.subjects.push({ subjectGrade: null, name: null });
 		}
 	}
 
 	public selectGrade(subject:TutorSubject, grade:Grade) {
-		subject.SubjectGrade = { Name: grade };
+		subject.subjectGrade = { name: grade };
 		this.addSubjectIfNecessary();
 	}
 
 	public selectSubject(tutorSubject: TutorSubject, subject: Subject) {
-		tutorSubject.Name = subject;
+		tutorSubject.name = subject;
 		this.addSubjectIfNecessary();
 	}
 
@@ -64,11 +64,11 @@ export class BecomeVTutor {
 	}
 
 	public gradeDisplay(subject: TutorSubject) {
-		return subject.SubjectGrade == null ? 'Grade' : subject.SubjectGrade.Name.toString();
+		return subject.subjectGrade == null ? 'Grade' : subject.subjectGrade.name.toString();
 	}
 
 	public subjectDisplay(subject: TutorSubject) {
-		return subject.Name == null ? 'Subject' : subject.Name.toString();
+		return subject.name == null ? 'Subject' : subject.name.toString();
 	}
 
 }

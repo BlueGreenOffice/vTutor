@@ -45,33 +45,33 @@ export class SessionsComponent {
 
 		this.subjects = this.subjectsService.GetAllAvailableSubjects();
 
-		this.allGrades = this.subjects.map(x => x.SubjectGrade.Name).filter((e, i, s) => i == s.indexOf(e));
-		this.allSubjects = this.subjects.map(x => x.Name).filter((e, i, s) => i == s.indexOf(e));
+		this.allGrades = this.subjects.map(x => x.subjectGrade.name).filter((e, i, s) => i == s.indexOf(e));
+		this.allSubjects = this.subjects.map(x => x.name).filter((e, i, s) => i == s.indexOf(e));
 
 		this.myForm = this.formBuilder.group(this.form);
 		this.myForm.valueChanges.subscribe((value) => {
-
 			this.eventsService.GetBlocksAvailableToBook(value.date).subscribe(blocks => {
-				this.blocks = blocks;
+				this.blocks = blocks.filter(block => {
+					return block.tutor.subjects.some(x => x.subjectGrade != null && x.subjectGrade.name.toString() == this.tutorSubject.subjectGrade.name.toString() && x.name == this.tutorSubject.name)
+				});
 			});
-
 		});
 	}
 
 	selectGrade(grade: Grade) {
-		this.tutorSubject.SubjectGrade = { Name: grade };
+		this.tutorSubject.subjectGrade = { name: grade };
 	}
 
 	selectSubject(subject: Subject) {
-		this.tutorSubject.Name = subject;
+		this.tutorSubject.name = subject;
 	}
 
 	public gradeDisplay() {
-		return this.tutorSubject.SubjectGrade == null ? 'Select Your Grade' : this.tutorSubject.SubjectGrade.Name.toString();
+		return this.tutorSubject.subjectGrade == null ? 'Select Your Grade' : this.tutorSubject.subjectGrade.name.toString();
 	}
 
 	public subjectDisplay() {
-		return this.tutorSubject.Name == null ? 'Select Your Subject' : this.tutorSubject.Name.toString();
+		return this.tutorSubject.name == null ? 'Select Your Subject' : this.tutorSubject.name.toString();
 	}
 
 	submit(template: TemplateRef<any>) {

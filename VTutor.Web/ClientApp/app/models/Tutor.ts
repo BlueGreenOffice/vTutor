@@ -6,12 +6,12 @@ export class Tutor {
 }
 
 export class TutorSubject {
-	Name: Subject;
-	SubjectGrade: SubjectGrade;
+	name: Subject;
+	subjectGrade: SubjectGrade;
 }
 
 export class SubjectGrade {
-	Name: Grade;
+	name: Grade;
 }
 
 export enum Grade {

@@ -45,9 +45,11 @@ namespace VTutor.Web.Controllers
 
 			var blocks = _context.ScheduleBlocks
 				.Include(s => s.Tutor.Subjects)
+					.ThenInclude(s => s.SubjectGrade)
 				.Where(b => date == null || b.StartTime.Date == date.Value.Date)
 				.Where(b => for_tutor == false || b.Tutor.Id == tutor.Id);
-			
+
+
 			//nulling out the availability schedule because of self referential issues.
 			foreach(ScheduleBlock block in blocks)
 			{

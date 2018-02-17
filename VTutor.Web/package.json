@@ -52,6 +52,7 @@
 		"moment": "2.18.1",
 		"ngx-bootstrap": "2.0.2",
 		"ngx-chips": "1.6.3",
+		"ngx-cookie": "2.0.1",
 		"node-sass": "^4.5.2",
 		"preboot": "^5.0.0",
 		"primeng": "5.0.2",

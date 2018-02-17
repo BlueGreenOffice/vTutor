@@ -97,7 +97,7 @@ export class CalendarComponent {
 		else {
 			let endTime = new Date(slot);
 			endTime.setHours(slot.getHours() + 1);
-			let event = { startTime: slot, endTime: endTime };
+			let event = { startTime: slot, endTime: endTime, tutor:null };
 			this.eventsService.AddAvailableBlock(event).subscribe(response => {
 				this.events.push(event);
 			});
