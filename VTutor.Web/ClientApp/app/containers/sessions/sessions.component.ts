@@ -6,6 +6,7 @@ import { Event } from '../../models/Event';
 import { EventsService } from '../../shared/events.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Grade, Subject, TutorSubject } from '../../models/Tutor';
+import { LoginService } from '../../shared/login.service';
 
 @Component({
     selector: 'vt-sessions',
@@ -36,7 +37,17 @@ export class SessionsComponent {
 
 	blocks: Event[];
 
-	constructor(private subjectsService: SubjectsService, private modalService: BsModalService, private formBuilder:FormBuilder, private eventsService:EventsService) {
+	selectedBlock: Event;
+
+	public email: string;
+	public password: string;
+
+	constructor(
+		private subjectsService: SubjectsService,
+		private modalService: BsModalService,
+		private formBuilder: FormBuilder,
+		private eventsService: EventsService,
+		private loginService: LoginService) {
 
 	}
 
@@ -58,6 +69,12 @@ export class SessionsComponent {
 		});
 	}
 
+
+	login() {
+		this.loginService.Login(this.email, this.password, 'sessions');
+		this.modalRef.hide();
+	}
+
 	selectGrade(grade: Grade) {
 		this.tutorSubject.subjectGrade = { name: grade };
 	}
@@ -74,12 +91,20 @@ export class SessionsComponent {
 		return this.tutorSubject.name == null ? 'Select Your Subject' : this.tutorSubject.name.toString();
 	}
 
-	submit(template: TemplateRef<any>) {
+	public isLoggedIn() {
+		return this.loginService.IsLoggedIn();
+	}
+
+	openLoginDialog(template: TemplateRef<any>) {
 		this.modalRef = this.modalService.show(template);
 	}
 
 	selectBlock(block: Event) {
 		//todo:
+	}
+
+	payNow(block:Event) {
+		window.open('https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZHDL336BHDH6A', 'name', 'height=800,width=600')
 	}
 
 	formatTime(date: Date) {

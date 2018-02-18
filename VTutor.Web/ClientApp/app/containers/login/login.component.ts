@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { ActivatedRoute } from '@angular/router';
 import { LoginService } from '../../shared/login.service';
 
 @Component({
@@ -9,7 +9,7 @@ import { LoginService } from '../../shared/login.service';
 })
 export class LoginComponent {
 
-	constructor(private loginService:LoginService) {
+	constructor(private loginService:LoginService, private activatedRoute:ActivatedRoute) {
 
 	}
 
@@ -17,7 +17,8 @@ export class LoginComponent {
 	public password: string;
 
 	login() {
-		this.loginService.Login(this.email, this.password);
+		let path = this.activatedRoute.snapshot.paramMap.get('path');
+		this.loginService.Login(this.email, this.password, path);
 	}
 
 }

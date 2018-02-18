@@ -30,21 +30,28 @@ export class LoginService {
 		this.cookies.remove(VTUTOR_TOKEN);
 	}
 
-	Login(username: string, password: string) {
+	Login(username: string, password: string, path:string) {
 		this.http.post(`account/login?email=${username}&password=${password}`, {}).subscribe(result => {
 			this.Role = result.json()[0];
 			//store the role ...
 			this.cookies.put(VTUTOR_TOKEN, this.Role);
 
-			if (this.Role == 'Tutors') {
-				this.router.navigate(['dashboard']);
+			if (path != null) {
+				this.router.navigate([path]);
 			}
-			else if (this.Role == 'Students') {
-				this.router.navigate([''])
+			else {
+				if (this.Role == 'Tutors') {
+					this.router.navigate(['dashboard']);
+				}
+				else if (this.Role == 'Students') {
+					this.router.navigate([''])
+				}
+				else if (this.Role == 'Admin') {
+					this.router.navigate(['admin-dashboard']);
+				}
 			}
-			else if (this.Role == 'Admin') {
-				this.router.navigate(['admin-dashboard']);
-			}
+
+			
 		})
 	}
 

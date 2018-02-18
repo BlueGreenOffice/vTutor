@@ -1,29 +1,29 @@
 <!-- select session modal -->
-<ng-template #selectSession>
+<ng-template #loginDialog>
 	<div class="modal-header">
-		<h4 class="modal-title pull-left">Available Sessions</h4>
+		<h4 class="modal-title pull-left">Login</h4>
 		<button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
 			<span aria-hidden="true">&times;</span>
 		</button>
 	</div>
 	<div class="modal-body container-fluid">
 
-		<div>
-			<div class="col-md-3">
-				
+		<form class="login-form col-md-8 col-md-offset-2 loginwrapper">
+			<div class="form-group">
+				<label>Email:</label>
+				<input [(ngModel)]="email" name="email" class="form-control" />
+			</div>
+
+			<div class="form-group">
+				<label>Password:</label>
+				<input [(ngModel)]="password" name="password" class="form-control" type="password" />
 			</div>
 
 
-
-			<div class="col-md-3">
-
+			<div class="text-center">
+				<button (click)="login()" class="btn submit-btn btn-default">Login</button>
 			</div>
-
-			<div class="col-md-3">
-
-			</div>
-		</div>
-		
+		</form>		
 
 	</div>
 	<div class="modal-footer">
@@ -118,7 +118,13 @@
 
 				<div class="row">
 					<div class="list-group">
-						<a class="list-group-item list-group-item-action" (click)="selectBlock(block)" *ngFor="let block of blocks">{{formatTime(block.startTime)}} - {{formatTime(block.endTime)}}</a>
+						<a (click)="selectedBlock = block" class="list-group-item list-group-item-action" (click)="selectBlock(block)" *ngFor="let block of blocks">
+							{{formatTime(block.startTime)}} - {{formatTime(block.endTime)}}
+							<div *ngIf="selectedBlock == block">
+								<a *ngIf="!isLoggedIn()" (click)="openLoginDialog(loginDialog)" class="btn btn-default">Login</a><a *ngIf="!isLoggedIn()" class="btn btn-default">Register</a>
+								<a *ngIf="isLoggedIn()" (click)="payNow(block)" class="btn btn-primary">Buy Now</a>
+							</div>
+						</a>
 					</div>
 				</div>
 
