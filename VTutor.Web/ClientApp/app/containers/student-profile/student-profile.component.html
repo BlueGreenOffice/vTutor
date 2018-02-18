@@ -10,9 +10,9 @@
 
 <div class="container-fluid registration">
 	<div class="row">
-		
-			<form class="col-md-6 col-md-offset-3 wrapper">
-				<div class="row">
+
+		<form class="col-md-6 col-md-offset-3 wrapper">
+			<div class="row">
 				<div class="form-group">
 					<label>Student's First Name:</label>
 					<input [(ngModel)]="student.firstName" name="firstName" class="form-control" />
@@ -69,41 +69,18 @@
 				</div>
 
 
-				</div>
-				<div class="row parentcheck">
-					<div class="col-md-1">
-						<div class="form-check">
-							<input type="checkbox" class="form-check-input" id="exampleCheck1">
-							<label class="form-check-label" for="exampleCheck1"></label>
-						</div>
+			</div>
+			<div class="row parentcheck">
 
-					</div>
-
-					<div class="form-group">
-						<label>Password:</label>
-						<input type="password" [(ngModel)]="password" name="Password" class="form-control" />
-					</div>
-
-					<div class="form-group">
-						<label>Confirm Password:</label>
-						<input [(ngModel)]="confirmPassword" name="ConfirmPassword" class="form-control" />
-					</div>
-
-					<div class="col-md-11 parent-text">
-						I represent that I am over 18 or the parent/guardian of the minor and that I have the full legal capacity to grant permission for him/her to participate in the tutoring session. I give consent to vTutor use my child’s name, photographs, digital images, and our video/audio recordings for use in news releases and/or other educational materials without compensation to me. All negatives, prints, and digital reproductions shall be the property of vTutor and vTutor may use, edit or reproduce such photographs and videos or share them with others for any purposes related to vTutor.
-
-					</div>
-
-					<div class="text-center">
-						<button (click)="submit()" class="btn btn-default submit-btn text-center">Submit</button>
-					</div>
-
-
+				<div class="text-center">
+					<button (click)="save()" class="btn btn-default submit-btn text-center">Save</button>
 				</div>
 
+			</div>
 
 
-			</form>
-		
+
+		</form>
+
 	</div>
 </div>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LoginService } from '../../shared/login.service';
+import { LoginService, Identity } from '../../shared/login.service';
 
 
 @Component({
@@ -23,5 +23,13 @@ export class NavMenuComponent {
 
 	isLoggedIn() {
 		return this.loginService.IsLoggedIn();
+	}
+
+	isLoggedInAsTutor() {
+		return this.loginService.Identity() == Identity.Tutor;
+	}
+
+	isLoggedInAsStudent() {
+		return this.loginService.Identity() == Identity.Student;
 	}
 }

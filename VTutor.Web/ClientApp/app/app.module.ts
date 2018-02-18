@@ -29,6 +29,8 @@ import { FooterComponent } from './components/footer/footer.component';
 
 //Pages
 import { HomeComponent } from './containers/home/home.component';
+import { StudentProfileComponent } from './containers/student-profile/student-profile.component';
+import { TutorProfileComponent } from './containers/tutor-profile/tutor-profile.component';
 import { StudentRegisterComponent } from './containers/student-register/student-register.component';
 import { ReferAFriendComponent } from './containers/refer-a-friend/refer-a-friend.component';
 import { WhyVtutorComponent } from './containers/why-vtutor/why-vtutor.component';
@@ -70,6 +72,8 @@ export function createTranslateLoader(http: Http, baseHref) {
 		FooterComponent,
 
 		//Pages
+		TutorProfileComponent,
+		StudentProfileComponent,
 		StudentRegisterComponent,
 		SessionsComponent,
 		ReferAFriendComponent,
@@ -126,6 +130,24 @@ export function createTranslateLoader(http: Http, baseHref) {
 					links: [
 						{ rel: 'canonical', href: 'http://blogs.example.com/blah/nice' },
 						{ rel: 'alternate', hreflang: 'es', href: 'http://es.example.com/' }
+					]
+				}
+			},
+			{
+				path: 'student-profile', component: StudentProfileComponent,
+				data: {
+					title: 'Profile',
+					meta: [{}],
+					links: [
+					]
+				}
+			},
+			{
+				path: 'tutor-profile', component: TutorProfileComponent,
+				data: {
+					title: 'Profile',
+					meta: [{}],
+					links: [
 					]
 				}
 			},

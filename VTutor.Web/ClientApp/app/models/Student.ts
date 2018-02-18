@@ -1,18 +1,18 @@
 
 export class Student {
 	id: string;
-	CreatedDate: Date;
-	ModifiedDate: Date;
-	City: string;
-	Email: string;
-	FirstName: string;
-	LastName: string;
-	ParentsEmailAddress: string;
-	ParentsFirstName: string;
-	ParentsLastName: string;
-	PhoneNumber: string;
-	State: string;
-	StreetAddress: string;
-	UserId: string;
-	Zip: string;
+	createdDate: Date;
+	modifiedDate: Date;
+	city: string;
+	email: string;
+	firstName: string;
+	lastName: string;
+	parentsEmailAddress: string;
+	parentsFirstName: string;
+	parentsLastName: string;
+	phoneNumber: string;
+	state: string;
+	streetAddress: string;
+	userId: string;
+	zip: string;
 }

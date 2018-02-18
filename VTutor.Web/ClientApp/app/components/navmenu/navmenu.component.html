@@ -11,6 +11,8 @@
 					<li class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['home']">Home</a></li>
 					<li class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['why-vtutor']">Why vTutor</a></li>
 					<li class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['sessions']">Sessions</a></li>
+					<li *ngIf="isLoggedInAsStudent()" class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['student-profile']">Profile</a></li>
+					<li *ngIf="isLoggedInAsTutor()" class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['tutor-profile']">Profile</a></li>
 					<li *ngIf="!isLoggedIn()" class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['tutor-register']">Become A vTutor</a></li>
 					<li class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['refer-a-friend']">Refer A Friend</a></li>
 					<li *ngIf="!isLoggedIn()" class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['student-register']">Student Registration</a></li>

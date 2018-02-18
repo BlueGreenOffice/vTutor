@@ -12,13 +12,17 @@ export class StudentsService {
 	}
 
 
-	public SaveStudent(student: Student) {
-
-		return this.http.post('api/students', student)
-
+	public GetLoggedInStudent() {
+		return this.http.get('api/students?current=true');
 	}
 
-
-
+	public SaveStudent(student: Student) {
+		if (student.id == null) {
+			return this.http.post('api/students', student);
+		}
+		else {
+			return this.http.put('api/students/' + student.id, student);
+		}
+	}
 
 }

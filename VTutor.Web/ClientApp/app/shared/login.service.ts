@@ -8,6 +8,12 @@ import { CookieService } from 'ngx-cookie';
 
 const VTUTOR_TOKEN = 'vtutor_login_token';
 
+export enum Identity {
+	Tutor,
+	Student,
+	Admin
+}
+
 @Injectable()
 export class LoginService {
 
@@ -63,10 +69,33 @@ export class LoginService {
 		return this.IdentityCookie != null;
 	}
 
+	public Identity(): Identity {
+		if (!this.IsLoggedIn()) {
+			return null;
+		}
+		else if(this.IdentityCookie == 'Tutors') {
+			return Identity.Tutor;
+		}
+		else if (this.IdentityCookie == 'Students') {
+			return Identity.Student;
+		}
+		else if (this.IdentityCookie == 'Administrators') {
+			return Identity.Admin;
+		}
+		else {
+			return null;
+		}
+	}
 
 	RegisterTutor(username: string, password: string) {
 		this.http.post(`account/register?email=${username}&password=${password}&registrationType=Tutors`, {}).subscribe(result => {
 			
+		})
+	}
+
+	RegisterStudent(username: string, password: string) {
+		this.http.post(`account/register?email=${username}&password=${password}&registrationType=Students`, {}).subscribe(result => {
+
 		})
 	}
 
