@@ -4,7 +4,7 @@ import { Router } from '@angular/router'
 import { ORIGIN_URL } from './constants/baseurl.constants';
 import { Http } from '@angular/http';
 import { TransferHttp } from '../../modules/transfer-http/transfer-http';
-import { CookieService } from 'ngx-cookie';
+import { CookieService } from 'ngx-cookie-service';
 
 const VTUTOR_TOKEN = 'vtutor_login_token';
 
@@ -27,20 +27,19 @@ export class LoginService {
 		private transferHttp: TransferHttp,
 		private router: Router,
 		private cookies: CookieService) {
-
 		
 	}
 
 	Logout() {
 		this.IdentityCookie = null;
-		this.cookies.remove(VTUTOR_TOKEN);
+		this.cookies.delete(VTUTOR_TOKEN);
 	}
 
 	Login(username: string, password: string, path:string) {
 		this.http.post(`account/login?email=${username}&password=${password}`, {}).subscribe(result => {
 			this.Role = result.json()[0];
 			//store the role ...
-			this.cookies.put(VTUTOR_TOKEN, this.Role);
+			this.cookies.set(VTUTOR_TOKEN, this.Role);
 
 			if (path != null) {
 				this.router.navigate([path]);
@@ -66,7 +65,7 @@ export class LoginService {
 			this.IdentityCookie = this.cookies.get(VTUTOR_TOKEN);
 		}
 
-		return this.IdentityCookie != null;
+		return this.IdentityCookie != null && this.IdentityCookie != '';
 	}
 
 	public Identity(): Identity {

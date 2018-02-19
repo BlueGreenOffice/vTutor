@@ -29,6 +29,8 @@ export class HomeComponent implements OnInit {
 		//}
 	}
 
+
+
     public setLanguage(lang) {
         this.translate.use(lang);
     }

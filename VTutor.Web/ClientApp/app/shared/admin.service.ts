@@ -7,8 +7,6 @@ import { Tutor } from '../models/Tutor';
 export class AdminService {
 	constructor(private http:Http) {
 
-
-
 	}
 
 	getUnapprovedTutors() {
@@ -20,8 +18,4 @@ export class AdminService {
 	deleteTutor(tutor:Tutor) {
 		return this.http.delete(`api/tutors/${tutor.id}`).subscribe(response => { });
 	}
-
-
-
-
 }

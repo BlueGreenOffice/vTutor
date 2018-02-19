@@ -25,3 +25,5 @@ export class StudentProfileComponent {
 		this.studentService.SaveStudent(this.student).subscribe(x => { });
 	}
 }
+
+

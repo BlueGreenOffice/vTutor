@@ -10,7 +10,7 @@ import { ModalModule } from 'ngx-bootstrap/modal';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 
-import { CookieModule } from 'ngx-cookie';
+import { CookieService } from 'ngx-cookie-service';
 
 import { TagInputModule } from 'ngx-chips';
 //import { CalendarModule } from 'primeng/primeng';
@@ -95,7 +95,6 @@ export function createTranslateLoader(http: Http, baseHref) {
 		TagInputModule,
 		BsDropdownModule.forRoot(),
 		CarouselModule.forRoot(),
-		CookieModule.forRoot(),
 		BsDatepickerModule.forRoot(),
 		ModalModule.forRoot(),
 		TransferHttpModule, // Our Http TransferData method
@@ -259,6 +258,7 @@ export function createTranslateLoader(http: Http, baseHref) {
 		EventsService,
 		LoginService,
 		AdminService,
+		CookieService,
 		// ConnectionResolver,
 		TranslateModule
 	]
