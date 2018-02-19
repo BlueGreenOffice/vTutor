@@ -12,6 +12,7 @@ export class StudentRegisterComponent {
 
 	public student: Student;
 	public password: string;
+	public confirmPassword: string;
 
 	constructor(private studentsService: StudentsService, private loginService: LoginService) {
 		this.student = new Student();
