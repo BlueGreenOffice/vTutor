@@ -10,8 +10,8 @@ import { LoginService } from '../../shared/login.service';
 })
 export class StudentRegisterComponent {
 
-	private student: Student;
-	private password: string;
+	public student: Student;
+	public password: string;
 
 	constructor(private studentsService: StudentsService, private loginService: LoginService) {
 		this.student = new Student();
