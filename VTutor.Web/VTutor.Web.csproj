@@ -100,6 +100,18 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="EmailTemplates\email-template.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="EmailTemplates\newsletter-template.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="EmailTemplates\tutor-contact.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <None Update="EmailTemplates\email-template.html">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
