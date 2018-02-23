@@ -24,8 +24,8 @@ namespace VTutor.Web.Server.Controllers
 		[Route("tutor-interest")]
 		public async Task<IActionResult> TutorContactForm([FromBody]Email.TemplateModels.TutorContactForm form)
 		{
-			Email.EmailClient.SendTutorInterestEmail(form);
-			return Ok();
+			string response = await Email.EmailClient.SendTutorInterestEmail(form);
+			return Ok(response);
 		}
 
 

@@ -82,9 +82,9 @@ namespace VTutor.Email
             await sendMailAsync(BuildEmail<Basic>(model, AssemblyDirectory + "/EmailTemplates/email-template.cshtml", model.Subject, model.Email, model.Name));
         }
 
-		public static async Task SendTutorInterestEmail(TutorContactForm model)
+		public static async Task<string> SendTutorInterestEmail(TutorContactForm model)
 		{
-			await sendMailAsync(BuildEmail<TutorContactForm>(model, AssemblyDirectory + "/EmailTemplates/tutor-contact.cshtml", "A Potential tutor is interested!", "Isaac@Knowtro.com", "Isaac"));
+			return await sendMailAsync(BuildEmail<TutorContactForm>(model, AssemblyDirectory + "/EmailTemplates/tutor-contact.cshtml", "A Potential tutor is interested!", "Isaac@Knowtro.com", "Isaac"));
 		}
 
         /// <summary>
@@ -116,7 +116,7 @@ namespace VTutor.Email
             return message;
         }
 
-        private static async Task sendMailAsync(SendGridMessage message)
+        private static async Task<string> sendMailAsync(SendGridMessage message)
         {
 			var apiKey = System.Environment.GetEnvironmentVariable("SENDGRID_APIKEY");
 			var client = new SendGridClient(apiKey);
@@ -128,6 +128,7 @@ namespace VTutor.Email
 			{
 				throw new Exception("The mail failed to send : " + responsebody);
 			}
+			return responsebody;
 		}
 
         #endregion
