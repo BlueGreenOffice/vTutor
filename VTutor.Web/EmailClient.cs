@@ -123,6 +123,11 @@ namespace VTutor.Email
 			
 			var response = await client.SendEmailAsync(message);
 			string responsebody = await response.Body.ReadAsStringAsync();
+
+			if (response.StatusCode != HttpStatusCode.OK)
+			{
+				throw new Exception("The mail failed to send : " + responsebody);
+			}
 		}
 
         #endregion
