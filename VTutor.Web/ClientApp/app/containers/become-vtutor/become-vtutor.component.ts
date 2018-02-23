@@ -17,7 +17,7 @@ export class BecomeVTutor {
 	tutor: TutorInterestEmail;
 
 	constructor(private tutors: TutorsService) {
-	
+		this.tutor = new TutorInterestEmail();
 	}
 
 	public submit() {

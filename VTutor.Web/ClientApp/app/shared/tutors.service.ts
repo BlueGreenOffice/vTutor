@@ -5,11 +5,11 @@ import { Http } from '@angular/http';
 
 
 export class TutorInterestEmail{
-	Name: string;
-	EmailAddress: string;
-	Grade: string;
-	Subject: string;
-	WhyVTutor: string;
+	name: string;
+	emailAddress: string;
+	grade: string;
+	subject: string;
+	whyVTutor: string;
 
 }
 

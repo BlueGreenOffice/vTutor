@@ -22,7 +22,7 @@ namespace VTutor.Web.Server.Controllers
 
 		[HttpPost]
 		[Route("tutor-interest")]
-		public async Task<IActionResult> TutorContactForm(Email.TemplateModels.TutorContactForm form)
+		public async Task<IActionResult> TutorContactForm([FromBody]Email.TemplateModels.TutorContactForm form)
 		{
 			Email.EmailClient.SendTutorInterestEmail(form);
 			return Ok();
