@@ -11,9 +11,10 @@ using VTutor.Model;
 namespace VTutor.Web.Migrations
 {
     [DbContext(typeof(VTutorContext))]
-    partial class VTutorContextModelSnapshot : ModelSnapshot
+    [Migration("20180223045704_databaselog")]
+    partial class databaselog
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -205,22 +206,6 @@ namespace VTutor.Web.Migrations
                     b.HasIndex("TutorId");
 
                     b.ToTable("Appointments");
-                });
-
-            modelBuilder.Entity("VTutor.Model.DatabaseLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<DateTime>("Date");
-
-                    b.Property<bool>("Error");
-
-                    b.Property<string>("LogMessage");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("DatabaseLogs");
                 });
 
             modelBuilder.Entity("VTutor.Model.Grade", b =>

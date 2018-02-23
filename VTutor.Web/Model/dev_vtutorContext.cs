@@ -19,6 +19,7 @@ namespace VTutor.Model
 		public DbSet<Subject> Subjects { get; set; }
 		public DbSet<Tutor> Tutors { get; set; }
 		public DbSet<TutorSchedule> TutorSchedules { get; set; }
+		public DbSet<DatabaseLog> DatabaseLogs { get; set; }
 	}
 
 	public class VTutorContextFactory : IDesignTimeDbContextFactory<VTutorContext>

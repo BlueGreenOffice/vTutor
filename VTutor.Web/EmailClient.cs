@@ -119,14 +119,14 @@ namespace VTutor.Email
         private static async Task<string> sendMailAsync(SendGridMessage message)
         {
 			var apiKey = System.Environment.GetEnvironmentVariable("SENDGRID_APIKEY");
-			var client = new SendGridClient(apiKey);
+			var client = new SendGridClient("");
 			
 			var response = await client.SendEmailAsync(message);
 			string responsebody = await response.Body.ReadAsStringAsync();
 
 			if (response.StatusCode != HttpStatusCode.OK)
 			{
-				//throw new Exception("The mail failed to send : " + responsebody);
+				
 			}
 			return responsebody;
 		}

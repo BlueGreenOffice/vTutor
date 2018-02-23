@@ -14,10 +14,10 @@ namespace VTutor.Web.Server.Controllers
 	[Route("api/Emails")]
 	public class EmailController : Controller
 	{
-
-		public EmailController()
+		private readonly VTutorContext _context;
+		public EmailController(VTutorContext context)
 		{
-
+			_context = context;
 		}
 
 		[HttpPost]
@@ -25,6 +25,7 @@ namespace VTutor.Web.Server.Controllers
 		public async Task<IActionResult> TutorContactForm([FromBody]Email.TemplateModels.TutorContactForm form)
 		{
 			string response = await Email.EmailClient.SendTutorInterestEmail(form);
+			_context.DatabaseLogs.Add(new DatabaseLog() { Date = DateTime.Now, LogMessage = response, Error = false });
 			return Ok(response);
 		}
 
