@@ -1,0 +1,14 @@
+D:\Code\vTutor\VTutor.Email\bin\Debug\netcoreapp2.0\EmailTemplates\email-template.cshtml
+D:\Code\vTutor\VTutor.Email\bin\Debug\netcoreapp2.0\EmailTemplates\email-template.html
+D:\Code\vTutor\VTutor.Email\bin\Debug\netcoreapp2.0\EmailTemplates\newsletter-template.cshtml
+D:\Code\vTutor\VTutor.Email\bin\Debug\netcoreapp2.0\EmailTemplates\tutor-contact.cshtml
+D:\Code\vTutor\VTutor.Email\bin\Debug\netcoreapp2.0\VTutor.Email.deps.json
+D:\Code\vTutor\VTutor.Email\bin\Debug\netcoreapp2.0\VTutor.Email.dll
+D:\Code\vTutor\VTutor.Email\bin\Debug\netcoreapp2.0\VTutor.Email.pdb
+D:\Code\vTutor\VTutor.Email\obj\Debug\netcoreapp2.0\VTutor.Email.csproj.CoreCompileInputs.cache
+D:\Code\vTutor\VTutor.Email\obj\Debug\netcoreapp2.0\VTutor.Email.AssemblyInfoInputs.cache
+D:\Code\vTutor\VTutor.Email\obj\Debug\netcoreapp2.0\VTutor.Email.AssemblyInfo.cs
+D:\Code\vTutor\VTutor.Email\obj\Debug\netcoreapp2.0\VTutor.Email.dll
+D:\Code\vTutor\VTutor.Email\obj\Debug\netcoreapp2.0\VTutor.Email.pdb
+D:\Code\vTutor\VTutor.Email\obj\Debug\netcoreapp2.0\VTutor.Email.csprojResolveAssemblyReference.cache
+D:\Code\vTutor\VTutor.Email\bin\Debug\netcoreapp2.0\VTutor.Email.dll.config

@@ -40,6 +40,9 @@ import { SessionsComponent } from './containers/sessions/sessions.component';
 import { DashboardComponent } from './containers/dashboard/dashboard.component';
 import { AdminDashboardComponent } from './containers/admin-dashboard/admin-dashboard.component';
 import { NotFoundComponent } from './containers/not-found/not-found.component';
+import { TutorRegisterComponent } from './containers/tutor-register/tutor-register.component';
+
+
 
 import { LinkService } from './shared/link.service';
 import { UserService } from './shared/user.service';
@@ -73,6 +76,7 @@ export function createTranslateLoader(http: Http, baseHref) {
 
 		//Pages
 		TutorProfileComponent,
+		TutorRegisterComponent,
 		StudentProfileComponent,
 		StudentRegisterComponent,
 		SessionsComponent,

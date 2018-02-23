@@ -93,6 +93,8 @@ namespace VTutor.Web.Controllers
 				return BadRequest(ModelState);
 			}
 
+			VTutor.Email.EmailClient.SendEmail("Isaac@knowtro.com", "Test Subject", "Test Body");
+
 			_context.Tutors.Add(tutor);
 			await _context.SaveChangesAsync();
 
