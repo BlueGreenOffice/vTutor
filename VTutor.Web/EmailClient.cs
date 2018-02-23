@@ -126,7 +126,7 @@ namespace VTutor.Email
 
 			if (response.StatusCode != HttpStatusCode.OK)
 			{
-				throw new Exception("The mail failed to send : " + responsebody);
+				//throw new Exception("The mail failed to send : " + responsebody);
 			}
 			return responsebody;
 		}
