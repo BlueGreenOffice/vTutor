@@ -197,6 +197,14 @@ export function createTranslateLoader(http: Http, baseHref) {
 				}
 			},
 			{
+				path: 'tutor-profile-registration', component: TutorRegisterComponent,
+				data: {
+					title: 'Tutor Registration',
+					meta: [{}],
+					links: []
+				}
+			},
+			{
 				path: 'student-register', component: StudentRegisterComponent,
 				data: {
 					title: 'Sessions',

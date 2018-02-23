@@ -84,7 +84,7 @@ namespace VTutor.Email
 
 		public static async Task<string> SendTutorInterestEmail(TutorContactForm model)
 		{
-			return await sendMailAsync(BuildEmail<TutorContactForm>(model, AssemblyDirectory + "/EmailTemplates/tutor-contact.cshtml", "A Potential tutor is interested!", "Isaac@Knowtro.com", "Isaac"));
+			return await sendMailAsync(BuildEmail<TutorContactForm>(model, AssemblyDirectory + "/EmailTemplates/tutor-contact.html", "A Potential tutor is interested!", "Isaac@Knowtro.com", "Isaac"));
 		}
 
         /// <summary>
