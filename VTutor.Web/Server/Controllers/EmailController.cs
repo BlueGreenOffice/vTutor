@@ -35,8 +35,10 @@ namespace VTutor.Web.Server.Controllers
 				_context.DatabaseLogs.Add(new DatabaseLog() { Date = DateTime.Now, LogMessage = ex.ToString(), Error = true });
 				return StatusCode(500, ex);
 			}
-			
-			
+			finally
+			{
+				await _context.SaveChangesAsync();
+			}
 		}
 
 

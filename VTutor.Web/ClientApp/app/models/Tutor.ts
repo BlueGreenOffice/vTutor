@@ -1,7 +1,18 @@
 export class Tutor {
 	id: string;
-	name: string;
+	firstName: string;
+	lastName: string;
+	phoneNumber: string;
 	email: string;
+	biography: string;
+	education: string;
+	languages: string;
+	hobbies: string;
+
+	/*
+		TODO: images and documents...
+	*/
+
 	subjects: TutorSubject[];
 }
 
