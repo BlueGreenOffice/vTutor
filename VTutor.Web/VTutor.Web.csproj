@@ -10,6 +10,7 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="2.0.1" />
+    <PackageReference Include="microsoft.aspnetcore.razor" Version="2.0.1" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.0.0" />
     <PackageReference Include="Swashbuckle" Version="5.6.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="1.1.0" />
@@ -34,6 +35,7 @@
     <None Remove="ClientApp\app\containers\student-profile\student-profile.component.ts" />
     <None Remove="ClientApp\app\containers\student-register\student-register.component.ts" />
     <None Remove="ClientApp\app\containers\tutor-profile\tutor-profile.component.ts" />
+    <None Remove="ClientApp\app\containers\tutor-register\tutor-register.component.ts" />
     <None Remove="ClientApp\app\containers\why-vtutor\why-vtutor.component.ts" />
     <None Remove="ClientApp\app\models\Event.ts" />
     <None Remove="ClientApp\app\models\Student.ts" />
@@ -64,6 +66,7 @@
     <TypeScriptCompile Include="ClientApp\app\containers\student-profile\student-profile.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\containers\student-register\student-register.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\containers\tutor-profile\tutor-profile.component.ts" />
+    <TypeScriptCompile Include="ClientApp\app\containers\tutor-register\tutor-register.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\containers\why-vtutor\why-vtutor.component.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\Event.ts" />
     <TypeScriptCompile Include="ClientApp\app\models\Student.ts" />
@@ -80,6 +83,10 @@
 
   <ItemGroup>
     <Folder Include="Server\Data\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\VTutor.Email\VTutor.Email.csproj" />
   </ItemGroup>
 
   <Target Name="DebugRunWebpack" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('wwwroot\dist') ">
