@@ -24,9 +24,19 @@ namespace VTutor.Web.Server.Controllers
 		[Route("tutor-interest")]
 		public async Task<IActionResult> TutorContactForm([FromBody]Email.TemplateModels.TutorContactForm form)
 		{
-			string response = await Email.EmailClient.SendTutorInterestEmail(form);
-			_context.DatabaseLogs.Add(new DatabaseLog() { Date = DateTime.Now, LogMessage = response, Error = false });
-			return Ok(response);
+			try
+			{
+				string response = await Email.EmailClient.SendTutorInterestEmail(form);
+				_context.DatabaseLogs.Add(new DatabaseLog() { Date = DateTime.Now, LogMessage = response, Error = false });
+				return Ok(response);
+			}
+			catch (Exception ex)
+			{
+				_context.DatabaseLogs.Add(new DatabaseLog() { Date = DateTime.Now, LogMessage = ex.ToString(), Error = true });
+				return StatusCode(500, ex);
+			}
+			
+			
 		}
 
 
