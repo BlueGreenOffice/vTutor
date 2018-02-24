@@ -113,8 +113,26 @@
 		<None Update="EmailTemplates\email-template.html">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
+		<None Update="EmailTemplates\STUDENT ACCOUNT SUCCESSFULLY CREATED.html">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="EmailTemplates\STUDENT REQUESTS TUTORING SESSION.html">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="EmailTemplates\STUDENT TUTORING SESSION REMINDER .html">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
 		<None Update="EmailTemplates\tutor-contact.html">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="EmailTemplates\vTUTOR ACCOUNT SUCCESSFULLY CREATED.html">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="EmailTemplates\vTUTOR LEAD GEN FORM RECEIVED.html">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+		<None Update="EmailTemplates\vTUTOR SESSION CONFIRMATION.html">
+		  <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</None>
 	</ItemGroup>
 

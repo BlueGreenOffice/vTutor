@@ -39,7 +39,7 @@ export class EventsService {
 		});
 	}
 
-	public GetAllowedTimeSlots(date: Date) {
+	public GetAllowedTimeSlots(date: Date) : Date[] {
 
 		//Monday - Thursday 4:30PM, 6PM, 7:30PM, 9PM 
 		if (date.getDay() == 1

@@ -61,11 +61,16 @@ export class SessionsComponent {
 
 		this.myForm = this.formBuilder.group(this.form);
 		this.myForm.valueChanges.subscribe((value) => {
-			this.eventsService.GetBlocksAvailableToBook(value.date).subscribe(blocks => {
-				this.blocks = blocks.filter(block => {
-					return block.tutor.subjects.some(x => x.subjectGrade != null && x.subjectGrade.name.toString() == this.tutorSubject.subjectGrade.name.toString() && x.name == this.tutorSubject.name)
-				});
+			//This code shows sessions that tutors have marked as 'available'
+			//this.eventsService.GetBlocksAvailableToBook(value.date).subscribe(blocks => {
+			//	this.blocks = blocks.filter(block => {
+			//		return block.tutor.subjects.some(x => x.subjectGrade != null && x.subjectGrade.name.toString() == this.tutorSubject.subjectGrade.name.toString() && x.name == this.tutorSubject.name)
+			//	});
+			//});
+			this.blocks = this.eventsService.GetAllowedTimeSlots(value.date).map(x => {
+				return { startTime: x, endTime: new Date(x.getFullYear(), x.getMonth(), x.getDate(), x.getHours() + 1, x.getMinutes()), id: null, tutor: null }
 			});
+
 		});
 	}
 
