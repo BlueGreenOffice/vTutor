@@ -11,75 +11,110 @@
 <div class="container-fluid registration">
 	<div class="row">
 
-		<form class="col-md-6 col-md-offset-3 wrapper">
-			<div class="row">
-				<div class="form-group">
-					<label>Student's First Name:</label>
-					<input [(ngModel)]="student.firstName" name="firstName" class="form-control" />
+		<form #registerForm="ngForm" (ngSubmit)="onSubmit()" class="col-md-6 col-md-offset-3 wrapper">
+
+			<div class="form-group">
+				<!-- field is required -->
+				<div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)"
+					 class="alert alert-danger">
+
+					<div *ngIf="firstName.errors.required">
+						First Name is required
+					</div>
+
 				</div>
 
-				<div class="form-group">
-					<label>Student's Last Name:</label>
-					<input [(ngModel)]="student.lastName" name="lastName" class="form-control" />
-				</div>
+				<label>Student's First Name:</label>
 
-				<div class="form-group">
-					<label>Student's Email:</label>
-					<input [(ngModel)]="student.email" name="email" class="form-control" />
-				</div>
-
-				<div class="form-group">
-					<label>Parent's First Name:</label>
-					<input [(ngModel)]="student.parentsFirstName" name="parentsFirstName" class="form-control" />
-				</div>
-
-				<div class="form-group">
-					<label>Parent's Last Name:</label>
-					<input [(ngModel)]="student.parentsLastName" name="parentsLastName" class="form-control" />
-				</div>
-
-				<div class="form-group">
-					<label>Parent's Email Address:</label>
-					<input [(ngModel)]="student.parentsEmailAddress" name="parentsEmailAddress" class="form-control" />
-				</div>
-
-				<div class="form-group">
-					<label>Phone Number:</label>
-					<input [(ngModel)]="student.phoneNumber" name="phoneNumber" class="form-control" />
-				</div>
-
-				<div class="form-group">
-					<label>Street Address:</label>
-					<input [(ngModel)]="student.streetAddress" name="streetAddress" class="form-control" />
-				</div>
-
-				<div class="form-group">
-					<label>City:</label>
-					<input [(ngModel)]="student.city" name="city" class="form-control" />
-				</div>
-
-				<div class="form-group">
-					<label>Zip:</label>
-					<input [(ngModel)]="student.zip" name="zip" class="form-control" />
-				</div>
-
-				<div class="form-group">
-					<label>State:</label>
-					<input [(ngModel)]="student.state" name="state" class="form-control" />
-				</div>
-
-
+				<input [(ngModel)]="student.firstName" name="firstName" class="form-control" #firstName="ngModel" required />
 			</div>
 
+			<div class="form-group">
+				<!-- field is required -->
+				<div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)"
+					 class="alert alert-danger">
+					<div *ngIf="lastName.errors.required">
+						Last Name is required
+					</div>
+				</div>
+				<label>Student's Last Name:</label>
+				<input [(ngModel)]="student.lastName" name="lastName" class="form-control" #lastName="ngModel" required />
+			</div>
+
+			<div class="form-group">
+				<!-- field is required -->
+				<div *ngIf="email.invalid && (email.dirty || email.touched)"
+					 class="alert alert-danger">
+					<div *ngIf="email.errors.pattern">
+						Must be a valid email address
+					</div>
+				</div>
+
+				<label>Student's Email:</label>
+				<input [(ngModel)]="student.email"
+					   pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+					   type="email"
+					   name="email"
+					   class="form-control"
+					   #email="ngModel" />
+			</div>
+
+			<div class="form-group">
+				<label>Parent's First Name:</label>
+				<input [(ngModel)]="student.parentsFirstName" name="parentsFirstName" class="form-control" #parentsFirstName="ngModel" />
+			</div>
+
+			<div class="form-group">
+				<label>Parent's Last Name:</label>
+				<input [(ngModel)]="student.parentsLastName" name="parentsLastName" class="form-control" #parentsLastName="ngModel" />
+			</div>
+
+			<div class="form-group">
+				<label>Parent's Email Address:</label>
+				<input [(ngModel)]="student.parentsEmailAddress" pattern="email" name="parentsEmailAddress" class="form-control" #parentsEmailAddress="ngModel" />
+			</div>
+
+			<div class="form-group">
+				<!-- field is required -->
+				<!--<div *ngIf="phoneNumber.invalid && (phoneNumber.dirty || phoneNumber.touched)"
+					 class="alert alert-danger">
+					<div *ngIf="phoneNumber.errors.tel">
+						Must be a valid telephone number '(xxx) xxx-xxxx'
+					</div>
+				</div>-->
+
+				<label>Phone Number:</label>
+				<input [(ngModel)]="student.phoneNumber" pattern="tel" name="phoneNumber" class="form-control" #phoneNumber="ngModel" />
+			</div>
+
+			<div class="form-group">
+				<label>Street Address:</label>
+				<input [(ngModel)]="student.streetAddress" name="streetAddress" class="form-control" #streetAddress="ngModel" />
+			</div>
+
+			<div class="form-group">
+				<label>City:</label>
+				<input [(ngModel)]="student.city" name="city" class="form-control" #city="ngModel" />
+			</div>
+
+			<div class="form-group">
+				<label>Zip:</label>
+				<input [(ngModel)]="student.zip" name="zip" class="form-control" #zip="ngModel" />
+			</div>
+
+			<div class="form-group">
+				<label>State:</label>
+				<input [(ngModel)]="student.state" name="state" class="form-control" #state="ngModel" />
+			</div>
 
 			<div class="form-group">
 				<label>Password:</label>
-				<input type="password" [(ngModel)]="password" name="Password" class="form-control" />
+				<input type="password" [(ngModel)]="password" pattern="password" name="Password" class="form-control"/>
 			</div>
 
 			<div class="form-group">
 				<label>Confirm Password:</label>
-				<input type="password" [(ngModel)]="confirmPassword" name="ConfirmPassword" class="form-control" />
+				<input type="password" [(ngModel)]="confirmPassword" pattern="password" name="ConfirmPassword" class="form-control" />
 			</div>
 
 			<div class="row parentcheck">
@@ -96,7 +131,7 @@
 				</div>
 			</div>
 			<div class="text-center">
-				<button (click)="submit()" class="btn btn-default submit-btn text-center">Submit</button>
+				<button type="submit" [disabled]="!registerForm.form.valid" class="btn btn-default submit-btn text-center">Submit</button>
 			</div>
 
 

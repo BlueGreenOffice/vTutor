@@ -14,11 +14,14 @@ export class StudentRegisterComponent {
 	public password: string;
 	public confirmPassword: string;
 
+	public iAgreeCheck: boolean;
+
 	constructor(private studentsService: StudentsService, private loginService: LoginService) {
 		this.student = new Student();
 	}
 
-	public submit() {
+
+	public onSubmit() {
 		this.studentsService.SaveStudent(this.student).subscribe(x => {
 			this.loginService.RegisterStudent(this.student.email, this.password);
 		});
