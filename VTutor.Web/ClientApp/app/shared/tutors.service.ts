@@ -26,12 +26,19 @@ export class TutorsService {
 	}
 
 	public SaveTutor(tutor: Tutor) {
-
-		return this.http.post('api/tutors', tutor)
+		if (tutor.id) {
+			return this.http.put('api/tutors/' + tutor.id, tutor);
+		}
+		else {
+			return this.http.post('api/tutors', tutor)
+		}
+		
 			
 	}
 
-
+	public GetCurrentTutor() {
+		return this.http.get('api/tutors?currentTutor=true');
+	}
 
 
 }

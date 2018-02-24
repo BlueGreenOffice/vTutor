@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using VTutor.Model;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace VTutor.Web.Controllers
 {
@@ -16,17 +17,39 @@ namespace VTutor.Web.Controllers
 	public class TutorsController : Controller
 	{
 		private readonly VTutorContext _context;
+		/// <summary>
+		/// User manager - attached to application DB context
+		/// </summary>
+		protected UserManager<ApplicationUser> UserManager { get; set; }
 
-		public TutorsController(VTutorContext context)
+		public TutorsController(VTutorContext context, UserManager<ApplicationUser> userManager)
 		{
 			_context = context;
+			this.UserManager = userManager;
 		}
 
 		// GET: api/Tutors
 		[HttpGet]
-		public IEnumerable<Tutor> GetTutor()
+		[System.Web.Http.Authorize(Roles = "Tutors")]
+		public async Task<IActionResult> GetTutor(bool currentTutor = false)
 		{
-			return _context.Tutors;
+			var user = await this.UserManager.GetUserAsync(this.User);
+
+			if (user == null && currentTutor)
+			{
+				return BadRequest("Cannot get current tutor profile profile if your not logged in as a tutor.");
+			}
+			else if (currentTutor)
+			{
+				var tutor = _context.Tutors.Where(t => t.Email == user.Email).FirstOrDefault();
+				tutor.User = null;
+
+				return Ok(tutor);
+			}
+			else
+			{
+				return Ok(_context.Tutors);
+			}
 		}
 
 		// GET: api/Tutors/5

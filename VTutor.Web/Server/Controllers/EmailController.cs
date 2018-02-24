@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using VTutor.Model;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 
 namespace VTutor.Web.Server.Controllers
 {
@@ -15,9 +16,12 @@ namespace VTutor.Web.Server.Controllers
 	public class EmailController : Controller
 	{
 		private readonly VTutorContext _context;
-		public EmailController(VTutorContext context)
+		IHostingEnvironment _hostingEnvironment;
+
+		public EmailController(VTutorContext context, IHostingEnvironment hostingEnvironment)
 		{
 			_context = context;
+			_hostingEnvironment = hostingEnvironment;
 		}
 
 		[HttpPost]
@@ -26,7 +30,7 @@ namespace VTutor.Web.Server.Controllers
 		{
 			try
 			{
-				string response = await Email.EmailClient.SendTutorInterestEmail(form);
+				string response = await Email.EmailClient.SendTutorInterestEmail(form, _hostingEnvironment.WebRootPath);
 				_context.DatabaseLogs.Add(new DatabaseLog() { Date = DateTime.Now, LogMessage = response, Error = false });
 				return Ok(response);
 			}

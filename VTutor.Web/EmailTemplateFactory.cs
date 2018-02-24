@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,17 +14,6 @@ namespace VTutor.Email
 {
     public static class EmailTemplateFactory
     {
-		private static string AssemblyDirectory
-		{
-			get
-			{
-				string codeBase = Assembly.GetExecutingAssembly().CodeBase;
-				UriBuilder uri = new UriBuilder(codeBase);
-				string path = Uri.UnescapeDataString(uri.Path);
-				return Path.GetDirectoryName(path);
-			}
-		}
-
 		public static async Task<string> BasicTemplate<T>(T model, string templatePath)
         {
 			IRazorLightEngine engine = new RazorLightEngineBuilder()
