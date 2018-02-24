@@ -33,10 +33,12 @@
 		<None Remove="ClientApp\app\components\footer\footer.component.ts" />
 		<None Remove="ClientApp\app\containers\admin-dashboard\admin-dashboard.component.ts" />
 		<None Remove="ClientApp\app\containers\dashboard\dashboard.component.ts" />
+		<None Remove="ClientApp\app\containers\privacy-policy\privacy-policy.component.ts" />
 		<None Remove="ClientApp\app\containers\refer-a-friend\refer-a-friend.component.ts" />
 		<None Remove="ClientApp\app\containers\sessions\sessions.component.ts" />
 		<None Remove="ClientApp\app\containers\student-profile\student-profile.component.ts" />
 		<None Remove="ClientApp\app\containers\student-register\student-register.component.ts" />
+		<None Remove="ClientApp\app\containers\terms-and-conditions\terms-and-conditions.component.ts" />
 		<None Remove="ClientApp\app\containers\tutor-profile\tutor-profile.component.ts" />
 		<None Remove="ClientApp\app\containers\tutor-register\tutor-register.component.ts" />
 		<None Remove="ClientApp\app\containers\why-vtutor\why-vtutor.component.ts" />
@@ -67,10 +69,12 @@
 		<TypeScriptCompile Include="ClientApp\app\components\footer\footer.component.ts" />
 		<TypeScriptCompile Include="ClientApp\app\containers\admin-dashboard\admin-dashboard.component.ts" />
 		<TypeScriptCompile Include="ClientApp\app\containers\dashboard\dashboard.component.ts" />
+		<TypeScriptCompile Include="ClientApp\app\containers\privacy-policy\privacy-policy.component.ts" />
 		<TypeScriptCompile Include="ClientApp\app\containers\refer-a-friend\refer-a-friend.component.ts" />
 		<TypeScriptCompile Include="ClientApp\app\containers\sessions\sessions.component.ts" />
 		<TypeScriptCompile Include="ClientApp\app\containers\student-profile\student-profile.component.ts" />
 		<TypeScriptCompile Include="ClientApp\app\containers\student-register\student-register.component.ts" />
+		<TypeScriptCompile Include="ClientApp\app\containers\terms-and-conditions\terms-and-conditions.component.ts" />
 		<TypeScriptCompile Include="ClientApp\app\containers\tutor-profile\tutor-profile.component.ts" />
 		<TypeScriptCompile Include="ClientApp\app\containers\tutor-register\tutor-register.component.ts" />
 		<TypeScriptCompile Include="ClientApp\app\containers\why-vtutor\why-vtutor.component.ts" />

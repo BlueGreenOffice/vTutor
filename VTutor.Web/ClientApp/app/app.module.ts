@@ -41,8 +41,8 @@ import { DashboardComponent } from './containers/dashboard/dashboard.component';
 import { AdminDashboardComponent } from './containers/admin-dashboard/admin-dashboard.component';
 import { NotFoundComponent } from './containers/not-found/not-found.component';
 import { TutorRegisterComponent } from './containers/tutor-register/tutor-register.component';
-
-
+import { TermsAndConditionsComponent } from './containers/terms-and-conditions/terms-and-conditions.component';
+import { PrivacyPolicyComponent } from './containers/privacy-policy/privacy-policy.component';
 
 import { LinkService } from './shared/link.service';
 import { UserService } from './shared/user.service';
@@ -88,6 +88,8 @@ export function createTranslateLoader(http: Http, baseHref) {
 		BecomeVTutor,
 		LoginComponent,
 		NotFoundComponent,
+		TermsAndConditionsComponent,
+		PrivacyPolicyComponent,
 	],
 	imports: [
 		CommonModule,
@@ -242,6 +244,25 @@ export function createTranslateLoader(http: Http, baseHref) {
 					]
 				}
 			},
+			{
+				path: 'privacy-policy', component: PrivacyPolicyComponent,
+				data: {
+					title: 'Privacy Policy',
+					meta: [{}],
+					links: [
+					]
+				}
+			},
+			{
+				path: 'terms-and-conditions', component: TermsAndConditionsComponent,
+				data: {
+					title: 'Terms And Conditions',
+					meta: [{}],
+					links: [
+					]
+				}
+			},
+
 
 			{
 				path: '**', component: NotFoundComponent,
