@@ -1,3 +1,21 @@
+<!--  -->
+<ng-template #reponseDlg>
+	<div class="modal-header">
+		<h4 class="modal-title pull-left">Thank You!</h4>
+		<button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+			<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body container-fluid">
+
+	<p>Thanks for your interest, our staff of talented educators will be in touch with you shortly!</p>	
+
+	</div>
+	<!--<div class="modal-footer">
+		<button class="btn btn-success">Save</button>
+	</div>-->
+</ng-template>
+
 <div class="container-fluid">
 
 	<div class="page-headline">
@@ -94,7 +112,7 @@
 				<input [(ngModel)]="confirmPassword" name="ConfirmPassword" class="form-control" />
 			</div>-->
 			<div class="text-center">
-				<button (click)="submit()" class="btn btn-default submit-btn text-center">Submit</button>
+				<button (click)="submit(reponseDlg)" class="btn btn-default submit-btn text-center">Submit</button>
 			</div>
 		</form>
 

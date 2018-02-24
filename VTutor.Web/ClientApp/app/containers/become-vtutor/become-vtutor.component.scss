@@ -1,7 +1,18 @@
 
 @import "../../app.component.scss";
 
+//Modal
 
+.modal-header {
+	background-color: $accent-color;
+	color: white;
+
+	span {
+		color: white;
+	}
+}
+
+//End Modal
 .become-vtutor p {
 	line-height: 200%;
 }
