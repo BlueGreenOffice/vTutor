@@ -8,17 +8,17 @@
 			</div>
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['home']">Home</a></li>
-					<li class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['why-vtutor']">Why vTutor</a></li>
-					<li *ngIf="!isLoggedInAsTutor()" class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['sessions']">Sessions</a></li>
-					<li *ngIf="isLoggedInAsTutor()" class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['dashboard']">Calendar</a></li>
-					<li *ngIf="isLoggedInAsStudent()" class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['student-profile']">Profile</a></li>
-					<li *ngIf="isLoggedInAsTutor()" class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['tutor-profile']">Profile</a></li>
-					<li *ngIf="!isLoggedIn()" class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['tutor-register']">Become A vTutor</a></li>
-					<li class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['refer-a-friend']">Refer A Friend</a></li>
-					<li *ngIf="!isLoggedIn()" class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['student-register']">Student Registration</a></li>
-					<li *ngIf="!isLoggedIn()" class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['login']">Login</a></li>
-					<li *ngIf="isLoggedIn()" class="vtutor-nav-link"><a (click)="logout()">Logout</a></li>
+					<li class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['home']">HOME</a></li>
+					<li class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['why-vtutor']">WHY vTUTOR</a></li>
+					<li *ngIf="!isLoggedInAsTutor()" class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['sessions']">SESSIONS</a></li>
+					<li *ngIf="isLoggedInAsTutor()" class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['dashboard']">CALENDAR</a></li>
+					<li *ngIf="isLoggedInAsStudent()" class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['student-profile']">PROFILE</a></li>
+					<li *ngIf="isLoggedInAsTutor()" class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['tutor-profile']">PROFILE</a></li>
+					<li *ngIf="!isLoggedIn()" class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['tutor-register']">BECOME A vTUTOR</a></li>
+					<li class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['refer-a-friend']">REFER A FRIEND</a></li>
+					<li *ngIf="!isLoggedIn()" class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['student-register']">STUDENT REGISTRATION</a></li>
+					<li *ngIf="!isLoggedIn()" class="vtutor-nav-link" [routerLinkActive]="['active']"><a [routerLink]="['login']">LOGIN</a></li>
+					<li *ngIf="isLoggedIn()" class="vtutor-nav-link"><a (click)="logout()">LOGOUT</a></li>
 				</ul>
 			</div>
 		</div>
