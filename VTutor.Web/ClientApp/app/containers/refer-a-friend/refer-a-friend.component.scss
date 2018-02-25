@@ -23,6 +23,10 @@
 
 
 .wrapper {
+	background-image: url("../../img/schoolGraphics.png");
+	background-size: 600px;
+	background-attachment: fixed;
+	background-position: bottom right;
 	background-color: lighten(#666666, 50%);
 	padding: 32px auto;
 	margin-bottom: 32px;
