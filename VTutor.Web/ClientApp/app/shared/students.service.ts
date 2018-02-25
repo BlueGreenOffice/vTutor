@@ -3,6 +3,13 @@ import { Injectable } from '@angular/core';
 import { Student } from '../models/Student';
 import { Http } from '@angular/http';
 
+export class ReferAFriendForm {
+	YourName: string;
+	YourEmailAddress: string;
+	YourFriendsName: string;
+	YourFriendsEmailAddress: string;
+	TellUsAboutYourFriend: string;
+}
 
 @Injectable()
 export class StudentsService {
@@ -14,6 +21,10 @@ export class StudentsService {
 
 	public GetLoggedInStudent() {
 		return this.http.get('api/students?current=true');
+	}
+
+	public ReferAFriend(form: ReferAFriendForm) {
+		return this.http.post('api/emails/refer-a-friend', form);
 	}
 
 	public SaveStudent(student: Student) {

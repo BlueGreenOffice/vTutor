@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -23,6 +24,7 @@ namespace VTutor.Web.Server.Controllers
 		private readonly VTutorContext _context;
 		private readonly UserManager<ApplicationUser> _userManager;
 		private readonly SignInManager<ApplicationUser> _signInManager;
+		private readonly IHostingEnvironment _hostingEnvironment;
 		private readonly IEmailSender _emailSender;
 		private readonly ILogger _logger;
 
@@ -30,12 +32,14 @@ namespace VTutor.Web.Server.Controllers
 			VTutorContext context,
 			UserManager<ApplicationUser> userManager,
 			SignInManager<ApplicationUser> signInManager,
+			IHostingEnvironment hostingEnvironment,
 			IEmailSender emailSender,
 			ILogger<AccountController> logger)
 		{
 			_context = context;
 			_userManager = userManager;
 			_signInManager = signInManager;
+			_hostingEnvironment = hostingEnvironment;
 			_emailSender = emailSender;
 			_logger = logger;
 		}
@@ -227,6 +231,12 @@ namespace VTutor.Web.Server.Controllers
 			{
 				ModelState.AddModelError("RegistrationType", "Must be either 'Students' or 'Tutors'");
 			}
+
+			if (model.RegistrationType == "Students")
+			{
+				await Email.EmailClient.SendStudentAccountCreatedEmail(new Email.TemplateModels.StudentAccountCreated() { EmailAddress = model.Email }, _hostingEnvironment.WebRootPath);
+			}
+			
 
 			if (ModelState.IsValid)
 			{

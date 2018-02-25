@@ -24,7 +24,7 @@
 
 				</div>
 
-				<label>Student's First Name:</label>
+				<label>Student's First Name:<span class="required">*</span></label>
 
 				<input [(ngModel)]="student.firstName" name="firstName" class="form-control" #firstName="ngModel" required />
 			</div>
@@ -37,7 +37,7 @@
 						Last Name is required
 					</div>
 				</div>
-				<label>Student's Last Name:</label>
+				<label>Student's Last Name:<span class="required">*</span></label>
 				<input [(ngModel)]="student.lastName" name="lastName" class="form-control" #lastName="ngModel" required />
 			</div>
 
@@ -50,13 +50,14 @@
 					</div>
 				</div>
 
-				<label>Student's Email:</label>
+				<label>Student's Email:<span class="required">*</span></label>
 				<input [(ngModel)]="student.email"
 					   pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
 					   type="email"
 					   name="email"
 					   class="form-control"
-					   #email="ngModel" />
+					   #email="ngModel"
+					   required />
 			</div>
 
 			<div class="form-group">
@@ -70,8 +71,20 @@
 			</div>
 
 			<div class="form-group">
+				<!-- field should be valid -->
+				<div *ngIf="parentsEmailAddress.invalid && (parentsEmailAddress.dirty || parentsEmailAddress.touched)"
+					 class="alert alert-danger">
+					<div *ngIf="parentsEmailAddress.errors.pattern">
+						Must be a valid email address
+					</div>
+				</div>
+
 				<label>Parent's Email Address:</label>
-				<input [(ngModel)]="student.parentsEmailAddress" pattern="email" name="parentsEmailAddress" class="form-control" #parentsEmailAddress="ngModel" />
+				<input [(ngModel)]="student.parentsEmailAddress"
+					   pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+					   name="parentsEmailAddress"
+					   class="form-control"
+					   #parentsEmailAddress="ngModel" />
 			</div>
 
 			<div class="form-group">
@@ -88,33 +101,65 @@
 			</div>
 
 			<div class="form-group">
-				<label>Street Address:</label>
-				<input [(ngModel)]="student.streetAddress" name="streetAddress" class="form-control" #streetAddress="ngModel" />
+				<!-- field is required -->
+				<div *ngIf="streetAddress.invalid && (streetAddress.dirty || streetAddress.touched)"
+					 class="alert alert-danger">
+					<div *ngIf="streetAddress.errors.required">
+						Street Address is required
+					</div>
+				</div>
+
+				<label>Street Address:<span class="required">*</span></label>
+				<input [(ngModel)]="student.streetAddress" name="streetAddress" class="form-control" #streetAddress="ngModel" required />
 			</div>
 
 			<div class="form-group">
-				<label>City:</label>
+				<!-- field is required -->
+				<div *ngIf="streetAddress.invalid && (streetAddress.dirty || streetAddress.touched)"
+					 class="alert alert-danger">
+					<div *ngIf="streetAddress.errors.required">
+						Street Address is required
+					</div>
+				</div>
+
+				<label>City:<span class="required">*</span></label>
 				<input [(ngModel)]="student.city" name="city" class="form-control" #city="ngModel" />
 			</div>
 
 			<div class="form-group">
-				<label>Zip:</label>
+				<!-- field is required -->
+				<div *ngIf="zip.invalid && (zip.dirty || zip.touched)"
+					 class="alert alert-danger">
+					<div *ngIf="zip.errors.required">
+						Zip code is required
+					</div>
+				</div>
+
+				<label>Zip:<span class="required">*</span></label>
 				<input [(ngModel)]="student.zip" name="zip" class="form-control" #zip="ngModel" />
 			</div>
 
 			<div class="form-group">
-				<label>State:</label>
+				<!-- field is required -->
+				<div *ngIf="state.invalid && (state.dirty || state.touched)"
+					 class="alert alert-danger">
+					<div *ngIf="state.errors.required">
+						State is required
+					</div>
+				</div>
+
+				<label>State:<span class="required">*</span></label>
 				<input [(ngModel)]="student.state" name="state" class="form-control" #state="ngModel" />
 			</div>
 
 			<div class="form-group">
-				<label>Password:</label>
-				<input type="password" [(ngModel)]="password" pattern="password" name="Password" class="form-control"/>
+				<label>Password:<span class="required">*</span></label>
+				<input type="password" [(ngModel)]="password" name="Password" class="form-control"/>
 			</div>
 
 			<div class="form-group">
-				<label>Confirm Password:</label>
-				<input type="password" [(ngModel)]="confirmPassword" pattern="password" name="ConfirmPassword" class="form-control" />
+				<label>Confirm Password:<span class="required">*</span></label>
+				<input type="password" [(ngModel)]="confirmPassword" name="ConfirmPassword" class="form-control" />
 			</div>
 
 			<div class="row parentcheck">

@@ -20,7 +20,6 @@ export class StudentRegisterComponent {
 		this.student = new Student();
 	}
 
-
 	public onSubmit() {
 		this.studentsService.SaveStudent(this.student).subscribe(x => {
 			this.loginService.RegisterStudent(this.student.email, this.password);

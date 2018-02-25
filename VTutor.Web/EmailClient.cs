@@ -84,33 +84,36 @@ namespace VTutor.Email
 
 		public static async Task<string> SendTutorInterestEmail(TutorContactForm model, string webRoot)
 		{
-			return await sendMailAsync(BuildEmail<TutorContactForm>(model, AssemblyDirectory(webRoot) + "/EmailTemplates/vTUTOR LEAD GEN FORM RECEIVED.html", "A Potential tutor is interested!", "Isaac@Knowtro.com", "Isaac"));
+			return await sendMailAsync(BuildEmail(model, AssemblyDirectory(webRoot) + "/EmailTemplates/vTUTOR LEAD GEN FORM RECEIVED.html", "A Potential tutor is interested!", "Isaac@Knowtro.com", "Isaac"));
 		}
 
-		public static async Task<string> SendStudentAccountCreatedEmail(TutorContactForm model, string webRoot)
+		public static async Task<string> SendStudentAccountCreatedEmail(StudentAccountCreated model, string webRoot)
 		{
-			return await sendMailAsync(BuildEmail<TutorContactForm>(model, AssemblyDirectory(webRoot) + "/EmailTemplates/STUDENT ACCOUNT SUCCESSFULLY CREATED.html", "A Potential tutor is interested!", "Isaac@Knowtro.com", "Isaac"));
+			return await sendMailAsync(BuildEmail(model, AssemblyDirectory(webRoot) + "/EmailTemplates/STUDENT ACCOUNT SUCCESSFULLY CREATED.html", "Thanks for joining vTutor!", model.EmailAddress, model.Name));
 		}
+
+
+
 
 
 		public static async Task<string> SendStudentRequestsSessionEmail(TutorContactForm model, string webRoot)
 		{
-			return await sendMailAsync(BuildEmail<TutorContactForm>(model, AssemblyDirectory(webRoot) + "/EmailTemplates/STUDENT REQUESTS TUTORING SESSION.html", "A Potential tutor is interested!", "Isaac@Knowtro.com", "Isaac"));
+			return await sendMailAsync(BuildEmail(model, AssemblyDirectory(webRoot) + "/EmailTemplates/STUDENT REQUESTS TUTORING SESSION.html", "A Potential tutor is interested!", "Isaac@Knowtro.com", "Isaac"));
 		}
 
 		public static async Task<string> SendStudentTutoringSessionReminderEmail(TutorContactForm model, string webRoot)
 		{
-			return await sendMailAsync(BuildEmail<TutorContactForm>(model, AssemblyDirectory(webRoot) + "/EmailTemplates/STUDENT TUTORING SESSION REMINDER.html", "A Potential tutor is interested!", "Isaac@Knowtro.com", "Isaac"));
+			return await sendMailAsync(BuildEmail(model, AssemblyDirectory(webRoot) + "/EmailTemplates/STUDENT TUTORING SESSION REMINDER.html", "A Potential tutor is interested!", "Isaac@Knowtro.com", "Isaac"));
 		}
 
 		public static async Task<string> SendTutorAccountCreatedEmail(TutorContactForm model, string webRoot)
 		{
-			return await sendMailAsync(BuildEmail<TutorContactForm>(model, AssemblyDirectory(webRoot) + "/EmailTemplates/vTUTOR ACCOUNT SUCCESSFULLY CREATED.html", "A Potential tutor is interested!", "Isaac@Knowtro.com", "Isaac"));
+			return await sendMailAsync(BuildEmail(model, AssemblyDirectory(webRoot) + "/EmailTemplates/vTUTOR ACCOUNT SUCCESSFULLY CREATED.html", "A Potential tutor is interested!", "Isaac@Knowtro.com", "Isaac"));
 		}
 
 		public static async Task<string> SendTutorSessionConfirmationEmail(TutorContactForm model, string webRoot)
 		{
-			return await sendMailAsync(BuildEmail<TutorContactForm>(model, AssemblyDirectory(webRoot) + "/EmailTemplates/vTUTOR SESSION CONFIRMATION.html", "A Potential tutor is interested!", "Isaac@Knowtro.com", "Isaac"));
+			return await sendMailAsync(BuildEmail(model, AssemblyDirectory(webRoot) + "/EmailTemplates/vTUTOR SESSION CONFIRMATION.html", "A Potential tutor is interested!", "Isaac@Knowtro.com", "Isaac"));
 		}
 		
 
