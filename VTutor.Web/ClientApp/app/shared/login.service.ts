@@ -87,15 +87,11 @@ export class LoginService {
 	}
 
 	RegisterTutor(username: string, password: string) {
-		this.http.post(`account/register?email=${username}&password=${password}&registrationType=Tutors`, {}).subscribe(result => {
-			
-		})
+		return this.http.post(`account/register?email=${username}&password=${password}&registrationType=Tutors`, {});
 	}
 
 	RegisterStudent(username: string, password: string) {
-		this.http.post(`account/register?email=${username}&password=${password}&registrationType=Students`, {}).subscribe(result => {
-
-		})
+		return this.http.post(`account/register?email=${username}&password=${password}&registrationType=Students`, {});
 	}
 
 	private GetRoles() {

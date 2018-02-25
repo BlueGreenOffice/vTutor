@@ -22,7 +22,9 @@ export class StudentRegisterComponent {
 
 	public onSubmit() {
 		this.studentsService.SaveStudent(this.student).subscribe(x => {
-			this.loginService.RegisterStudent(this.student.email, this.password);
+			this.loginService.RegisterStudent(this.student.email, this.password).subscribe(r => {
+				this.loginService.Login(this.student.email, this.password, null);
+			});
 		});
 	}
 }

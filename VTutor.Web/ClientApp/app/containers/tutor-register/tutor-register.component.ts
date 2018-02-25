@@ -58,9 +58,11 @@ export class TutorRegisterComponent {
 		this.addSubjectIfNecessary();
 	}
 
-	public submit() {
+	public onSubmit() {
 		this.tutors.SaveTutor(this.tutor).subscribe(r => {
-			this.loginService.RegisterTutor(this.tutor.email, this.password);
+			this.loginService.RegisterTutor(this.tutor.email, this.password).subscribe(x => {
+				this.loginService.Login(this.tutor.email, this.password, null);
+			});
 		});
 	}
 
