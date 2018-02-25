@@ -48,6 +48,10 @@
 					<div *ngIf="email.errors.pattern">
 						Must be a valid email address
 					</div>
+
+					<div *ngIf="email.errors.required">
+						Email is required
+					</div>
 				</div>
 
 				<label>Student's Email:<span class="required">*</span></label>
@@ -115,15 +119,15 @@
 
 			<div class="form-group">
 				<!-- field is required -->
-				<div *ngIf="streetAddress.invalid && (streetAddress.dirty || streetAddress.touched)"
+				<div *ngIf="city.invalid && (city.dirty || city.touched)"
 					 class="alert alert-danger">
-					<div *ngIf="streetAddress.errors.required">
-						Street Address is required
+					<div *ngIf="city.errors.required">
+						City is required
 					</div>
 				</div>
 
 				<label>City:<span class="required">*</span></label>
-				<input [(ngModel)]="student.city" name="city" class="form-control" #city="ngModel" />
+				<input [(ngModel)]="student.city" name="city" class="form-control" #city="ngModel" required />
 			</div>
 
 			<div class="form-group">
@@ -136,7 +140,7 @@
 				</div>
 
 				<label>Zip:<span class="required">*</span></label>
-				<input [(ngModel)]="student.zip" name="zip" class="form-control" #zip="ngModel" />
+				<input [(ngModel)]="student.zip" name="zip" class="form-control" #zip="ngModel" required />
 			</div>
 
 			<div class="form-group">
@@ -149,7 +153,7 @@
 				</div>
 
 				<label>State:<span class="required">*</span></label>
-				<input [(ngModel)]="student.state" name="state" class="form-control" #state="ngModel" />
+				<input [(ngModel)]="student.state" name="state" class="form-control" #state="ngModel" required />
 			</div>
 
 			<div class="form-group">
@@ -159,7 +163,7 @@
 
 			<div class="form-group">
 				<label>Confirm Password:<span class="required">*</span></label>
-				<input type="password" [(ngModel)]="confirmPassword" name="ConfirmPassword" class="form-control" />
+				<input type="password" [(ngModel)]="confirmPassword" name="ConfirmPassword" class="form-control" required />
 			</div>
 
 			<div class="row parentcheck">
