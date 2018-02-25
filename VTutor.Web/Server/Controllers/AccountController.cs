@@ -232,12 +232,6 @@ namespace VTutor.Web.Server.Controllers
 				ModelState.AddModelError("RegistrationType", "Must be either 'Students' or 'Tutors'");
 			}
 
-			if (model.RegistrationType == "Students")
-			{
-				await Email.EmailClient.SendStudentAccountCreatedEmail(new Email.TemplateModels.StudentAccountCreated() { EmailAddress = model.Email }, _hostingEnvironment.WebRootPath);
-			}
-			
-
 			if (ModelState.IsValid)
 			{
 				var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
@@ -258,6 +252,16 @@ namespace VTutor.Web.Server.Controllers
 
 					await _signInManager.SignInAsync(user, isPersistent: false);
 					_logger.LogInformation("User created a new account with password.");
+
+					if (model.RegistrationType == "Students")
+					{
+						await Email.EmailClient.SendStudentAccountCreatedEmail(new Email.TemplateModels.StudentAccountCreated() { EmailAddress = model.Email }, _hostingEnvironment.WebRootPath);
+					}
+					else if (model.RegistrationType == "Tutors")
+					{
+						await Email.EmailClient.SendTutorAccountCreatedEmail(new Email.TemplateModels.TutorAccountCreated() { Name = tutor.FirstName + " " + tutor.LastName, Email = model.Email }, _hostingEnvironment.WebRootPath);
+					}
+
 					return Ok();
 				}
 

@@ -106,9 +106,9 @@ namespace VTutor.Email
 			return await sendMailAsync(BuildEmail(model, AssemblyDirectory(webRoot) + "/EmailTemplates/STUDENT TUTORING SESSION REMINDER.html", "A Potential tutor is interested!", "Isaac@Knowtro.com", "Isaac"));
 		}
 
-		public static async Task<string> SendTutorAccountCreatedEmail(TutorContactForm model, string webRoot)
+		public static async Task<string> SendTutorAccountCreatedEmail(TutorAccountCreated model, string webRoot)
 		{
-			return await sendMailAsync(BuildEmail(model, AssemblyDirectory(webRoot) + "/EmailTemplates/vTUTOR ACCOUNT SUCCESSFULLY CREATED.html", "A Potential tutor is interested!", "Isaac@Knowtro.com", "Isaac"));
+			return await sendMailAsync(BuildEmail(model, AssemblyDirectory(webRoot) + "/EmailTemplates/vTUTOR ACCOUNT SUCCESSFULLY CREATED.html", "Thanks for joining vTutor!", model.Email, model.Name));
 		}
 
 		public static async Task<string> SendTutorSessionConfirmationEmail(TutorContactForm model, string webRoot)
