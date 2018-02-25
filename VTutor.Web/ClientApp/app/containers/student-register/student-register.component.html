@@ -157,20 +157,43 @@
 			</div>
 
 			<div class="form-group">
+				<!-- Password validation -->
+				<div *ngIf="passwordModel.invalid && (passwordModel.dirty || passwordModel.touched)"
+					 class="alert alert-danger">
+					<div *ngIf="passwordModel.errors.required">
+						Password is required
+					</div>
+
+					<div *ngIf="passwordModel.errors.pattern">
+						Your password must be at least 8 characters (6 unique characters) with one digit, and one uppercase.
+					</div>
+				</div>
+
+
 				<label>Password:<span class="required">*</span></label>
-				<input type="password" [(ngModel)]="password" name="Password" class="form-control"/>
+				<input type="password" pattern="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$" [(ngModel)]="password" #passwordModel="ngModel" name="Password" class="form-control" required />
 			</div>
 
 			<div class="form-group">
+				<div *ngIf="confirmPasswordModel.invalid && (confirmPasswordModel.dirty || confirmPasswordModel.touched)"
+					 class="alert alert-danger">
+					<div *ngIf="confirmPasswordModel.errors.required">
+						Password is required
+					</div>
+					<div *ngIf="confirmPasswordModel.errors.pattern">
+						Does not match your password.
+					</div>
+				</div>
+
 				<label>Confirm Password:<span class="required">*</span></label>
-				<input type="password" [(ngModel)]="confirmPassword" name="ConfirmPassword" class="form-control" required />
+				<input type="password" [pattern]="password" [(ngModel)]="confirmPassword" #confirmPasswordModel="ngModel" name="ConfirmPassword" class="form-control" required />
 			</div>
 
 			<div class="row parentcheck">
 				<div class="col-md-1">
 					<div class="form-check">
-						<input type="checkbox" class="form-check-input" id="exampleCheck1">
-						<label class="form-check-label" for="exampleCheck1"></label>
+						<input type="checkbox" [(ngModel)]="iAgreeCheck" name="agreeCheck" class="form-check-input" id="agreeCheck">
+						<label class="form-check-label" for="agreeCheck"></label>
 					</div>
 
 				</div>
@@ -180,7 +203,7 @@
 				</div>
 			</div>
 			<div class="text-center">
-				<button type="submit" [disabled]="!registerForm.form.valid" class="btn btn-default submit-btn text-center">Submit</button>
+				<button type="submit" [disabled]="!registerForm.form.valid || !iAgreeCheck" class="btn btn-default submit-btn text-center">Submit</button>
 			</div>
 
 

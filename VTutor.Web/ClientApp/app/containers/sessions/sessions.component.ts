@@ -88,6 +88,7 @@ export class SessionsComponent {
 		this.tutorSubject.name = subject;
 	}
 
+
 	public gradeDisplay() {
 		return this.tutorSubject.subjectGrade == null ? 'Select Your Grade' : this.tutorSubject.subjectGrade.name.toString();
 	}

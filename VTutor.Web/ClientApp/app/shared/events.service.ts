@@ -47,18 +47,18 @@ export class EventsService {
 			|| date.getDay() == 3
 			|| date.getDay() == 4) {
 			return [
-				new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), 16, 30)),
-				new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), 18)),
-				new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), 19, 30)),
-				new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), 21))
+				new Date(date.getFullYear(), date.getMonth(), date.getDate(), 16, 30),
+				new Date(date.getFullYear(), date.getMonth(), date.getDate(), 18),
+				new Date(date.getFullYear(), date.getMonth(), date.getDate(), 19, 30),
+				new Date(date.getFullYear(), date.getMonth(), date.getDate(), 21)
 			]
 		}
 		//Saturday 11:00AM, 12:30PM, 2:00PM
 		else if (date.getDay() == 6) {
 			return [
-				new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), 11)),
-				new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), 12, 30)),
-				new Date(Date.UTC(date.getFullYear(), date.getMonth(), date.getDate(), 14)),
+				new Date(date.getFullYear(), date.getMonth(), date.getDate(), 11),
+				new Date(date.getFullYear(), date.getMonth(), date.getDate(), 12, 30),
+				new Date(date.getFullYear(), date.getMonth(), date.getDate(), 14),
 			]
 		}
 		//no other slots
