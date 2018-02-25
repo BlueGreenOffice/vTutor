@@ -17,12 +17,12 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label>Your Name:</label>
-						<input [(ngModel)]="yourName" name="name" class="form-control" />
+						<input [(ngModel)]="form.YourName" name="name" class="form-control" />
 					</div>
 
 					<div class="form-group">
 						<label>Your Friend's Name:</label>
-						<input class="form-control" />
+						<input [(ngModel)]="form.YourFriendsName" name="yourFriendsName" class="form-control" />
 					</div>
 
 				</div>
@@ -31,19 +31,19 @@
 				<div class="col-md-6">
 					<div class="form-group">
 						<label>Your Email Address:</label>
-						<input [(ngModel)]="yourEmail" name="email" class="form-control" />
+						<input [(ngModel)]="form.YourEmail" name="email" class="form-control" />
 					</div>
 
 					<div class="form-group">
 						<label>Your Friend's Email Address:</label>
-						<input class="form-control" />
+						<input [(ngModel)]="form.YourFriendsEmailAddress" class="form-control" />
 					</div>
 				</div>
 
 				<div class="col-md-12">
 					<div class="form-group">
 						<label>Tell us about your friend:</label>
-						<textarea class="form-control"></textarea>
+						<textarea [(ngModel)]="form.TellUsAboutYourFriend" class="form-control"></textarea>
 					</div>
 				</div>
 				<div class="text-center">

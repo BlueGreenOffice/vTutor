@@ -45,7 +45,26 @@ namespace VTutor.Web.Server.Controllers
 			}
 		}
 
-
+		[HttpPost]
+		[Route("refer-a-friend")]
+		public async Task<IActionResult> ReferAFriend([FromBody] Email.TemplateModels.ReferAFriendForm form)
+		{
+			try
+			{
+				string response = "";//await Email.EmailClient.(form, _hostingEnvironment.WebRootPath); TODO
+				_context.DatabaseLogs.Add(new DatabaseLog() { Date = DateTime.Now, LogMessage = response, Error = false });
+				return Ok(response);
+			}
+			catch (Exception ex)
+			{
+				_context.DatabaseLogs.Add(new DatabaseLog() { Date = DateTime.Now, LogMessage = ex.ToString(), Error = true });
+				return StatusCode(500, ex);
+			}
+			finally
+			{
+				await _context.SaveChangesAsync();
+			}
+		}
 
     }
 }

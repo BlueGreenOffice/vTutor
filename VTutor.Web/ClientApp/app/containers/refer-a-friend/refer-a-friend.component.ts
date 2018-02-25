@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { StudentsService, ReferAFriendForm } from '../../shared/students.service';
 
 @Component({
     selector: 'vt-refer-a-friend',
@@ -7,10 +8,13 @@ import { Component } from '@angular/core';
 })
 export class ReferAFriendComponent {
 
-	yourName: string;
-	yourEmail: string;
+	public form: ReferAFriendForm
+
+	public constructor(private students: StudentsService) {
+
+	}
 
 	public submit() {
-
+		this.students.ReferAFriend(this.form);
 	}
 }
