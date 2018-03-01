@@ -74,6 +74,9 @@ export class SessionsComponent {
 		});
 	}
 
+	onPaymentStatus() {
+
+	}
 
 	login() {
 		this.loginService.Login(this.email, this.password, 'sessions');

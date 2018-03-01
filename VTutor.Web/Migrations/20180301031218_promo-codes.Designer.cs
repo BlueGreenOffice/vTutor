@@ -11,9 +11,10 @@ using VTutor.Model;
 namespace VTutor.Web.Migrations
 {
     [DbContext(typeof(VTutorContext))]
-    partial class VTutorContextModelSnapshot : ModelSnapshot
+    [Migration("20180301031218_promo-codes")]
+    partial class promocodes
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -251,44 +252,6 @@ namespace VTutor.Web.Migrations
                     b.ToTable("Image");
                 });
 
-            modelBuilder.Entity("VTutor.Model.PromoCode", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("DiscountAmount");
-
-                    b.Property<int?>("IndividualUsageAmount");
-
-                    b.Property<string>("Name");
-
-                    b.Property<int?>("TotalUsageAmount");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("PromoCodes");
-                });
-
-            modelBuilder.Entity("VTutor.Model.PromoCodeUsage", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<Guid?>("PromoCodeId");
-
-                    b.Property<Guid?>("StudentId");
-
-                    b.Property<DateTime>("UsedDate");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("PromoCodeId");
-
-                    b.HasIndex("StudentId");
-
-                    b.ToTable("PromoCodeUsages");
-                });
-
             modelBuilder.Entity("VTutor.Model.ScheduleBlock", b =>
                 {
                     b.Property<Guid>("Id")
@@ -483,17 +446,6 @@ namespace VTutor.Web.Migrations
                     b.HasOne("VTutor.Model.Tutor")
                         .WithMany("Documents")
                         .HasForeignKey("TutorId");
-                });
-
-            modelBuilder.Entity("VTutor.Model.PromoCodeUsage", b =>
-                {
-                    b.HasOne("VTutor.Model.PromoCode", "PromoCode")
-                        .WithMany()
-                        .HasForeignKey("PromoCodeId");
-
-                    b.HasOne("VTutor.Model.Student", "Student")
-                        .WithMany()
-                        .HasForeignKey("StudentId");
                 });
 
             modelBuilder.Entity("VTutor.Model.ScheduleBlock", b =>

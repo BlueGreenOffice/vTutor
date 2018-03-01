@@ -109,7 +109,7 @@
 								   #dp="bsDatepicker"
 								   bsDatepicker
 								   formControlName="date"
-								   [bsConfig]="{ dateInputFormat: 'YYYY-MM-DD' }">
+								   [bsConfig]="{ dateInputFormat: 'MM-DD-YYYY' }">
 						</form>
 					</div>
 					<div class="col-xs-12 col-12 col-md-3 form-group">
@@ -123,7 +123,15 @@
 							{{formatTime(block.startTime)}} - {{formatTime(block.endTime)}}
 							<div *ngIf="selectedBlock == block">
 								<a *ngIf="!isLoggedIn()" (click)="openLoginDialog(loginDialog)" class="btn btn-default">Login</a><a *ngIf="!isLoggedIn()" class="btn btn-default">Register</a>
-								<a *ngIf="isLoggedIn()" (click)="payNow(block)" class="btn btn-primary">Buy Now</a>
+								<div *ngIf="isLoggedIn()">
+									<ngx-braintree [clientTokenURL]="'api/purchase/getClientToken'"
+												   [createPurchaseURL]="'api/purchase/createPurchase'"
+												   [showCardholderName]="true" 
+												   [chargeAmount]="50.00"
+												   (paymentStatus)="onPaymentStatus($event)">
+
+									</ngx-braintree>
+								</div>
 							</div>
 						</a>
 					</div>

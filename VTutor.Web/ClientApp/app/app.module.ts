@@ -1,6 +1,7 @@
 import { NgModule, Inject } from '@angular/core';
 import { RouterModule, PreloadAllModules } from '@angular/router';
 import { CommonModule, APP_BASE_HREF } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 import { HttpModule, Http } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -13,6 +14,9 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CookieService } from 'ngx-cookie-service';
 
 import { TagInputModule } from 'ngx-chips';
+
+import { NgxBraintreeModule } from 'ngx-braintree';
+
 //import { CalendarModule } from 'primeng/primeng';
 
 
@@ -94,6 +98,7 @@ export function createTranslateLoader(http: Http, baseHref) {
 	imports: [
 		CommonModule,
 		HttpModule,
+		HttpClientModule,
 		FormsModule,
 		ReactiveFormsModule,
 
@@ -104,7 +109,7 @@ export function createTranslateLoader(http: Http, baseHref) {
 		BsDatepickerModule.forRoot(),
 		ModalModule.forRoot(),
 		TransferHttpModule, // Our Http TransferData method
-
+		NgxBraintreeModule,
 		// i18n support
 		TranslateModule.forRoot({
 			loader: {

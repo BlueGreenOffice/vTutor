@@ -11,7 +11,7 @@ export class ReferAFriendComponent {
 	public form: ReferAFriendForm
 
 	public constructor(private students: StudentsService) {
-
+		this.form = new ReferAFriendForm();
 	}
 
 	public submit() {

@@ -11,9 +11,10 @@ using VTutor.Model;
 namespace VTutor.Web.Migrations
 {
     [DbContext(typeof(VTutorContext))]
-    partial class VTutorContextModelSnapshot : ModelSnapshot
+    [Migration("20180301031325_promo-codes_1")]
+    partial class promocodes_1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
