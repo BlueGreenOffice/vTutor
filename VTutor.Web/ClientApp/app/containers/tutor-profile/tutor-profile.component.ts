@@ -26,5 +26,27 @@ export class TutorProfileComponent {
 		this.tutorService.SaveTutor(this.tutor).subscribe(t => { });
 	}
 
+	public onProfileImageChange(event) {
+		let reader = new FileReader();
+		if (event.target.files && event.target.files.length > 0) {
+			let file = event.target.files[0];
+			reader.readAsDataURL(file);
+			reader.onload = () => {
+				
+			};
+		}
+	}
+
+	public onDocumentFileChange(event) {
+		let reader = new FileReader();
+		if (event.target.files && event.target.files.length > 0) {
+			let file = event.target.files[0];
+			reader.readAsDataURL(file);
+			reader.onload = () => {
+
+			};
+		}
+	}
+
 
 }
