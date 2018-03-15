@@ -17,7 +17,7 @@ namespace VTutor.Model
 		public string Hobbies { get; set; }
 
 		public Image TutorImage { get; set; }
-		public Image[] Documents { get; set; }
+		public List<Image> Documents { get; set; }
 
         public ApplicationUser User { get; set; }
 

@@ -22,6 +22,7 @@ namespace VTutor.Model
 		public DbSet<DatabaseLog> DatabaseLogs { get; set; }
 		public DbSet<PromoCode> PromoCodes { get; set; }
 		public DbSet<PromoCodeUsage> PromoCodeUsages { get; set; }
+		public DbSet<Image> Image { get; set; }
 	}
 
 	public class VTutorContextFactory : IDesignTimeDbContextFactory<VTutorContext>

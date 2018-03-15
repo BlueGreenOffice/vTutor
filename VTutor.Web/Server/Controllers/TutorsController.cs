@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using VTutor.Model;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using VTutor.Web.Server.Models;
 
 namespace VTutor.Web.Controllers
 {
@@ -104,6 +105,46 @@ namespace VTutor.Web.Controllers
 			}
 
 			return NoContent();
+		}
+
+		[HttpPost("{id}/certification")]
+		[AllowAnonymous]
+		public async Task<IActionResult> PostCertification(Guid id, [FromBody] FileModel file)
+		{
+
+			var tutor = await _context.Tutors.Where(t => t.Id == id)
+				.Include(t => t.Documents)
+				.FirstOrDefaultAsync();
+
+			string preBase64 = file.File.Substring(0, file.File.IndexOf(','));
+			string base64 = file.File.Substring(file.File.IndexOf(',') + 1);
+
+			byte[] bytes = Convert.FromBase64String(base64);
+
+			tutor.Documents.Add(new Image() { Id = new Guid(), ImageData = bytes });
+			await _context.SaveChangesAsync();
+
+			return Ok();
+		}
+
+		[HttpPost("{id}/profileImage")]
+		[AllowAnonymous]
+		public async Task<IActionResult> PostProfileImage(Guid id, [FromBody] FileModel file)
+		{
+
+			var tutor = await _context.Tutors.Where(t => t.Id == id)
+				.Include(t => t.Documents)
+				.FirstOrDefaultAsync();
+
+			string preBase64 = file.File.Substring(0, file.File.IndexOf(','));
+			string base64 = file.File.Substring(file.File.IndexOf(',') + 1);
+
+			byte[] bytes = Convert.FromBase64String(base64);
+
+			tutor.TutorImage = new Image() { Id = new Guid(), ImageData = bytes };
+			await _context.SaveChangesAsync();
+
+			return Ok();
 		}
 
 		// POST: api/Tutors

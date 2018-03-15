@@ -30,22 +30,32 @@ export class TutorProfileComponent {
 		let reader = new FileReader();
 		if (event.target.files && event.target.files.length > 0) {
 			let file = event.target.files[0];
-			reader.readAsDataURL(file);
 			reader.onload = () => {
-				
+				this.tutorService.SaveTutorCertificate(this.tutor.id, { file: reader.result })
+					.subscribe(x => { });
 			};
+
+			reader.readAsDataURL(file);
+			
+
 		}
 	}
+
 
 	public onDocumentFileChange(event) {
 		let reader = new FileReader();
 		if (event.target.files && event.target.files.length > 0) {
 			let file = event.target.files[0];
-			reader.readAsDataURL(file);
 			reader.onload = () => {
-
+				this.tutorService.SaveProfileImage(this.tutor.id, { file: reader.result })
+					.subscribe(x => { });
 			};
+
+			reader.readAsDataURL(file);
+
+
 		}
+		
 	}
 
 
