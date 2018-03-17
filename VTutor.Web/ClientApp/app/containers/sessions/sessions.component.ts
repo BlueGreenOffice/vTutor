@@ -27,7 +27,7 @@ export class SessionsComponent {
 
 	myForm: FormGroup;
 
-	minDate = new Date(2017, 5, 10);
+	minDate = new Date();
 	maxDate = new Date(2018, 9, 15);
 
 	bsValue: Date = new Date();
@@ -108,12 +108,13 @@ export class SessionsComponent {
 		this.modalRef = this.modalService.show(template);
 	}
 
-	selectBlock(block: Event) {
-		//todo:
+	formatDate(date: Date) {
+		return (date.getMonth() + 1) + "-" + date.getDate() + "-" + date.getFullYear() + ' ' + date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
 	}
 
-	payNow(block:Event) {
-		window.open('https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=ZHDL336BHDH6A', 'name', 'height=800,width=600')
+	selectBlock(block: Event) {
+		//todo:
+		//block.startTime.toDateString + block.startTime.toTimeString
 	}
 
 	formatTime(date: Date) {

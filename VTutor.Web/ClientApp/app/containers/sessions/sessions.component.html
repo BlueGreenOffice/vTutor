@@ -125,7 +125,7 @@
 								<a *ngIf="!isLoggedIn()" (click)="openLoginDialog(loginDialog)" class="btn btn-default">Login</a><a *ngIf="!isLoggedIn()" class="btn btn-default">Register</a>
 								<div *ngIf="isLoggedIn()">
 									<ngx-braintree [clientTokenURL]="'api/purchase/getClientToken'"
-												   [createPurchaseURL]="'api/purchase/createPurchase'"
+												   [createPurchaseURL]="'api/purchase/createPurchase?startDate=' + formatDate(block.startTime) + '&promo=' + promoCode"
 												   [showCardholderName]="true" 
 												   [chargeAmount]="50.00"
 												   (paymentStatus)="onPaymentStatus($event)">

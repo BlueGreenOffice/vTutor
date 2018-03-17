@@ -6,8 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Braintree;
-
-
+using Microsoft.AspNetCore.Identity;
+using VTutor.Model;
 
 namespace VTutor.Web.Controllers
 {
@@ -39,12 +39,18 @@ namespace VTutor.Web.Controllers
     [Route("api/Purchase")]
     public class PurchaseController : Controller
     {
-
+		/// <summary>
+		/// User manager - attached to application DB context
+		/// </summary>
+		protected UserManager<ApplicationUser> UserManager { get; set; }
+		private readonly VTutorContext _context;
 		private readonly IConfiguration _configuration;
 
-		public PurchaseController(IConfiguration configuration)
+		public PurchaseController(IConfiguration configuration, VTutorContext context, UserManager<ApplicationUser> userManager)
 		{
 			_configuration = configuration;
+			_context = context;
+			this.UserManager = userManager;
 		}
 
 		[HttpGet]
@@ -79,9 +85,22 @@ namespace VTutor.Web.Controllers
 
 		[HttpPost]
 		[Route("createPurchase")]
-		public async Task<IActionResult> PurchaseSession([FromBody]Nonce nonce)
+		public async Task<IActionResult> PurchaseSession([FromQuery]DateTime startDate, [FromQuery]string promo, [FromBody]Nonce nonce)
 		{
+			var user = await this.UserManager.GetUserAsync(this.User);
 
+			if (user == null)
+			{
+				return StatusCode(401);
+			}
+
+			var student = _context.Students.Where(s => s.Email == user.Email).FirstOrDefault();
+
+			if (student == null )
+			{
+				return BadRequest("Tutors are not allowed to request sessions.");
+			}
+			
 			var gateway = new BraintreeGateway
 			{
 				Environment = Braintree.Environment.SANDBOX,
@@ -105,6 +124,16 @@ namespace VTutor.Web.Controllers
 
 			if (result.IsSuccess())
 			{
+				_context.Appointments.Add(new Appointment()
+				{
+					StartTime = startDate,
+					EndTime = startDate.AddHours(1),
+					Student = student,
+					Tutor = null
+				});
+
+				await _context.SaveChangesAsync();
+
 				//session is booked WOOT
 			}
 
