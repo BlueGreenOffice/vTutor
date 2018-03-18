@@ -36,4 +36,14 @@ export class StudentsService {
 		}
 	}
 
+	public GetAppointments() {
+		return this.http.get('api/appointments').map(response => {
+			let events = <any[]>response.json();
+			return events.map(x => {
+				return { startTime: new Date(x.startTime), endTime: new Date(x.endTime), id: x.id, tutor: null };
+			})
+		});
+	}
+
+
 }

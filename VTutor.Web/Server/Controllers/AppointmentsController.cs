@@ -7,120 +7,140 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 using VTutor.Model;
+using Microsoft.AspNetCore.Identity;
 
 namespace VTutor.Web.Controllers
 {
-  [Produces("application/json")]
-  [Route("api/Appointments")]
-  public class AppointmentsController : Controller
-  {
-    private readonly VTutorContext _context;
+	[Produces("application/json")]
+	[Route("api/Appointments")]
+	public class AppointmentsController : Controller
+	{
+		/// <summary>
+		/// User manager - attached to application DB context
+		/// </summary>
+		protected UserManager<ApplicationUser> UserManager { get; set; }
+		private readonly VTutorContext _context;
 
-    public AppointmentsController(VTutorContext context)
-    {
-      _context = context;
-    }
+		public AppointmentsController(VTutorContext context, UserManager<ApplicationUser> userManager)
+		{
+			_context = context;
+			this.UserManager = userManager;
+		}
 
-    // GET: api/Appointments
-    [HttpGet]
-    public IEnumerable<Appointment> GetAppointment()
-    {
-      return _context.Appointments;
-    }
+		// GET: api/Appointments
+		[HttpGet]
+		public async Task<IActionResult> GetAppointments()
+		{
+			var user = await this.UserManager.GetUserAsync(this.User);
 
-    // GET: api/Appointments/5
-    [HttpGet("{id}")]
-    public async Task<IActionResult> GetAppointment([FromRoute] Guid id)
-    {
-      if (!ModelState.IsValid)
-      {
-        return BadRequest(ModelState);
-      }
+			if (user == null)
+			{
+				return StatusCode(401);
+			}
 
-      var appointment = await _context.Appointments.SingleOrDefaultAsync(m => m.Id == id);
+			var student = _context.Students.Include(s => s.Appointments).Where(s => s.Email == user.Email).FirstOrDefault();
 
-      if (appointment == null)
-      {
-        return NotFound();
-      }
+			if (student == null)
+			{
+				return BadRequest("Tutors are not allowed to request sessions.");
+			}
+			student.Appointments.ForEach(a => a.Student = null);
+			return Ok(student.Appointments);
+		}
 
-      return Ok(appointment);
-    }
+		// GET: api/Appointments/5
+		[HttpGet("{id}")]
+		public async Task<IActionResult> GetAppointment([FromRoute] Guid id)
+		{
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
 
-    // PUT: api/Appointments/5
-    [HttpPut("{id}")]
-    public async Task<IActionResult> PutAppointment([FromRoute] Guid id, [FromBody] Appointment appointment)
-    {
-      if (!ModelState.IsValid)
-      {
-        return BadRequest(ModelState);
-      }
+			var appointment = await _context.Appointments.SingleOrDefaultAsync(m => m.Id == id);
 
-      if (id != appointment.Id)
-      {
-        return BadRequest();
-      }
+			if (appointment == null)
+			{
+				return NotFound();
+			}
 
-      _context.Entry(appointment).State = EntityState.Modified;
+			return Ok(appointment);
+		}
 
-      try
-      {
-        await _context.SaveChangesAsync();
-      }
-      catch (DbUpdateConcurrencyException)
-      {
-        if (!AppointmentExists(id))
-        {
-          return NotFound();
-        }
-        else
-        {
-          throw;
-        }
-      }
+		// PUT: api/Appointments/5
+		[HttpPut("{id}")]
+		public async Task<IActionResult> PutAppointment([FromRoute] Guid id, [FromBody] Appointment appointment)
+		{
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
 
-      return NoContent();
-    }
+			if (id != appointment.Id)
+			{
+				return BadRequest();
+			}
 
-    // POST: api/Appointments
-    [HttpPost]
-    public async Task<IActionResult> PostAppointment([FromBody] Appointment appointment)
-    {
-      if (!ModelState.IsValid)
-      {
-        return BadRequest(ModelState);
-      }
+			_context.Entry(appointment).State = EntityState.Modified;
 
-      _context.Appointments.Add(appointment);
-      await _context.SaveChangesAsync();
+			try
+			{
+				await _context.SaveChangesAsync();
+			}
+			catch (DbUpdateConcurrencyException)
+			{
+				if (!AppointmentExists(id))
+				{
+					return NotFound();
+				}
+				else
+				{
+					throw;
+				}
+			}
 
-      return CreatedAtAction("GetAppointment", new { id = appointment.Id }, appointment);
-    }
+			return NoContent();
+		}
 
-    // DELETE: api/Appointments/5
-    [HttpDelete("{id}")]
-    public async Task<IActionResult> DeleteAppointment([FromRoute] Guid id)
-    {
-      if (!ModelState.IsValid)
-      {
-        return BadRequest(ModelState);
-      }
+		// POST: api/Appointments
+		[HttpPost]
+		public async Task<IActionResult> PostAppointment([FromBody] Appointment appointment)
+		{
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
 
-      var appointment = await _context.Appointments.SingleOrDefaultAsync(m => m.Id == id);
-      if (appointment == null)
-      {
-        return NotFound();
-      }
+			_context.Appointments.Add(appointment);
+			await _context.SaveChangesAsync();
 
-      _context.Appointments.Remove(appointment);
-      await _context.SaveChangesAsync();
+			return CreatedAtAction("GetAppointment", new { id = appointment.Id }, appointment);
+		}
 
-      return Ok(appointment);
-    }
+		// DELETE: api/Appointments/5
+		[HttpDelete("{id}")]
+		public async Task<IActionResult> DeleteAppointment([FromRoute] Guid id)
+		{
+			if (!ModelState.IsValid)
+			{
+				return BadRequest(ModelState);
+			}
 
-    private bool AppointmentExists(Guid id)
-    {
-      return _context.Appointments.Any(e => e.Id == id);
-    }
-  }
+			var appointment = await _context.Appointments.SingleOrDefaultAsync(m => m.Id == id);
+			if (appointment == null)
+			{
+				return NotFound();
+			}
+
+			_context.Appointments.Remove(appointment);
+			await _context.SaveChangesAsync();
+
+			return Ok(appointment);
+		}
+
+		private bool AppointmentExists(Guid id)
+		{
+			return _context.Appointments.Any(e => e.Id == id);
+		}
+	}
 }

@@ -47,6 +47,7 @@ import { NotFoundComponent } from './containers/not-found/not-found.component';
 import { TutorRegisterComponent } from './containers/tutor-register/tutor-register.component';
 import { TermsAndConditionsComponent } from './containers/terms-and-conditions/terms-and-conditions.component';
 import { PrivacyPolicyComponent } from './containers/privacy-policy/privacy-policy.component';
+import { StudentDashboardComponent } from './containers/student-dashboard/student-dashboard.component';
 
 import { LinkService } from './shared/link.service';
 import { UserService } from './shared/user.service';
@@ -94,6 +95,7 @@ export function createTranslateLoader(http: Http, baseHref) {
 		NotFoundComponent,
 		TermsAndConditionsComponent,
 		PrivacyPolicyComponent,
+		StudentDashboardComponent
 	],
 	imports: [
 		CommonModule,
@@ -187,6 +189,16 @@ export function createTranslateLoader(http: Http, baseHref) {
 				path: 'admin-dashboard', component: AdminDashboardComponent,
 				data: {
 					title: 'Administrator Dashboard',
+					meta: [{}],
+					links: [
+					]
+				}
+			},
+
+			{
+				path: 'student-dashboard', component: StudentDashboardComponent,
+				data: {
+					title: 'Student Dashboard',
 					meta: [{}],
 					links: [
 					]
