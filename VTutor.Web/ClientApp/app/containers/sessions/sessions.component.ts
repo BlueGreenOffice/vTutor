@@ -19,7 +19,7 @@ export class SessionsComponent {
 	public grade: number;
 	public subject: string;
 
-	public promoCode: string;
+	public promoCode: string = null;
 
 	allGrades: Grade[];
 	allSubjects: Subject[];
