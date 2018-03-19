@@ -166,7 +166,7 @@ namespace VTutor.Web.Controllers
 				//The passed in code is invalid.
 				return Ok(BadRequestResult.Create("The promo you have attempted to use does not exist or is invalid"));
 			}
-			else
+			else if (promoCode != null)
 			{
 				int usageCount = _context.PromoCodeUsages.Count(x => x.PromoCode.Id == promoCode.Id);
 				int personalUsageCount = _context.PromoCodeUsages.Count(x => x.PromoCode.Id == promoCode.Id && x.Student.Id == student.Id);
