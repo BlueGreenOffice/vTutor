@@ -160,7 +160,7 @@ namespace VTutor.Web.Controllers
 
 			var promoCode = _context.PromoCodes.Where(p => p.Name == promo).FirstOrDefault();
 
-			if (promo != null && promoCode == null)
+			if (promo != null && promo != "null" && promoCode == null)
 			{
 				//The passed in code is invalid.
 				return Ok(BadRequestResult.Create("The promo you have attempted to use does not exist or is invalid"));
