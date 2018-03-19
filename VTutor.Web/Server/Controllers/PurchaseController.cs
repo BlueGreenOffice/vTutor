@@ -159,34 +159,37 @@ namespace VTutor.Web.Controllers
 
 
 			var promoCode = _context.PromoCodes.Where(p => p.Name == promo).FirstOrDefault();
+			decimal price = nonce.chargeAmount;
 
 			if (promo != null && promo != "null" && promoCode == null)
 			{
 				//The passed in code is invalid.
 				return Ok(BadRequestResult.Create("The promo you have attempted to use does not exist or is invalid"));
 			}
-
-			int usageCount = _context.PromoCodeUsages.Count(x => x.PromoCode.Id == promoCode.Id);
-			int personalUsageCount = _context.PromoCodeUsages.Count(x => x.PromoCode.Id == promoCode.Id && x.Student.Id == student.Id);
-
-			if (usageCount >= promoCode.TotalUsageAmount)
+			else
 			{
-				//promo has been used too many times
-				return Ok(BadRequestResult.Create("This promo is no longer active."));
+				int usageCount = _context.PromoCodeUsages.Count(x => x.PromoCode.Id == promoCode.Id);
+				int personalUsageCount = _context.PromoCodeUsages.Count(x => x.PromoCode.Id == promoCode.Id && x.Student.Id == student.Id);
+
+				if (usageCount >= promoCode.TotalUsageAmount)
+				{
+					//promo has been used too many times
+					return Ok(BadRequestResult.Create("This promo is no longer active."));
+				}
+
+				if (personalUsageCount >= promoCode.IndividualUsageAmount)
+				{
+					return Ok(BadRequestResult.Create("You have used this promo too many times."));
+				}
+
+				if (promoCode != null && promoCode.DiscountAmount != 0)
+				{
+					//discount amount is a percentage from 0 to 100
+					price = price * (decimal)promoCode.DiscountAmount / 100;
+				}
 			}
 
-			if (personalUsageCount >= promoCode.IndividualUsageAmount)
-			{
-				return Ok(BadRequestResult.Create("You have used this promo too many times."));
-			}
-
-			decimal price = nonce.chargeAmount;
-
-			if (promoCode != null && promoCode.DiscountAmount != 0)
-			{
-				//discount amount is a percentage from 0 to 100
-				price = price * (decimal)promoCode.DiscountAmount / 100;
-			}
+			
 
 			var request = new TransactionRequest
 			{
