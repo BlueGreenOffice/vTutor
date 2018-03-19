@@ -124,6 +124,8 @@
 							<div *ngIf="selectedBlock == block">
 								<a *ngIf="!isLoggedIn()" (click)="openLoginDialog(loginDialog)" class="btn btn-default">Login</a><a *ngIf="!isLoggedIn()" class="btn btn-default">Register</a>
 								<div *ngIf="isLoggedIn()">
+									<label>Promo Code</label>
+									<input [(ngModel)]="promoCode" />
 									<ngx-braintree [clientTokenURL]="'api/purchase/getClientToken'"
 												   [createPurchaseURL]="'api/purchase/createPurchase?startDate=' + formatDate(block.startTime) + '&promo=' + promoCode"
 												   [showCardholderName]="true" 

@@ -19,6 +19,8 @@ export class SessionsComponent {
 	public grade: number;
 	public subject: string;
 
+	public promoCode: string;
+
 	allGrades: Grade[];
 	allSubjects: Subject[];
 	subjects: TutorSubject[];

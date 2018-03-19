@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Braintree;
 using Microsoft.AspNetCore.Identity;
 using VTutor.Model;
+using System.Runtime.Serialization;
 
 namespace VTutor.Web.Controllers
 {
@@ -34,11 +35,58 @@ namespace VTutor.Web.Controllers
 		}
 	}
 
+	[DataContract]
+	public class BadRequestResult : Result<Transaction>
+	{
+		private string errorMessage;
+		public BadRequestResult(string errorMessage)
+		{
+			this.errorMessage = errorMessage;
+		}
+
+		public static BadRequestResult Create(string errorMessage)
+		{
+			return new BadRequestResult(errorMessage);
+		}
+
+		public CreditCardVerification CreditCardVerification => throw new NotImplementedException();
+
+		public Transaction Transaction => throw new NotImplementedException();
+
+		public Subscription Subscription => throw new NotImplementedException();
+
+		[DataMember]
+		public ValidationErrors Errors
+		{
+			get
+			{
+				var errors = new ValidationErrors();
+
+				///errors.AddError("Promo Code", new ValidationError("", "", "test error"));
+				return errors;
+			}
+			
+		}
+
+		public Dictionary<string, string> Parameters => throw new NotImplementedException();
+
+		[DataMember]
+		public string Message => this.errorMessage;
+
+		public Transaction Target => throw new NotImplementedException();
+
+		
+		public bool IsSuccess()
+		{
+			return false;
+		}
+	}
+
 
 	[Produces("application/json")]
-    [Route("api/Purchase")]
-    public class PurchaseController : Controller
-    {
+	[Route("api/Purchase")]
+	public class PurchaseController : Controller
+	{
 		/// <summary>
 		/// User manager - attached to application DB context
 		/// </summary>
@@ -96,11 +144,11 @@ namespace VTutor.Web.Controllers
 
 			var student = _context.Students.Where(s => s.Email == user.Email).FirstOrDefault();
 
-			if (student == null )
+			if (student == null)
 			{
 				return BadRequest("Tutors are not allowed to request sessions.");
 			}
-			
+
 			var gateway = new BraintreeGateway
 			{
 				Environment = Braintree.Environment.SANDBOX,
@@ -109,9 +157,40 @@ namespace VTutor.Web.Controllers
 				PrivateKey = "c28a54a9c4fed5e4058197d2787380c9"
 			};
 
+
+			var promoCode = _context.PromoCodes.Where(p => p.Name == promo).FirstOrDefault();
+
+			if (promo != null && promoCode == null)
+			{
+				//The passed in code is invalid.
+				return Ok(BadRequestResult.Create("The promo you have attempted to use does not exist or is invalid"));
+			}
+
+			int usageCount = _context.PromoCodeUsages.Count(x => x.PromoCode.Id == promoCode.Id);
+			int personalUsageCount = _context.PromoCodeUsages.Count(x => x.PromoCode.Id == promoCode.Id && x.Student.Id == student.Id);
+
+			if (usageCount >= promoCode.TotalUsageAmount)
+			{
+				//promo has been used too many times
+				return Ok(BadRequestResult.Create("This promo is no longer active."));
+			}
+
+			if (personalUsageCount >= promoCode.IndividualUsageAmount)
+			{
+				return Ok(BadRequestResult.Create("You have used this promo too many times."));
+			}
+
+			decimal price = nonce.chargeAmount;
+
+			if (promoCode != null && promoCode.DiscountAmount != 0)
+			{
+				//discount amount is a percentage from 0 to 100
+				price = price * (decimal)promoCode.DiscountAmount / 100;
+			}
+
 			var request = new TransactionRequest
 			{
-				Amount = nonce.chargeAmount,
+				Amount = price,
 				PaymentMethodNonce = nonce.nonce,
 				Options = new TransactionOptionsRequest
 				{
@@ -132,6 +211,16 @@ namespace VTutor.Web.Controllers
 					Tutor = null
 				});
 
+				if (promoCode != null)
+				{
+					_context.PromoCodeUsages.Add(new PromoCodeUsage()
+					{
+						PromoCode = promoCode,
+						Student = student,
+						UsedDate = DateTime.Now
+					});
+				}
+
 				await _context.SaveChangesAsync();
 
 				//session is booked WOOT
@@ -141,5 +230,5 @@ namespace VTutor.Web.Controllers
 		}
 
 
-    }
+	}
 }

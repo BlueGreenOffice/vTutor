@@ -49,7 +49,7 @@ export class LoginService {
 					this.router.navigate(['dashboard']);
 				}
 				else if (this.Role == 'Students') {
-					this.router.navigate([''])
+					this.router.navigate(['student-dashboard'])
 				}
 				else if (this.Role == 'Admin') {
 					this.router.navigate(['admin-dashboard']);
