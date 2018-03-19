@@ -21,9 +21,11 @@ export class SessionsComponent {
 
 	public promoCode: string = null;
 
+
 	allGrades: Grade[];
 	allSubjects: Subject[];
 	subjects: TutorSubject[];
+
 
 	tutorSubject: TutorSubject;
 
